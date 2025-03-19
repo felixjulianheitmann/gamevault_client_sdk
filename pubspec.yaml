@@ -1,21 +1,26 @@
 name: gamevault_client_sdk
 description: A client SDK for Gamevault generated from the OpenAPI specification
-version: 1.0.0
+version: 0.1.0
 repository: https://github.com/felixjulianheitmann/gamevault_client_sdk
 
 environment:
-  sdk: ^3.7.2
+  sdk: '>=2.15.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
   openapi_generator_annotations: ^6.1.0
-  # path: ^1.8.0
+  dio: '^5.2.0'
+  one_of: '>=1.5.0 <2.0.0'
+  one_of_serializer: '>=1.5.0 <2.0.0'
+  built_value: '>=8.4.0 <9.0.0'
+  built_collection: '>=5.1.1 <6.0.0'
 
 dev_dependencies:
+  built_value_generator: '>=8.4.0 <9.0.0'
+  build_runner: any
   lints: ^5.0.0
   test: ^1.24.0
 
   openapi_generator: ^6.1.0
   http:
-  build_runner: ^2.4.15
   
