@@ -1,939 +1,643 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_collection/built_collection.dart';
-import '../api_util.dart';
-import '../model/gamevault_user.dart';
-import '../model/register_user_dto.dart';
-import '../model/update_user_dto.dart';
+part of openapi.api;
 
 class UserApi {
-  final Dio _dio;
+  UserApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const UserApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// delete any user
   ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> deleteUserByUserId({
-    required num userId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/{user_id}'.replaceAll(
-        '{' r'user_id' '}',
-        encodeQueryParameter(_serializers, userId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<Response> deleteUserByUserIdWithHttpInfo(
+    num userId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
+  }
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
+  /// delete any user
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<GamevaultUser?> deleteUserByUserId(
+    num userId,
+  ) async {
+    final response = await deleteUserByUserIdWithHttpInfo(
+      userId,
     );
-
-    GamevaultUser? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
   }
 
   /// delete your own user
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> deleteUserMeWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// delete your own user
+  Future<GamevaultUser?> deleteUserMe() async {
+    final response = await deleteUserMeWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
+  }
+
+  /// unbookmark a game
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> deleteUserMe({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/me';
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> deleteUsersMeBookmarkWithHttpInfo(
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me/bookmark/{game_id}'
+        .replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    GamevaultUser? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>[];
 
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// unbookmark a game
   ///
-  ///
   /// Parameters:
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteUsersMeBookmark({
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/me/bookmark/{game_id}'.replaceAll(
-        '{' r'game_id' '}',
-        encodeQueryParameter(_serializers, gameId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<void> deleteUsersMeBookmark(
+    num gameId,
+  ) async {
+    final response = await deleteUsersMeBookmarkWithHttpInfo(
+      gameId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// get details on a user
   ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> getUserByUserId({
-    required num userId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/{user_id}'.replaceAll(
-        '{' r'user_id' '}',
-        encodeQueryParameter(_serializers, userId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<Response> getUserByUserIdWithHttpInfo(
+    num userId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
+  }
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
+  /// get details on a user
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<GamevaultUser?> getUserByUserId(
+    num userId,
+  ) async {
+    final response = await getUserByUserIdWithHttpInfo(
+      userId,
     );
-
-    GamevaultUser? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
   }
 
   /// get an overview of all users. admins can see hidden users using this endpoint aswell.
   ///
-  ///
-  /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<GamevaultUser>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GamevaultUser>>> getUsers({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getUsersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
+  }
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    BuiltList<GamevaultUser>? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType:
-                  const FullType(BuiltList, [FullType(GamevaultUser)]),
-            ) as BuiltList<GamevaultUser>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+  /// get an overview of all users. admins can see hidden users using this endpoint aswell.
+  Future<List<GamevaultUser>?> getUsers() async {
+    final response = await getUsersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<BuiltList<GamevaultUser>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<GamevaultUser>') as List)
+          .cast<GamevaultUser>()
+          .toList(growable: false);
+    }
+    return null;
   }
 
   /// get details of your user
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getUsersMeWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// get details of your user
+  Future<GamevaultUser?> getUsersMe() async {
+    final response = await getUsersMeWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
+  }
+
+  /// recover a deleted user
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> getUsersMe({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/me';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<Response> postUserRecoverByUserIdWithHttpInfo(
+    num userId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/{user_id}/recover'
+        .replaceAll('{user_id}', userId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    GamevaultUser? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>[];
 
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// recover a deleted user
   ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  Future<GamevaultUser?> postUserRecoverByUserId(
+    num userId,
+  ) async {
+    final response = await postUserRecoverByUserIdWithHttpInfo(
+      userId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
+  }
+
+  /// register a new user
+  ///
+  /// The user may may has to be activated afterwards to be active. This endpoint only works if registration is enabled
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> postUserRecoverByUserId({
-    required num userId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/{user_id}/recover'.replaceAll(
-        '{' r'user_id' '}',
-        encodeQueryParameter(_serializers, userId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [RegisterUserDto] registerUserDto (required):
+  Future<Response> postUserRegisterWithHttpInfo(
+    RegisterUserDto registerUserDto,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/register';
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody = registerUserDto;
 
-    GamevaultUser? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>['application/json'];
 
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// register a new user
+  ///
   /// The user may may has to be activated afterwards to be active. This endpoint only works if registration is enabled
   ///
   /// Parameters:
-  /// * [registerUserDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> postUserRegister({
-    required RegisterUserDto registerUserDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/register';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
+  /// * [RegisterUserDto] registerUserDto (required):
+  Future<GamevaultUser?> postUserRegister(
+    RegisterUserDto registerUserDto,
+  ) async {
+    final response = await postUserRegisterWithHttpInfo(
+      registerUserDto,
     );
-
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(RegisterUserDto);
-      _bodyData = _serializers.serialize(registerUserDto, specifiedType: _type);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    GamevaultUser? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
     }
+    return null;
+  }
 
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+  /// bookmark a game
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> postUsersMeBookmarkWithHttpInfo(
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me/bookmark/{game_id}'
+        .replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// bookmark a game
   ///
-  ///
   /// Parameters:
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> postUsersMeBookmark({
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/me/bookmark/{game_id}'.replaceAll(
-        '{' r'game_id' '}',
-        encodeQueryParameter(_serializers, gameId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<void> postUsersMeBookmark(
+    num gameId,
+  ) async {
+    final response = await postUsersMeBookmarkWithHttpInfo(
+      gameId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// update details of any user
   ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [updateUserDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> putUserByUserId({
-    required num userId,
-    required UpdateUserDto updateUserDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/{user_id}'.replaceAll(
-        '{' r'user_id' '}',
-        encodeQueryParameter(_serializers, userId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [UpdateUserDto] updateUserDto (required):
+  Future<Response> putUserByUserIdWithHttpInfo(
+    num userId,
+    UpdateUserDto updateUserDto,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateUserDto;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
+  }
 
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(UpdateUserDto);
-      _bodyData = _serializers.serialize(updateUserDto, specifiedType: _type);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
+  /// update details of any user
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [UpdateUserDto] updateUserDto (required):
+  Future<GamevaultUser?> putUserByUserId(
+    num userId,
+    UpdateUserDto updateUserDto,
+  ) async {
+    final response = await putUserByUserIdWithHttpInfo(
+      userId,
+      updateUserDto,
     );
-
-    GamevaultUser? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
+    }
+    return null;
+  }
 
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+  /// update details of your user
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [UpdateUserDto] updateUserDto (required):
+  Future<Response> putUsersMeWithHttpInfo(
+    UpdateUserDto updateUserDto,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me';
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateUserDto;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// update details of your user
   ///
-  ///
   /// Parameters:
-  /// * [updateUserDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultUser] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultUser>> putUsersMe({
-    required UpdateUserDto updateUserDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/users/me';
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
+  /// * [UpdateUserDto] updateUserDto (required):
+  Future<GamevaultUser?> putUsersMe(
+    UpdateUserDto updateUserDto,
+  ) async {
+    final response = await putUsersMeWithHttpInfo(
+      updateUserDto,
     );
-
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(UpdateUserDto);
-      _bodyData = _serializers.serialize(updateUserDto, specifiedType: _type);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    GamevaultUser? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultUser),
-            ) as GamevaultUser;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultUser',
+      ) as GamevaultUser;
     }
-
-    return Response<GamevaultUser>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return null;
   }
 }

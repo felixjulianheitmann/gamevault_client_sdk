@@ -1,878 +1,699 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import '../api_util.dart';
-import '../model/get_progresses200_response.dart';
-import '../model/progress.dart';
-import '../model/update_progress_dto.dart';
+part of openapi.api;
 
 class ProgressApi {
-  final Dio _dio;
+  ProgressApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const ProgressApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// delete a progress by progress id.
+  ///
+  /// Only admins or the user who is associated to the progress can delete it. DEPRECATED: Use DELETE /user/:user_id/game/:game_id instead.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] progressId (required):
+  ///   id of the progress
+  Future<Response> deleteProgressByProgressIdWithHttpInfo(
+    num progressId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/{progress_id}'
+        .replaceAll('{progress_id}', progressId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// delete a progress by progress id.
+  ///
   /// Only admins or the user who is associated to the progress can delete it. DEPRECATED: Use DELETE /user/:user_id/game/:game_id instead.
   ///
   /// Parameters:
-  /// * [progressId] - id of the progress
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<Progress>> deleteProgressByProgressId({
-    required num progressId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/{progress_id}'.replaceAll(
-        '{' r'progress_id' '}',
-        encodeQueryParameter(_serializers, progressId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] progressId (required):
+  ///   id of the progress
+  Future<Progress?> deleteProgressByProgressId(
+    num progressId,
+  ) async {
+    final response = await deleteProgressByProgressIdWithHttpInfo(
+      progressId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Progress? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
+  }
 
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+  /// delete a progress
+  ///
+  /// Only admins or the user who is associated to the progress can delete it.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> deleteProgressByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// delete a progress
+  ///
   /// Only admins or the user who is associated to the progress can delete it.
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Progress>> deleteProgressByUserIdAndGameId({
-    required num userId,
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Progress?> deleteProgressByUserIdAndGameId(
+    num userId,
+    num gameId,
+  ) async {
+    final response = await deleteProgressByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Progress? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
   }
 
   /// get an array of files to ignore for progess-tracking
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getIgnoreFileWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/ignorefile';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// get an array of files to ignore for progess-tracking
+  Future<List<Object>?> getIgnoreFile() async {
+    final response = await getIgnoreFileWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Object>')
+              as List)
+          .cast<Object>()
+          .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// get a specific progress by progress id. DEPRECATED: Use GET /user/:user_id/game/:game_id instead.
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<JsonObject>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<JsonObject>>> getIgnoreFile({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/ignorefile';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] progressId (required):
+  ///   id of the progress
+  Future<Response> getProgressByProgressIdWithHttpInfo(
+    num progressId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/{progress_id}'
+        .replaceAll('{progress_id}', progressId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    BuiltList<JsonObject>? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-            ) as BuiltList<JsonObject>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>[];
 
-    return Response<BuiltList<JsonObject>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// get a specific progress by progress id. DEPRECATED: Use GET /user/:user_id/game/:game_id instead.
   ///
+  /// Parameters:
+  ///
+  /// * [num] progressId (required):
+  ///   id of the progress
+  Future<List<Progress>?> getProgressByProgressId(
+    num progressId,
+  ) async {
+    final response = await getProgressByProgressIdWithHttpInfo(
+      progressId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<Progress>')
+              as List)
+          .cast<Progress>()
+          .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// get a specific game progress for a user
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [progressId] - id of the progress
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Progress>] as data
-  /// Throws [DioException] if API call or serialization fails
-  @Deprecated('This operation has been deprecated')
-  Future<Response<BuiltList<Progress>>> getProgressByProgressId({
-    required num progressId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/{progress_id}'.replaceAll(
-        '{' r'progress_id' '}',
-        encodeQueryParameter(_serializers, progressId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> getProgressByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    BuiltList<Progress>? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(BuiltList, [FullType(Progress)]),
-            ) as BuiltList<Progress>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>[];
 
-    return Response<BuiltList<Progress>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// get a specific game progress for a user
   ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Progress?> getProgressByUserIdAndGameId(
+    num userId,
+    num gameId,
+  ) async {
+    final response = await getProgressByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
+  }
+
+  /// get a list of progresses
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Progress>> getProgressByUserIdAndGameId({
-    required num userId,
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<Response> getProgressesWithHttpInfo({
+    num? page,
+    num? limit,
+    String? search,
+    Object? sortBy,
+    List<Object>? filter,
   }) async {
-    final _path = r'/api/progresses/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses';
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    Progress? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sortBy', sortBy));
+    }
+    if (filter != null) {
+      queryParams.addAll(_queryParams('multi', 'filter', filter));
     }
 
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// get a list of progresses
   ///
-  ///
   /// Parameters:
-  /// * [page] - page to retrieve
-  /// * [limit] - number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-  /// * [search] - search query
-  /// * [sortBy] - sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [filter] - filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GetProgresses200Response] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetProgresses200Response>> getProgresses({
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<GetProgresses200Response?> getProgresses({
     num? page,
     num? limit,
     String? search,
-    JsonObject? sortBy,
-    BuiltList<JsonObject>? filter,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    Object? sortBy,
+    List<Object>? filter,
   }) async {
-    final _path = r'/api/progresses';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+    final response = await getProgressesWithHttpInfo(
+      page: page,
+      limit: limit,
+      search: search,
+      sortBy: sortBy,
+      filter: filter,
     );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null)
-        r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null)
-        r'limit':
-            encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (search != null)
-        r'search':
-            encodeQueryParameter(_serializers, search, const FullType(String)),
-      if (sortBy != null)
-        r'sortBy': encodeQueryParameter(
-            _serializers, sortBy, const FullType(JsonObject)),
-      if (filter != null)
-        r'filter': encodeCollectionQueryParameter<JsonObject>(
-          _serializers,
-          filter,
-          const FullType(BuiltList, [FullType(JsonObject)]),
-          format: ListFormat.multi,
-        ),
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    GetProgresses200Response? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GetProgresses200Response),
-            ) as GetProgresses200Response;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GetProgresses200Response',
+      ) as GetProgresses200Response;
+    }
+    return null;
+  }
 
-    return Response<GetProgresses200Response>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+  /// create or update a progress
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [UpdateProgressDto] updateProgressDto (required):
+  Future<Response> putProgressByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId,
+    UpdateProgressDto updateProgressDto,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateProgressDto;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// create or update a progress
   ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [UpdateProgressDto] updateProgressDto (required):
+  Future<Progress?> putProgressByUserIdAndGameId(
+    num userId,
+    num gameId,
+    UpdateProgressDto updateProgressDto,
+  ) async {
+    final response = await putProgressByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
+      updateProgressDto,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
+  }
+
+  /// Increment a specific game progress for a user by x minutes
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [updateProgressDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Progress>> putProgressByUserIdAndGameId({
-    required num userId,
-    required num gameId,
-    required UpdateProgressDto updateProgressDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] minutes (required):
+  ///   the amount of minutes to increment the progress by
+  Future<Response> putProgressByUserIdAndGameIdIncrementByMinutesWithHttpInfo(
+    num userId,
+    num gameId,
+    String minutes,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/progresses/user/{user_id}/game/{game_id}/increment/{minutes}'
+            .replaceAll('{user_id}', userId.toString())
+            .replaceAll('{game_id}', gameId.toString())
+            .replaceAll('{minutes}', minutes);
 
-    dynamic _bodyData;
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    try {
-      const _type = FullType(UpdateProgressDto);
-      _bodyData =
-          _serializers.serialize(updateProgressDto, specifiedType: _type);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    const contentTypes = <String>[];
 
-    Progress? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Increment a specific game progress for a user by x minutes
   ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] minutes (required):
+  ///   the amount of minutes to increment the progress by
+  Future<Progress?> putProgressByUserIdAndGameIdIncrementByMinutes(
+    num userId,
+    num gameId,
+    String minutes,
+  ) async {
+    final response =
+        await putProgressByUserIdAndGameIdIncrementByMinutesWithHttpInfo(
+      userId,
+      gameId,
+      minutes,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
+  }
+
+  /// Increment a specific game progress for a user by a minute
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [minutes] - the amount of minutes to increment the progress by
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Progress>> putProgressByUserIdAndGameIdIncrementByMinutes({
-    required num userId,
-    required num gameId,
-    required String minutes,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/api/progresses/user/{user_id}/game/{game_id}/increment/{minutes}'
-            .replaceAll(
-                '{' r'user_id' '}',
-                encodeQueryParameter(_serializers, userId, const FullType(num))
-                    .toString())
-            .replaceAll(
-                '{' r'game_id' '}',
-                encodeQueryParameter(_serializers, gameId, const FullType(num))
-                    .toString())
-            .replaceAll(
-                '{' r'minutes' '}',
-                encodeQueryParameter(
-                        _serializers, minutes, const FullType(String))
-                    .toString());
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> putProgressByUserIdAndGameIdIncrementByOneWithHttpInfo(
+    num userId,
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/progresses/user/{user_id}/game/{game_id}/increment'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    Progress? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>[];
 
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Increment a specific game progress for a user by a minute
   ///
-  ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Progress] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Progress>> putProgressByUserIdAndGameIdIncrementByOne({
-    required num userId,
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/progresses/user/{user_id}/game/{game_id}/increment'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Progress?> putProgressByUserIdAndGameIdIncrementByOne(
+    num userId,
+    num gameId,
+  ) async {
+    final response =
+        await putProgressByUserIdAndGameIdIncrementByOneWithHttpInfo(
+      userId,
+      gameId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Progress? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(Progress),
-            ) as Progress;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<Progress>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Progress',
+      ) as Progress;
+    }
+    return null;
   }
 }

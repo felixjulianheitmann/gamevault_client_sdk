@@ -1,205 +1,204 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'register_user_dto.g.dart';
+part of openapi.api;
 
-/// RegisterUserDto
-///
-/// Properties:
-/// * [username] - username of the user
-/// * [password] - password of the user
-/// * [email] - email of the user
-/// * [firstName] - first name of the user
-/// * [lastName] - last name of the user
-/// * [birthDate] - date of birth of the user in ISO8601 format
-@BuiltValue()
-abstract class RegisterUserDto
-    implements Built<RegisterUserDto, RegisterUserDtoBuilder> {
+class RegisterUserDto {
+  /// Returns a new [RegisterUserDto] instance.
+  RegisterUserDto({
+    required this.username,
+    required this.password,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.birthDate,
+  });
+
   /// username of the user
-  @BuiltValueField(wireName: r'username')
-  String get username;
+  String username;
 
   /// password of the user
-  @BuiltValueField(wireName: r'password')
-  String get password;
+  String password;
 
   /// email of the user
-  @BuiltValueField(wireName: r'email')
-  String? get email;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
 
   /// first name of the user
-  @BuiltValueField(wireName: r'first_name')
-  String? get firstName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? firstName;
 
   /// last name of the user
-  @BuiltValueField(wireName: r'last_name')
-  String? get lastName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastName;
 
   /// date of birth of the user in ISO8601 format
-  @BuiltValueField(wireName: r'birth_date')
-  String? get birthDate;
-
-  RegisterUserDto._();
-
-  factory RegisterUserDto([void updates(RegisterUserDtoBuilder b)]) =
-      _$RegisterUserDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(RegisterUserDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<RegisterUserDto> get serializer =>
-      _$RegisterUserDtoSerializer();
-}
-
-class _$RegisterUserDtoSerializer
-    implements PrimitiveSerializer<RegisterUserDto> {
-  @override
-  final Iterable<Type> types = const [RegisterUserDto, _$RegisterUserDto];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? birthDate;
 
   @override
-  final String wireName = r'RegisterUserDto';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegisterUserDto &&
+          other.username == username &&
+          other.password == password &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.birthDate == birthDate;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    RegisterUserDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'username';
-    yield serializers.serialize(
-      object.username,
-      specifiedType: const FullType(String),
-    );
-    yield r'password';
-    yield serializers.serialize(
-      object.password,
-      specifiedType: const FullType(String),
-    );
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (username.hashCode) +
+      (password.hashCode) +
+      (email == null ? 0 : email!.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (birthDate == null ? 0 : birthDate!.hashCode);
+
+  @override
+  String toString() =>
+      'RegisterUserDto[username=$username, password=$password, email=$email, firstName=$firstName, lastName=$lastName, birthDate=$birthDate]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'username'] = this.username;
+    json[r'password'] = this.password;
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
     }
-    if (object.firstName != null) {
-      yield r'first_name';
-      yield serializers.serialize(
-        object.firstName,
-        specifiedType: const FullType(String),
-      );
+    if (this.firstName != null) {
+      json[r'first_name'] = this.firstName;
+    } else {
+      json[r'first_name'] = null;
     }
-    if (object.lastName != null) {
-      yield r'last_name';
-      yield serializers.serialize(
-        object.lastName,
-        specifiedType: const FullType(String),
-      );
+    if (this.lastName != null) {
+      json[r'last_name'] = this.lastName;
+    } else {
+      json[r'last_name'] = null;
     }
-    if (object.birthDate != null) {
-      yield r'birth_date';
-      yield serializers.serialize(
-        object.birthDate,
-        specifiedType: const FullType(String),
-      );
+    if (this.birthDate != null) {
+      json[r'birth_date'] = this.birthDate;
+    } else {
+      json[r'birth_date'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    RegisterUserDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [RegisterUserDto] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static RegisterUserDto? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "RegisterUserDto[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "RegisterUserDto[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return RegisterUserDto(
+        username: mapValueOfType<String>(json, r'username')!,
+        password: mapValueOfType<String>(json, r'password')!,
+        email: mapValueOfType<String>(json, r'email'),
+        firstName: mapValueOfType<String>(json, r'first_name'),
+        lastName: mapValueOfType<String>(json, r'last_name'),
+        birthDate: mapValueOfType<String>(json, r'birth_date'),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required RegisterUserDtoBuilder result,
-    required List<Object?> unhandled,
+  static List<RegisterUserDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'first_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.firstName = valueDes;
-          break;
-        case r'last_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.lastName = valueDes;
-          break;
-        case r'birth_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.birthDate = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <RegisterUserDto>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = RegisterUserDto.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  RegisterUserDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = RegisterUserDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, RegisterUserDto> mapFromJson(dynamic json) {
+    final map = <String, RegisterUserDto>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = RegisterUserDto.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of RegisterUserDto-objects as value to a dart map
+  static Map<String, List<RegisterUserDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<RegisterUserDto>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = RegisterUserDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'username',
+    'password',
+  };
 }

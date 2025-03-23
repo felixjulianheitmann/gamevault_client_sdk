@@ -1,551 +1,435 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import '../api_util.dart';
-import '../model/gamevault_game.dart';
-import '../model/get_games200_response.dart';
-import '../model/update_game_dto.dart';
+part of openapi.api;
 
 class GameApi {
-  final Dio _dio;
+  GameApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const GameApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// get details on a game
   ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultGame] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultGame>> getGameByGameId({
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> getGameByGameIdWithHttpInfo(
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/games/{game_id}'.replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// get details on a game
+  ///
+  /// Parameters:
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<GamevaultGame?> getGameByGameId(
+    num gameId,
+  ) async {
+    final response = await getGameByGameIdWithHttpInfo(
+      gameId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultGame',
+      ) as GamevaultGame;
+    }
+    return null;
+  }
+
+  /// download a game
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] xDownloadSpeedLimit:
+  ///   This header lets you set the maximum download speed limit in kibibytes per second (kiB/s) for your request.  If the header is not present the download speed limit will be unlimited.
+  ///
+  /// * [String] range:
+  ///   This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
+  Future<Response> getGameDownloadWithHttpInfo(
+    num gameId, {
+    String? xDownloadSpeedLimit,
+    String? range,
   }) async {
-    final _path = r'/api/games/{game_id}'.replaceAll(
-        '{' r'game_id' '}',
-        encodeQueryParameter(_serializers, gameId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+    // ignore: prefer_const_declarations
+    final path = r'/api/games/{game_id}/download'
+        .replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    GamevaultGame? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultGame),
-            ) as GamevaultGame;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (xDownloadSpeedLimit != null) {
+      headerParams[r'X-Download-Speed-Limit'] =
+          parameterToString(xDownloadSpeedLimit);
+    }
+    if (range != null) {
+      headerParams[r'Range'] = parameterToString(range);
     }
 
-    return Response<GamevaultGame>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// download a game
   ///
-  ///
   /// Parameters:
-  /// * [gameId] - id of the game
-  /// * [xDownloadSpeedLimit] - This header lets you set the maximum download speed limit in kibibytes per second (kiB/s) for your request.  If the header is not present the download speed limit will be unlimited.
-  /// * [range] - This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> getGameDownload({
-    required num gameId,
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] xDownloadSpeedLimit:
+  ///   This header lets you set the maximum download speed limit in kibibytes per second (kiB/s) for your request.  If the header is not present the download speed limit will be unlimited.
+  ///
+  /// * [String] range:
+  ///   This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
+  Future<Object?> getGameDownload(
+    num gameId, {
     String? xDownloadSpeedLimit,
     String? range,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/games/{game_id}/download'.replaceAll(
-        '{' r'game_id' '}',
-        encodeQueryParameter(_serializers, gameId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xDownloadSpeedLimit != null)
-          r'X-Download-Speed-Limit': xDownloadSpeedLimit,
-        if (range != null) r'Range': range,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+    final response = await getGameDownloadWithHttpInfo(
+      gameId,
+      xDownloadSpeedLimit: xDownloadSpeedLimit,
+      range: range,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    JsonObject? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(JsonObject),
-            ) as JsonObject;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<JsonObject>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Object',
+      ) as Object;
+    }
+    return null;
   }
 
   /// get a random game
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getGameRandomWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/games/random';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// get a random game
+  Future<GamevaultGame?> getGameRandom() async {
+    final response = await getGameRandomWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GamevaultGame',
+      ) as GamevaultGame;
+    }
+    return null;
+  }
+
+  /// get a list of games
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GamevaultGame] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GamevaultGame>> getGameRandom({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<Response> getGamesWithHttpInfo({
+    num? page,
+    num? limit,
+    String? search,
+    Object? sortBy,
+    List<Object>? filter,
   }) async {
-    final _path = r'/api/games/random';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+    // ignore: prefer_const_declarations
+    final path = r'/api/games';
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    GamevaultGame? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GamevaultGame),
-            ) as GamevaultGame;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sortBy', sortBy));
+    }
+    if (filter != null) {
+      queryParams.addAll(_queryParams('multi', 'filter', filter));
     }
 
-    return Response<GamevaultGame>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// get a list of games
   ///
-  ///
   /// Parameters:
-  /// * [page] - page to retrieve
-  /// * [limit] - number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-  /// * [search] - search query
-  /// * [sortBy] - sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [filter] - filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [GetGames200Response] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetGames200Response>> getGames({
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<GetGames200Response?> getGames({
     num? page,
     num? limit,
     String? search,
-    JsonObject? sortBy,
-    BuiltList<JsonObject>? filter,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    Object? sortBy,
+    List<Object>? filter,
   }) async {
-    final _path = r'/api/games';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+    final response = await getGamesWithHttpInfo(
+      page: page,
+      limit: limit,
+      search: search,
+      sortBy: sortBy,
+      filter: filter,
     );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null)
-        r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null)
-        r'limit':
-            encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (search != null)
-        r'search':
-            encodeQueryParameter(_serializers, search, const FullType(String)),
-      if (sortBy != null)
-        r'sortBy': encodeQueryParameter(
-            _serializers, sortBy, const FullType(JsonObject)),
-      if (filter != null)
-        r'filter': encodeCollectionQueryParameter<JsonObject>(
-          _serializers,
-          filter,
-          const FullType(BuiltList, [FullType(JsonObject)]),
-          format: ListFormat.multi,
-        ),
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    GetGames200Response? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GetGames200Response),
-            ) as GetGames200Response;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<GetGames200Response>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GetGames200Response',
+      ) as GetGames200Response;
+    }
+    return null;
   }
 
   /// manually triggers an index of all games
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> putFilesReindexWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/games/reindex';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// manually triggers an index of all games
+  Future<List<GamevaultGame>?> putFilesReindex() async {
+    final response = await putFilesReindexWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<GamevaultGame>') as List)
+          .cast<GamevaultGame>()
+          .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// updates the details of a game
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<GamevaultGame>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<GamevaultGame>>> putFilesReindex({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/games/reindex';
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [UpdateGameDto] updateGameDto (required):
+  Future<Response> putGameUpdateWithHttpInfo(
+    num gameId,
+    UpdateGameDto updateGameDto,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path =
+        r'/api/games/{game_id}'.replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody = updateGameDto;
 
-    BuiltList<GamevaultGame>? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType:
-                  const FullType(BuiltList, [FullType(GamevaultGame)]),
-            ) as BuiltList<GamevaultGame>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    const contentTypes = <String>['application/json'];
 
-    return Response<BuiltList<GamevaultGame>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// updates the details of a game
   ///
-  ///
   /// Parameters:
-  /// * [gameId] - id of the game
-  /// * [updateGameDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> putGameUpdate({
-    required num gameId,
-    required UpdateGameDto updateGameDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/games/{game_id}'.replaceAll(
-        '{' r'game_id' '}',
-        encodeQueryParameter(_serializers, gameId, const FullType(num))
-            .toString());
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [UpdateGameDto] updateGameDto (required):
+  Future<void> putGameUpdate(
+    num gameId,
+    UpdateGameDto updateGameDto,
+  ) async {
+    final response = await putGameUpdateWithHttpInfo(
+      gameId,
+      updateGameDto,
     );
-
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(UpdateGameDto);
-      _bodyData = _serializers.serialize(updateGameDto, specifiedType: _type);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
   }
 }

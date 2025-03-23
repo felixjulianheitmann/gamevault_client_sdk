@@ -1,248 +1,216 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'metadata.g.dart';
+part of openapi.api;
 
-/// Metadata
-///
-/// Properties:
-/// * [itemsPerPage] - amount of items per page
-/// * [totalItems] - total amount of items
-/// * [currentPage] - current page number
-/// * [totalPages] - total number of pages
-/// * [sortBy] - sorting that was applied by the query
-/// * [searchBy] - searches that were applied by the query
-/// * [search] - search query
-/// * [select] - select string
-/// * [filter] - filters that were applied by the query
-@BuiltValue()
-abstract class Metadata implements Built<Metadata, MetadataBuilder> {
+class Metadata {
+  /// Returns a new [Metadata] instance.
+  Metadata({
+    required this.itemsPerPage,
+    required this.totalItems,
+    required this.currentPage,
+    required this.totalPages,
+    this.sortBy = const [],
+    this.searchBy = const [],
+    required this.search,
+    this.select = const [],
+    this.filter,
+  });
+
   /// amount of items per page
-  @BuiltValueField(wireName: r'itemsPerPage')
-  num get itemsPerPage;
+  num itemsPerPage;
 
   /// total amount of items
-  @BuiltValueField(wireName: r'totalItems')
-  num get totalItems;
+  num totalItems;
 
   /// current page number
-  @BuiltValueField(wireName: r'currentPage')
-  num get currentPage;
+  num currentPage;
 
   /// total number of pages
-  @BuiltValueField(wireName: r'totalPages')
-  num get totalPages;
+  num totalPages;
 
   /// sorting that was applied by the query
-  @BuiltValueField(wireName: r'sortBy')
-  BuiltList<String> get sortBy;
+  List<String> sortBy;
 
   /// searches that were applied by the query
-  @BuiltValueField(wireName: r'searchBy')
-  BuiltList<String> get searchBy;
+  List<String> searchBy;
 
   /// search query
-  @BuiltValueField(wireName: r'search')
-  String get search;
+  String search;
 
   /// select string
-  @BuiltValueField(wireName: r'select')
-  BuiltList<String> get select;
+  List<String> select;
 
   /// filters that were applied by the query
-  @BuiltValueField(wireName: r'filter')
-  JsonObject? get filter;
-
-  Metadata._();
-
-  factory Metadata([void updates(MetadataBuilder b)]) = _$Metadata;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MetadataBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Metadata> get serializer => _$MetadataSerializer();
-}
-
-class _$MetadataSerializer implements PrimitiveSerializer<Metadata> {
-  @override
-  final Iterable<Type> types = const [Metadata, _$Metadata];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Object? filter;
 
   @override
-  final String wireName = r'Metadata';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Metadata &&
+          other.itemsPerPage == itemsPerPage &&
+          other.totalItems == totalItems &&
+          other.currentPage == currentPage &&
+          other.totalPages == totalPages &&
+          _deepEquality.equals(other.sortBy, sortBy) &&
+          _deepEquality.equals(other.searchBy, searchBy) &&
+          other.search == search &&
+          _deepEquality.equals(other.select, select) &&
+          other.filter == filter;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Metadata object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'itemsPerPage';
-    yield serializers.serialize(
-      object.itemsPerPage,
-      specifiedType: const FullType(num),
-    );
-    yield r'totalItems';
-    yield serializers.serialize(
-      object.totalItems,
-      specifiedType: const FullType(num),
-    );
-    yield r'currentPage';
-    yield serializers.serialize(
-      object.currentPage,
-      specifiedType: const FullType(num),
-    );
-    yield r'totalPages';
-    yield serializers.serialize(
-      object.totalPages,
-      specifiedType: const FullType(num),
-    );
-    yield r'sortBy';
-    yield serializers.serialize(
-      object.sortBy,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    yield r'searchBy';
-    yield serializers.serialize(
-      object.searchBy,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    yield r'search';
-    yield serializers.serialize(
-      object.search,
-      specifiedType: const FullType(String),
-    );
-    yield r'select';
-    yield serializers.serialize(
-      object.select,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    if (object.filter != null) {
-      yield r'filter';
-      yield serializers.serialize(
-        object.filter,
-        specifiedType: const FullType(JsonObject),
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (itemsPerPage.hashCode) +
+      (totalItems.hashCode) +
+      (currentPage.hashCode) +
+      (totalPages.hashCode) +
+      (sortBy.hashCode) +
+      (searchBy.hashCode) +
+      (search.hashCode) +
+      (select.hashCode) +
+      (filter == null ? 0 : filter!.hashCode);
+
+  @override
+  String toString() =>
+      'Metadata[itemsPerPage=$itemsPerPage, totalItems=$totalItems, currentPage=$currentPage, totalPages=$totalPages, sortBy=$sortBy, searchBy=$searchBy, search=$search, select=$select, filter=$filter]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'itemsPerPage'] = this.itemsPerPage;
+    json[r'totalItems'] = this.totalItems;
+    json[r'currentPage'] = this.currentPage;
+    json[r'totalPages'] = this.totalPages;
+    json[r'sortBy'] = this.sortBy;
+    json[r'searchBy'] = this.searchBy;
+    json[r'search'] = this.search;
+    json[r'select'] = this.select;
+    if (this.filter != null) {
+      json[r'filter'] = this.filter;
+    } else {
+      json[r'filter'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [Metadata] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static Metadata? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "Metadata[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "Metadata[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return Metadata(
+        itemsPerPage: num.parse('${json[r'itemsPerPage']}'),
+        totalItems: num.parse('${json[r'totalItems']}'),
+        currentPage: num.parse('${json[r'currentPage']}'),
+        totalPages: num.parse('${json[r'totalPages']}'),
+        sortBy: json[r'sortBy'] is Iterable
+            ? (json[r'sortBy'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
+            : const [],
+        searchBy: json[r'searchBy'] is Iterable
+            ? (json[r'searchBy'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
+            : const [],
+        search: mapValueOfType<String>(json, r'search')!,
+        select: json[r'select'] is Iterable
+            ? (json[r'select'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
+            : const [],
+        filter: mapValueOfType<Object>(json, r'filter'),
       );
     }
+    return null;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Metadata object, {
-    FullType specifiedType = FullType.unspecified,
+  static List<Metadata> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required MetadataBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'itemsPerPage':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.itemsPerPage = valueDes;
-          break;
-        case r'totalItems':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.totalItems = valueDes;
-          break;
-        case r'currentPage':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.currentPage = valueDes;
-          break;
-        case r'totalPages':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.totalPages = valueDes;
-          break;
-        case r'sortBy':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.sortBy.replace(valueDes);
-          break;
-        case r'searchBy':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.searchBy.replace(valueDes);
-          break;
-        case r'search':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.search = valueDes;
-          break;
-        case r'select':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.select.replace(valueDes);
-          break;
-        case r'filter':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.filter = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <Metadata>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = Metadata.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  Metadata deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = MetadataBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, Metadata> mapFromJson(dynamic json) {
+    final map = <String, Metadata>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = Metadata.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of Metadata-objects as value to a dart map
+  static Map<String, List<Metadata>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<Metadata>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = Metadata.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'itemsPerPage',
+    'totalItems',
+    'currentPage',
+    'totalPages',
+    'sortBy',
+    'searchBy',
+    'search',
+    'select',
+  };
 }

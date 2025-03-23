@@ -1,314 +1,375 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'update_user_dto.g.dart';
+part of openapi.api;
 
-/// UpdateUserDto
-///
-/// Properties:
-/// * [username] - username of the user
-/// * [email] - email of the user
-/// * [password] - password of the user
-/// * [firstName] - first name of the user
-/// * [lastName] - last name of the user
-/// * [birthDate] - date of birth of the user in ISO8601 format
-/// * [avatarId] - id of the avatar image of the user
-/// * [backgroundId] - id of the background image of the User
-/// * [activated] - wether or not the user is activated. Not yet working.
-/// * [role] - The role determines the set of permissions and access rights for a user in the system.
-@BuiltValue()
-abstract class UpdateUserDto
-    implements Built<UpdateUserDto, UpdateUserDtoBuilder> {
+class UpdateUserDto {
+  /// Returns a new [UpdateUserDto] instance.
+  UpdateUserDto({
+    this.username,
+    this.email,
+    this.password,
+    this.firstName,
+    this.lastName,
+    this.birthDate,
+    this.avatarId,
+    this.backgroundId,
+    this.activated,
+    this.role,
+  });
+
   /// username of the user
-  @BuiltValueField(wireName: r'username')
-  String? get username;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? username;
 
   /// email of the user
-  @BuiltValueField(wireName: r'email')
-  String? get email;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
 
   /// password of the user
-  @BuiltValueField(wireName: r'password')
-  String? get password;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? password;
 
   /// first name of the user
-  @BuiltValueField(wireName: r'first_name')
-  String? get firstName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? firstName;
 
   /// last name of the user
-  @BuiltValueField(wireName: r'last_name')
-  String? get lastName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastName;
 
   /// date of birth of the user in ISO8601 format
-  @BuiltValueField(wireName: r'birth_date')
-  String? get birthDate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? birthDate;
 
   /// id of the avatar image of the user
-  @BuiltValueField(wireName: r'avatar_id')
-  num? get avatarId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? avatarId;
 
   /// id of the background image of the User
-  @BuiltValueField(wireName: r'background_id')
-  num? get backgroundId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? backgroundId;
 
   /// wether or not the user is activated. Not yet working.
-  @BuiltValueField(wireName: r'activated')
-  bool? get activated;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? activated;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueField(wireName: r'role')
-  UpdateUserDtoRoleEnum? get role;
-  // enum roleEnum {  0,  1,  2,  3,  };
-
-  UpdateUserDto._();
-
-  factory UpdateUserDto([void updates(UpdateUserDtoBuilder b)]) =
-      _$UpdateUserDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UpdateUserDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateUserDto> get serializer =>
-      _$UpdateUserDtoSerializer();
-}
-
-class _$UpdateUserDtoSerializer implements PrimitiveSerializer<UpdateUserDto> {
-  @override
-  final Iterable<Type> types = const [UpdateUserDto, _$UpdateUserDto];
+  UpdateUserDtoRoleEnum? role;
 
   @override
-  final String wireName = r'UpdateUserDto';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UpdateUserDto &&
+          other.username == username &&
+          other.email == email &&
+          other.password == password &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.birthDate == birthDate &&
+          other.avatarId == avatarId &&
+          other.backgroundId == backgroundId &&
+          other.activated == activated &&
+          other.role == role;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    UpdateUserDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.username != null) {
-      yield r'username';
-      yield serializers.serialize(
-        object.username,
-        specifiedType: const FullType(String),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (username == null ? 0 : username!.hashCode) +
+      (email == null ? 0 : email!.hashCode) +
+      (password == null ? 0 : password!.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (birthDate == null ? 0 : birthDate!.hashCode) +
+      (avatarId == null ? 0 : avatarId!.hashCode) +
+      (backgroundId == null ? 0 : backgroundId!.hashCode) +
+      (activated == null ? 0 : activated!.hashCode) +
+      (role == null ? 0 : role!.hashCode);
+
+  @override
+  String toString() =>
+      'UpdateUserDto[username=$username, email=$email, password=$password, firstName=$firstName, lastName=$lastName, birthDate=$birthDate, avatarId=$avatarId, backgroundId=$backgroundId, activated=$activated, role=$role]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (this.username != null) {
+      json[r'username'] = this.username;
+    } else {
+      json[r'username'] = null;
     }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
     }
-    if (object.password != null) {
-      yield r'password';
-      yield serializers.serialize(
-        object.password,
-        specifiedType: const FullType(String),
-      );
+    if (this.password != null) {
+      json[r'password'] = this.password;
+    } else {
+      json[r'password'] = null;
     }
-    if (object.firstName != null) {
-      yield r'first_name';
-      yield serializers.serialize(
-        object.firstName,
-        specifiedType: const FullType(String),
-      );
+    if (this.firstName != null) {
+      json[r'first_name'] = this.firstName;
+    } else {
+      json[r'first_name'] = null;
     }
-    if (object.lastName != null) {
-      yield r'last_name';
-      yield serializers.serialize(
-        object.lastName,
-        specifiedType: const FullType(String),
-      );
+    if (this.lastName != null) {
+      json[r'last_name'] = this.lastName;
+    } else {
+      json[r'last_name'] = null;
     }
-    if (object.birthDate != null) {
-      yield r'birth_date';
-      yield serializers.serialize(
-        object.birthDate,
-        specifiedType: const FullType(String),
-      );
+    if (this.birthDate != null) {
+      json[r'birth_date'] = this.birthDate;
+    } else {
+      json[r'birth_date'] = null;
     }
-    if (object.avatarId != null) {
-      yield r'avatar_id';
-      yield serializers.serialize(
-        object.avatarId,
-        specifiedType: const FullType(num),
-      );
+    if (this.avatarId != null) {
+      json[r'avatar_id'] = this.avatarId;
+    } else {
+      json[r'avatar_id'] = null;
     }
-    if (object.backgroundId != null) {
-      yield r'background_id';
-      yield serializers.serialize(
-        object.backgroundId,
-        specifiedType: const FullType(num),
-      );
+    if (this.backgroundId != null) {
+      json[r'background_id'] = this.backgroundId;
+    } else {
+      json[r'background_id'] = null;
     }
-    if (object.activated != null) {
-      yield r'activated';
-      yield serializers.serialize(
-        object.activated,
-        specifiedType: const FullType(bool),
-      );
+    if (this.activated != null) {
+      json[r'activated'] = this.activated;
+    } else {
+      json[r'activated'] = null;
     }
-    if (object.role != null) {
-      yield r'role';
-      yield serializers.serialize(
-        object.role,
-        specifiedType: const FullType(UpdateUserDtoRoleEnum),
-      );
+    if (this.role != null) {
+      json[r'role'] = this.role;
+    } else {
+      json[r'role'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    UpdateUserDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [UpdateUserDto] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static UpdateUserDto? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "UpdateUserDto[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "UpdateUserDto[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return UpdateUserDto(
+        username: mapValueOfType<String>(json, r'username'),
+        email: mapValueOfType<String>(json, r'email'),
+        password: mapValueOfType<String>(json, r'password'),
+        firstName: mapValueOfType<String>(json, r'first_name'),
+        lastName: mapValueOfType<String>(json, r'last_name'),
+        birthDate: mapValueOfType<String>(json, r'birth_date'),
+        avatarId: num.parse('${json[r'avatar_id']}'),
+        backgroundId: num.parse('${json[r'background_id']}'),
+        activated: mapValueOfType<bool>(json, r'activated'),
+        role: UpdateUserDtoRoleEnum.parse('${json[r'role']}'),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required UpdateUserDtoBuilder result,
-    required List<Object?> unhandled,
+  static List<UpdateUserDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        case r'first_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.firstName = valueDes;
-          break;
-        case r'last_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.lastName = valueDes;
-          break;
-        case r'birth_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.birthDate = valueDes;
-          break;
-        case r'avatar_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.avatarId = valueDes;
-          break;
-        case r'background_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.backgroundId = valueDes;
-          break;
-        case r'activated':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.activated = valueDes;
-          break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(UpdateUserDtoRoleEnum),
-          ) as UpdateUserDtoRoleEnum;
-          result.role = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <UpdateUserDto>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UpdateUserDto.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  UpdateUserDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
+  static Map<String, UpdateUserDto> mapFromJson(dynamic json) {
+    final map = <String, UpdateUserDto>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = UpdateUserDto.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of UpdateUserDto-objects as value to a dart map
+  static Map<String, List<UpdateUserDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    final result = UpdateUserDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+    final map = <String, List<UpdateUserDto>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = UpdateUserDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{};
+}
+
+/// The role determines the set of permissions and access rights for a user in the system.
+class UpdateUserDtoRoleEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UpdateUserDtoRoleEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final num value;
+
+  @override
+  String toString() => value.toString();
+
+  num toJson() => value;
+
+  static const n0 = UpdateUserDtoRoleEnum._('0');
+  static const n1 = UpdateUserDtoRoleEnum._('1');
+  static const n2 = UpdateUserDtoRoleEnum._('2');
+  static const n3 = UpdateUserDtoRoleEnum._('3');
+
+  /// List of all possible values in this [enum][UpdateUserDtoRoleEnum].
+  static const values = <UpdateUserDtoRoleEnum>[
+    n0,
+    n1,
+    n2,
+    n3,
+  ];
+
+  static UpdateUserDtoRoleEnum? fromJson(dynamic value) =>
+      UpdateUserDtoRoleEnumTypeTransformer().decode(value);
+
+  static List<UpdateUserDtoRoleEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <UpdateUserDtoRoleEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UpdateUserDtoRoleEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
   }
 }
 
-class UpdateUserDtoRoleEnum extends EnumClass {
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'0')
-  static const UpdateUserDtoRoleEnum n0 = _$updateUserDtoRoleEnum_n0;
+/// Transformation class that can [encode] an instance of [UpdateUserDtoRoleEnum] to num,
+/// and [decode] dynamic data back to [UpdateUserDtoRoleEnum].
+class UpdateUserDtoRoleEnumTypeTransformer {
+  factory UpdateUserDtoRoleEnumTypeTransformer() =>
+      _instance ??= const UpdateUserDtoRoleEnumTypeTransformer._();
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'1')
-  static const UpdateUserDtoRoleEnum n1 = _$updateUserDtoRoleEnum_n1;
+  const UpdateUserDtoRoleEnumTypeTransformer._();
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'2')
-  static const UpdateUserDtoRoleEnum n2 = _$updateUserDtoRoleEnum_n2;
+  num encode(UpdateUserDtoRoleEnum data) => data.value;
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'3')
-  static const UpdateUserDtoRoleEnum n3 = _$updateUserDtoRoleEnum_n3;
+  /// Decodes a [dynamic value][data] to a UpdateUserDtoRoleEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UpdateUserDtoRoleEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case '0':
+          return UpdateUserDtoRoleEnum.n0;
+        case '1':
+          return UpdateUserDtoRoleEnum.n1;
+        case '2':
+          return UpdateUserDtoRoleEnum.n2;
+        case '3':
+          return UpdateUserDtoRoleEnum.n3;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
 
-  static Serializer<UpdateUserDtoRoleEnum> get serializer =>
-      _$updateUserDtoRoleEnumSerializer;
-
-  const UpdateUserDtoRoleEnum._(String name) : super(name);
-
-  static BuiltSet<UpdateUserDtoRoleEnum> get values =>
-      _$updateUserDtoRoleEnumValues;
-  static UpdateUserDtoRoleEnum valueOf(String name) =>
-      _$updateUserDtoRoleEnumValueOf(name);
+  /// Singleton [UpdateUserDtoRoleEnumTypeTransformer] instance.
+  static UpdateUserDtoRoleEnumTypeTransformer? _instance;
 }

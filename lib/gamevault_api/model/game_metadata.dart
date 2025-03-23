@@ -1,694 +1,539 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'tag_metadata.dart';
-import 'genre_metadata.dart';
-import 'package:built_collection/built_collection.dart';
-import 'media.dart';
-import 'publisher_metadata.dart';
-import 'developer_metadata.dart';
-import 'gamevault_game.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'game_metadata.g.dart';
+part of openapi.api;
 
-/// GameMetadata
-///
-/// Properties:
-/// * [id] - Unique gamevault-identifier of the entity
-/// * [createdAt] - date the entity was created
-/// * [entityVersion] - incremental version number of the entity
-/// * [providerSlug] - slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-/// * [title] - title of the game
-/// * [earlyAccess] - indicates if the game is in early access
-/// * [updatedAt] - date the entity was updated
-/// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
-/// * [gamevaultGames] - games the metadata belongs to
-/// * [providerDataId] - id of the game from the provider
-/// * [providerDataUrl] - url of the game from the provider
-/// * [providerPriority] - optional priority override for this metadata
-/// * [ageRating] - the minimum age required to play the game
-/// * [releaseDate] - release date of the game
-/// * [description] - description of the game. markdown supported.
-/// * [notes] - public notes from the admin for the game. markdown supported.
-/// * [averagePlaytime] - average playtime of other people in the game in minutes
-/// * [cover] - cover/boxart image of the game
-/// * [background] - background image of the game
-/// * [urlScreenshots] - URLs of externally hosted screenshots of the game
-/// * [urlTrailers] - URLs of externally hosted trailer videos of the game
-/// * [urlGameplays] - URLs of externally hosted gameplay videos of the game
-/// * [urlWebsites] - URLs of websites of the game
-/// * [rating] - rating of the provider
-/// * [launchParameters] - Predefined launch parameters for the game.
-/// * [launchExecutable] - Predefined launch executable for the game.
-/// * [installerExecutable] - Predefined installer executable for the game.
-/// * [publishers] - publishers of the game
-/// * [developers] - developers of the game
-/// * [tags] - tags of the game
-/// * [genres] - genres of the game
-@BuiltValue()
-abstract class GameMetadata
-    implements Built<GameMetadata, GameMetadataBuilder> {
+class GameMetadata {
+  /// Returns a new [GameMetadata] instance.
+  GameMetadata({
+    required this.id,
+    required this.createdAt,
+    required this.entityVersion,
+    required this.providerSlug,
+    required this.title,
+    required this.earlyAccess,
+    this.updatedAt,
+    this.deletedAt,
+    this.gamevaultGames = const [],
+    this.providerDataId,
+    this.providerDataUrl,
+    this.providerPriority,
+    this.ageRating = 0,
+    this.releaseDate,
+    this.description,
+    this.notes,
+    this.averagePlaytime,
+    this.cover,
+    this.background,
+    this.urlScreenshots = const [],
+    this.urlTrailers = const [],
+    this.urlGameplays = const [],
+    this.urlWebsites = const [],
+    this.rating,
+    this.launchParameters,
+    this.launchExecutable,
+    this.installerExecutable,
+    this.publishers = const [],
+    this.developers = const [],
+    this.tags = const [],
+    this.genres = const [],
+  });
+
   /// Unique gamevault-identifier of the entity
-  @BuiltValueField(wireName: r'id')
-  num get id;
+  num id;
 
   /// date the entity was created
-  @BuiltValueField(wireName: r'created_at')
-  DateTime get createdAt;
+  DateTime createdAt;
 
   /// incremental version number of the entity
-  @BuiltValueField(wireName: r'entity_version')
-  num get entityVersion;
+  num entityVersion;
 
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  @BuiltValueField(wireName: r'provider_slug')
-  String get providerSlug;
+  String providerSlug;
 
   /// title of the game
-  @BuiltValueField(wireName: r'title')
-  String get title;
+  String title;
 
   /// indicates if the game is in early access
-  @BuiltValueField(wireName: r'early_access')
-  bool get earlyAccess;
+  bool earlyAccess;
 
   /// date the entity was updated
-  @BuiltValueField(wireName: r'updated_at')
-  DateTime? get updatedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? updatedAt;
 
   /// date the entity was soft-deleted (null if not deleted)
-  @BuiltValueField(wireName: r'deleted_at')
-  DateTime? get deletedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? deletedAt;
 
   /// games the metadata belongs to
-  @BuiltValueField(wireName: r'gamevault_games')
-  BuiltList<GamevaultGame>? get gamevaultGames;
+  List<GamevaultGame> gamevaultGames;
 
   /// id of the game from the provider
-  @BuiltValueField(wireName: r'provider_data_id')
-  String? get providerDataId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? providerDataId;
 
   /// url of the game from the provider
-  @BuiltValueField(wireName: r'provider_data_url')
-  String? get providerDataUrl;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? providerDataUrl;
 
   /// optional priority override for this metadata
-  @BuiltValueField(wireName: r'provider_priority')
-  num? get providerPriority;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? providerPriority;
 
   /// the minimum age required to play the game
-  @BuiltValueField(wireName: r'age_rating')
-  num? get ageRating;
+  num ageRating;
 
   /// release date of the game
-  @BuiltValueField(wireName: r'release_date')
-  DateTime? get releaseDate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? releaseDate;
 
   /// description of the game. markdown supported.
-  @BuiltValueField(wireName: r'description')
-  String? get description;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   /// public notes from the admin for the game. markdown supported.
-  @BuiltValueField(wireName: r'notes')
-  String? get notes;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? notes;
 
   /// average playtime of other people in the game in minutes
-  @BuiltValueField(wireName: r'average_playtime')
-  num? get averagePlaytime;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? averagePlaytime;
 
   /// cover/boxart image of the game
-  @BuiltValueField(wireName: r'cover')
-  Media? get cover;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Media? cover;
 
   /// background image of the game
-  @BuiltValueField(wireName: r'background')
-  Media? get background;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Media? background;
 
   /// URLs of externally hosted screenshots of the game
-  @BuiltValueField(wireName: r'url_screenshots')
-  BuiltList<BuiltList<String>>? get urlScreenshots;
+  List<List<String>> urlScreenshots;
 
   /// URLs of externally hosted trailer videos of the game
-  @BuiltValueField(wireName: r'url_trailers')
-  BuiltList<BuiltList<String>>? get urlTrailers;
+  List<List<String>> urlTrailers;
 
   /// URLs of externally hosted gameplay videos of the game
-  @BuiltValueField(wireName: r'url_gameplays')
-  BuiltList<BuiltList<String>>? get urlGameplays;
+  List<List<String>> urlGameplays;
 
   /// URLs of websites of the game
-  @BuiltValueField(wireName: r'url_websites')
-  BuiltList<BuiltList<String>>? get urlWebsites;
+  List<List<String>> urlWebsites;
 
   /// rating of the provider
-  @BuiltValueField(wireName: r'rating')
-  num? get rating;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? rating;
 
   /// Predefined launch parameters for the game.
-  @BuiltValueField(wireName: r'launch_parameters')
-  String? get launchParameters;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? launchParameters;
 
   /// Predefined launch executable for the game.
-  @BuiltValueField(wireName: r'launch_executable')
-  String? get launchExecutable;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? launchExecutable;
 
   /// Predefined installer executable for the game.
-  @BuiltValueField(wireName: r'installer_executable')
-  String? get installerExecutable;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? installerExecutable;
 
   /// publishers of the game
-  @BuiltValueField(wireName: r'publishers')
-  BuiltList<PublisherMetadata>? get publishers;
+  List<PublisherMetadata> publishers;
 
   /// developers of the game
-  @BuiltValueField(wireName: r'developers')
-  BuiltList<DeveloperMetadata>? get developers;
+  List<DeveloperMetadata> developers;
 
   /// tags of the game
-  @BuiltValueField(wireName: r'tags')
-  BuiltList<TagMetadata>? get tags;
+  List<TagMetadata> tags;
 
   /// genres of the game
-  @BuiltValueField(wireName: r'genres')
-  BuiltList<GenreMetadata>? get genres;
-
-  GameMetadata._();
-
-  factory GameMetadata([void updates(GameMetadataBuilder b)]) = _$GameMetadata;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GameMetadataBuilder b) => b..ageRating = 0;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GameMetadata> get serializer => _$GameMetadataSerializer();
-}
-
-class _$GameMetadataSerializer implements PrimitiveSerializer<GameMetadata> {
-  @override
-  final Iterable<Type> types = const [GameMetadata, _$GameMetadata];
+  List<GenreMetadata> genres;
 
   @override
-  final String wireName = r'GameMetadata';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GameMetadata &&
+          other.id == id &&
+          other.createdAt == createdAt &&
+          other.entityVersion == entityVersion &&
+          other.providerSlug == providerSlug &&
+          other.title == title &&
+          other.earlyAccess == earlyAccess &&
+          other.updatedAt == updatedAt &&
+          other.deletedAt == deletedAt &&
+          _deepEquality.equals(other.gamevaultGames, gamevaultGames) &&
+          other.providerDataId == providerDataId &&
+          other.providerDataUrl == providerDataUrl &&
+          other.providerPriority == providerPriority &&
+          other.ageRating == ageRating &&
+          other.releaseDate == releaseDate &&
+          other.description == description &&
+          other.notes == notes &&
+          other.averagePlaytime == averagePlaytime &&
+          other.cover == cover &&
+          other.background == background &&
+          _deepEquality.equals(other.urlScreenshots, urlScreenshots) &&
+          _deepEquality.equals(other.urlTrailers, urlTrailers) &&
+          _deepEquality.equals(other.urlGameplays, urlGameplays) &&
+          _deepEquality.equals(other.urlWebsites, urlWebsites) &&
+          other.rating == rating &&
+          other.launchParameters == launchParameters &&
+          other.launchExecutable == launchExecutable &&
+          other.installerExecutable == installerExecutable &&
+          _deepEquality.equals(other.publishers, publishers) &&
+          _deepEquality.equals(other.developers, developers) &&
+          _deepEquality.equals(other.tags, tags) &&
+          _deepEquality.equals(other.genres, genres);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GameMetadata object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(num),
-    );
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'entity_version';
-    yield serializers.serialize(
-      object.entityVersion,
-      specifiedType: const FullType(num),
-    );
-    yield r'provider_slug';
-    yield serializers.serialize(
-      object.providerSlug,
-      specifiedType: const FullType(String),
-    );
-    yield r'title';
-    yield serializers.serialize(
-      object.title,
-      specifiedType: const FullType(String),
-    );
-    yield r'early_access';
-    yield serializers.serialize(
-      object.earlyAccess,
-      specifiedType: const FullType(bool),
-    );
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (createdAt.hashCode) +
+      (entityVersion.hashCode) +
+      (providerSlug.hashCode) +
+      (title.hashCode) +
+      (earlyAccess.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (deletedAt == null ? 0 : deletedAt!.hashCode) +
+      (gamevaultGames.hashCode) +
+      (providerDataId == null ? 0 : providerDataId!.hashCode) +
+      (providerDataUrl == null ? 0 : providerDataUrl!.hashCode) +
+      (providerPriority == null ? 0 : providerPriority!.hashCode) +
+      (ageRating.hashCode) +
+      (releaseDate == null ? 0 : releaseDate!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (notes == null ? 0 : notes!.hashCode) +
+      (averagePlaytime == null ? 0 : averagePlaytime!.hashCode) +
+      (cover == null ? 0 : cover!.hashCode) +
+      (background == null ? 0 : background!.hashCode) +
+      (urlScreenshots.hashCode) +
+      (urlTrailers.hashCode) +
+      (urlGameplays.hashCode) +
+      (urlWebsites.hashCode) +
+      (rating == null ? 0 : rating!.hashCode) +
+      (launchParameters == null ? 0 : launchParameters!.hashCode) +
+      (launchExecutable == null ? 0 : launchExecutable!.hashCode) +
+      (installerExecutable == null ? 0 : installerExecutable!.hashCode) +
+      (publishers.hashCode) +
+      (developers.hashCode) +
+      (tags.hashCode) +
+      (genres.hashCode);
+
+  @override
+  String toString() =>
+      'GameMetadata[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, providerSlug=$providerSlug, title=$title, earlyAccess=$earlyAccess, updatedAt=$updatedAt, deletedAt=$deletedAt, gamevaultGames=$gamevaultGames, providerDataId=$providerDataId, providerDataUrl=$providerDataUrl, providerPriority=$providerPriority, ageRating=$ageRating, releaseDate=$releaseDate, description=$description, notes=$notes, averagePlaytime=$averagePlaytime, cover=$cover, background=$background, urlScreenshots=$urlScreenshots, urlTrailers=$urlTrailers, urlGameplays=$urlGameplays, urlWebsites=$urlWebsites, rating=$rating, launchParameters=$launchParameters, launchExecutable=$launchExecutable, installerExecutable=$installerExecutable, publishers=$publishers, developers=$developers, tags=$tags, genres=$genres]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'id'] = this.id;
+    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
+    json[r'entity_version'] = this.entityVersion;
+    json[r'provider_slug'] = this.providerSlug;
+    json[r'title'] = this.title;
+    json[r'early_access'] = this.earlyAccess;
+    if (this.updatedAt != null) {
+      json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'updated_at'] = null;
     }
-    if (object.deletedAt != null) {
-      yield r'deleted_at';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.deletedAt != null) {
+      json[r'deleted_at'] = this.deletedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'deleted_at'] = null;
     }
-    if (object.gamevaultGames != null) {
-      yield r'gamevault_games';
-      yield serializers.serialize(
-        object.gamevaultGames,
-        specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-      );
+    json[r'gamevault_games'] = this.gamevaultGames;
+    if (this.providerDataId != null) {
+      json[r'provider_data_id'] = this.providerDataId;
+    } else {
+      json[r'provider_data_id'] = null;
     }
-    if (object.providerDataId != null) {
-      yield r'provider_data_id';
-      yield serializers.serialize(
-        object.providerDataId,
-        specifiedType: const FullType(String),
-      );
+    if (this.providerDataUrl != null) {
+      json[r'provider_data_url'] = this.providerDataUrl;
+    } else {
+      json[r'provider_data_url'] = null;
     }
-    if (object.providerDataUrl != null) {
-      yield r'provider_data_url';
-      yield serializers.serialize(
-        object.providerDataUrl,
-        specifiedType: const FullType(String),
-      );
+    if (this.providerPriority != null) {
+      json[r'provider_priority'] = this.providerPriority;
+    } else {
+      json[r'provider_priority'] = null;
     }
-    if (object.providerPriority != null) {
-      yield r'provider_priority';
-      yield serializers.serialize(
-        object.providerPriority,
-        specifiedType: const FullType(num),
-      );
+    json[r'age_rating'] = this.ageRating;
+    if (this.releaseDate != null) {
+      json[r'release_date'] = this.releaseDate!.toUtc().toIso8601String();
+    } else {
+      json[r'release_date'] = null;
     }
-    if (object.ageRating != null) {
-      yield r'age_rating';
-      yield serializers.serialize(
-        object.ageRating,
-        specifiedType: const FullType(num),
-      );
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
     }
-    if (object.releaseDate != null) {
-      yield r'release_date';
-      yield serializers.serialize(
-        object.releaseDate,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.notes != null) {
+      json[r'notes'] = this.notes;
+    } else {
+      json[r'notes'] = null;
     }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
+    if (this.averagePlaytime != null) {
+      json[r'average_playtime'] = this.averagePlaytime;
+    } else {
+      json[r'average_playtime'] = null;
     }
-    if (object.notes != null) {
-      yield r'notes';
-      yield serializers.serialize(
-        object.notes,
-        specifiedType: const FullType(String),
-      );
+    if (this.cover != null) {
+      json[r'cover'] = this.cover;
+    } else {
+      json[r'cover'] = null;
     }
-    if (object.averagePlaytime != null) {
-      yield r'average_playtime';
-      yield serializers.serialize(
-        object.averagePlaytime,
-        specifiedType: const FullType(num),
-      );
+    if (this.background != null) {
+      json[r'background'] = this.background;
+    } else {
+      json[r'background'] = null;
     }
-    if (object.cover != null) {
-      yield r'cover';
-      yield serializers.serialize(
-        object.cover,
-        specifiedType: const FullType(Media),
-      );
+    json[r'url_screenshots'] = this.urlScreenshots;
+    json[r'url_trailers'] = this.urlTrailers;
+    json[r'url_gameplays'] = this.urlGameplays;
+    json[r'url_websites'] = this.urlWebsites;
+    if (this.rating != null) {
+      json[r'rating'] = this.rating;
+    } else {
+      json[r'rating'] = null;
     }
-    if (object.background != null) {
-      yield r'background';
-      yield serializers.serialize(
-        object.background,
-        specifiedType: const FullType(Media),
-      );
+    if (this.launchParameters != null) {
+      json[r'launch_parameters'] = this.launchParameters;
+    } else {
+      json[r'launch_parameters'] = null;
     }
-    if (object.urlScreenshots != null) {
-      yield r'url_screenshots';
-      yield serializers.serialize(
-        object.urlScreenshots,
-        specifiedType: const FullType(BuiltList, [
-          FullType(BuiltList, [FullType(String)])
-        ]),
-      );
+    if (this.launchExecutable != null) {
+      json[r'launch_executable'] = this.launchExecutable;
+    } else {
+      json[r'launch_executable'] = null;
     }
-    if (object.urlTrailers != null) {
-      yield r'url_trailers';
-      yield serializers.serialize(
-        object.urlTrailers,
-        specifiedType: const FullType(BuiltList, [
-          FullType(BuiltList, [FullType(String)])
-        ]),
-      );
+    if (this.installerExecutable != null) {
+      json[r'installer_executable'] = this.installerExecutable;
+    } else {
+      json[r'installer_executable'] = null;
     }
-    if (object.urlGameplays != null) {
-      yield r'url_gameplays';
-      yield serializers.serialize(
-        object.urlGameplays,
-        specifiedType: const FullType(BuiltList, [
-          FullType(BuiltList, [FullType(String)])
-        ]),
-      );
-    }
-    if (object.urlWebsites != null) {
-      yield r'url_websites';
-      yield serializers.serialize(
-        object.urlWebsites,
-        specifiedType: const FullType(BuiltList, [
-          FullType(BuiltList, [FullType(String)])
-        ]),
-      );
-    }
-    if (object.rating != null) {
-      yield r'rating';
-      yield serializers.serialize(
-        object.rating,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.launchParameters != null) {
-      yield r'launch_parameters';
-      yield serializers.serialize(
-        object.launchParameters,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.launchExecutable != null) {
-      yield r'launch_executable';
-      yield serializers.serialize(
-        object.launchExecutable,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.installerExecutable != null) {
-      yield r'installer_executable';
-      yield serializers.serialize(
-        object.installerExecutable,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.publishers != null) {
-      yield r'publishers';
-      yield serializers.serialize(
-        object.publishers,
-        specifiedType: const FullType(BuiltList, [FullType(PublisherMetadata)]),
-      );
-    }
-    if (object.developers != null) {
-      yield r'developers';
-      yield serializers.serialize(
-        object.developers,
-        specifiedType: const FullType(BuiltList, [FullType(DeveloperMetadata)]),
-      );
-    }
-    if (object.tags != null) {
-      yield r'tags';
-      yield serializers.serialize(
-        object.tags,
-        specifiedType: const FullType(BuiltList, [FullType(TagMetadata)]),
-      );
-    }
-    if (object.genres != null) {
-      yield r'genres';
-      yield serializers.serialize(
-        object.genres,
-        specifiedType: const FullType(BuiltList, [FullType(GenreMetadata)]),
-      );
-    }
+    json[r'publishers'] = this.publishers;
+    json[r'developers'] = this.developers;
+    json[r'tags'] = this.tags;
+    json[r'genres'] = this.genres;
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GameMetadata object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [GameMetadata] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GameMetadata? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "GameMetadata[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "GameMetadata[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GameMetadata(
+        id: num.parse('${json[r'id']}'),
+        createdAt: mapDateTime(json, r'created_at', r'')!,
+        entityVersion: num.parse('${json[r'entity_version']}'),
+        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
+        title: mapValueOfType<String>(json, r'title')!,
+        earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
+        gamevaultGames: GamevaultGame.listFromJson(json[r'gamevault_games']),
+        providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
+        providerDataUrl: mapValueOfType<String>(json, r'provider_data_url'),
+        providerPriority: num.parse('${json[r'provider_priority']}'),
+        ageRating: num.parse('${json[r'age_rating']}'),
+        releaseDate: mapDateTime(json, r'release_date', r''),
+        description: mapValueOfType<String>(json, r'description'),
+        notes: mapValueOfType<String>(json, r'notes'),
+        averagePlaytime: num.parse('${json[r'average_playtime']}'),
+        cover: Media.fromJson(json[r'cover']),
+        background: Media.fromJson(json[r'background']),
+        urlScreenshots: json[r'url_screenshots'] is List
+            ? (json[r'url_screenshots'] as List)
+                .map((e) =>
+                    e == null ? const <String>[] : (e as List).cast<String>())
+                .toList()
+            : const [],
+        urlTrailers: json[r'url_trailers'] is List
+            ? (json[r'url_trailers'] as List)
+                .map((e) =>
+                    e == null ? const <String>[] : (e as List).cast<String>())
+                .toList()
+            : const [],
+        urlGameplays: json[r'url_gameplays'] is List
+            ? (json[r'url_gameplays'] as List)
+                .map((e) =>
+                    e == null ? const <String>[] : (e as List).cast<String>())
+                .toList()
+            : const [],
+        urlWebsites: json[r'url_websites'] is List
+            ? (json[r'url_websites'] as List)
+                .map((e) =>
+                    e == null ? const <String>[] : (e as List).cast<String>())
+                .toList()
+            : const [],
+        rating: num.parse('${json[r'rating']}'),
+        launchParameters: mapValueOfType<String>(json, r'launch_parameters'),
+        launchExecutable: mapValueOfType<String>(json, r'launch_executable'),
+        installerExecutable:
+            mapValueOfType<String>(json, r'installer_executable'),
+        publishers: PublisherMetadata.listFromJson(json[r'publishers']),
+        developers: DeveloperMetadata.listFromJson(json[r'developers']),
+        tags: TagMetadata.listFromJson(json[r'tags']),
+        genres: GenreMetadata.listFromJson(json[r'genres']),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GameMetadataBuilder result,
-    required List<Object?> unhandled,
+  static List<GameMetadata> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.id = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'entity_version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.entityVersion = valueDes;
-          break;
-        case r'provider_slug':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerSlug = valueDes;
-          break;
-        case r'title':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.title = valueDes;
-          break;
-        case r'early_access':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.earlyAccess = valueDes;
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deleted_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        case r'gamevault_games':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-          ) as BuiltList<GamevaultGame>;
-          result.gamevaultGames.replace(valueDes);
-          break;
-        case r'provider_data_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerDataId = valueDes;
-          break;
-        case r'provider_data_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerDataUrl = valueDes;
-          break;
-        case r'provider_priority':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.providerPriority = valueDes;
-          break;
-        case r'age_rating':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.ageRating = valueDes;
-          break;
-        case r'release_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.releaseDate = valueDes;
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
-          break;
-        case r'notes':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.notes = valueDes;
-          break;
-        case r'average_playtime':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.averagePlaytime = valueDes;
-          break;
-        case r'cover':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Media),
-          ) as Media;
-          result.cover.replace(valueDes);
-          break;
-        case r'background':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Media),
-          ) as Media;
-          result.background.replace(valueDes);
-          break;
-        case r'url_screenshots':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [
-              FullType(BuiltList, [FullType(String)])
-            ]),
-          ) as BuiltList<BuiltList<String>>;
-          result.urlScreenshots.replace(valueDes);
-          break;
-        case r'url_trailers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [
-              FullType(BuiltList, [FullType(String)])
-            ]),
-          ) as BuiltList<BuiltList<String>>;
-          result.urlTrailers.replace(valueDes);
-          break;
-        case r'url_gameplays':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [
-              FullType(BuiltList, [FullType(String)])
-            ]),
-          ) as BuiltList<BuiltList<String>>;
-          result.urlGameplays.replace(valueDes);
-          break;
-        case r'url_websites':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [
-              FullType(BuiltList, [FullType(String)])
-            ]),
-          ) as BuiltList<BuiltList<String>>;
-          result.urlWebsites.replace(valueDes);
-          break;
-        case r'rating':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.rating = valueDes;
-          break;
-        case r'launch_parameters':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.launchParameters = valueDes;
-          break;
-        case r'launch_executable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.launchExecutable = valueDes;
-          break;
-        case r'installer_executable':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.installerExecutable = valueDes;
-          break;
-        case r'publishers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(PublisherMetadata)]),
-          ) as BuiltList<PublisherMetadata>;
-          result.publishers.replace(valueDes);
-          break;
-        case r'developers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(DeveloperMetadata)]),
-          ) as BuiltList<DeveloperMetadata>;
-          result.developers.replace(valueDes);
-          break;
-        case r'tags':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(TagMetadata)]),
-          ) as BuiltList<TagMetadata>;
-          result.tags.replace(valueDes);
-          break;
-        case r'genres':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GenreMetadata)]),
-          ) as BuiltList<GenreMetadata>;
-          result.genres.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <GameMetadata>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GameMetadata.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  GameMetadata deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GameMetadataBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, GameMetadata> mapFromJson(dynamic json) {
+    final map = <String, GameMetadata>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GameMetadata.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of GameMetadata-objects as value to a dart map
+  static Map<String, List<GameMetadata>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<GameMetadata>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GameMetadata.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'created_at',
+    'entity_version',
+    'provider_slug',
+    'title',
+    'early_access',
+  };
 }

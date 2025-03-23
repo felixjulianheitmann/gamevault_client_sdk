@@ -1,11 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 /// tests for SavefileApi
 void main() {
-  final instance = Openapi().getSavefileApi();
+  // final instance = SavefileApi();
 
-  group(SavefileApi, () {
+  group('tests for SavefileApi', () {
     // Delete a save file from the server
     //
     // Only admins or the user who is associated to the savefile can delete a games save file.
@@ -19,7 +29,7 @@ void main() {
     //
     // Only admins or the user who is associated to the savefile can download a games save file.
     //
-    //Future<JsonObject> getSaveFileByUserIdAndGameId(num userId, num gameId) async
+    //Future<Object> getSaveFileByUserIdAndGameId(num userId, num gameId) async
     test('test getSaveFileByUserIdAndGameId', () async {
       // TODO
     });

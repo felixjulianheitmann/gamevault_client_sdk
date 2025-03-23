@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 // tests for GetDevelopers200Response
 void main() {
-  final instance = GetDevelopers200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = GetDevelopers200Response();
 
-  group(GetDevelopers200Response, () {
+  group('test GetDevelopers200Response', () {
     // metadata of this list
     // Metadata meta
     test('to test the property `meta`', () async {
@@ -20,7 +29,7 @@ void main() {
     });
 
     // paginated list of entities
-    // BuiltList<DeveloperMetadata> data
+    // List<DeveloperMetadata> data (default value: const [])
     test('to test the property `data`', () async {
       // TODO
     });

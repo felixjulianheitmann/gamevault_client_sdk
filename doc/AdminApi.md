@@ -26,12 +26,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getAdminApi();
-final String xDatabasePassword = xDatabasePassword_example; // String | This header should include the database password. Without the correct password, your request will be denied.
+final api_instance = AdminApi();
+final xDatabasePassword = xDatabasePassword_example; // String | This header should include the database password. Without the correct password, your request will be denied.
 
 try {
-    api.getAdminDatabaseBackup(xDatabasePassword);
-} catch on DioException (e) {
+    api_instance.getAdminDatabaseBackup(xDatabasePassword);
+} catch (e) {
     print('Exception when calling AdminApi->getAdminDatabaseBackup: $e\n');
 }
 ```
@@ -69,12 +69,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getAdminApi();
+final api_instance = AdminApi();
 
 try {
-    final response = api.getAdminHealth();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getAdminHealth();
+    print(result);
+} catch (e) {
     print('Exception when calling AdminApi->getAdminHealth: $e\n');
 }
 ```
@@ -109,12 +109,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getAdminApi();
-final String xDatabasePassword = xDatabasePassword_example; // String | This header should include the database password. Without the correct password, your request will be denied.
+final api_instance = AdminApi();
+final xDatabasePassword = xDatabasePassword_example; // String | This header should include the database password. Without the correct password, your request will be denied.
 
 try {
-    api.postAdminDatabaseRestore(xDatabasePassword);
-} catch on DioException (e) {
+    api_instance.postAdminDatabaseRestore(xDatabasePassword);
+} catch (e) {
     print('Exception when calling AdminApi->postAdminDatabaseRestore: $e\n');
 }
 ```

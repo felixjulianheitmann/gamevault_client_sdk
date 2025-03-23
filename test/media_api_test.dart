@@ -1,14 +1,24 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 /// tests for MediaApi
 void main() {
-  final instance = Openapi().getMediaApi();
+  // final instance = MediaApi();
 
-  group(MediaApi, () {
+  group('tests for MediaApi', () {
     // Retrieve media using its id
     //
-    //Future<JsonObject> getMediaByMediaId(String id) async
+    //Future<Object> getMediaByMediaId(String id) async
     test('test getMediaByMediaId', () async {
       // TODO
     });

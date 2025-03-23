@@ -1,198 +1,140 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_collection/built_collection.dart';
-import '../api_util.dart';
-import '../model/metadata_provider_dto.dart';
-import '../model/minimal_game_metadata_dto.dart';
+part of openapi.api;
 
 class MetadataApi {
-  final Dio _dio;
+  MetadataApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const MetadataApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// Get a list of all registered metadata providers.
   ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getProvidersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/metadata/providers';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get a list of all registered metadata providers.
+  Future<List<MetadataProviderDto>?> getProviders() async {
+    final response = await getProvidersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<MetadataProviderDto>') as List)
+          .cast<MetadataProviderDto>()
+          .toList(growable: false);
+    }
+    return null;
+  }
+
+  /// Search for games using a metadata provider.
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<MetadataProviderDto>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<MetadataProviderDto>>> getProviders({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/metadata/providers';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+  /// * [String] providerSlug (required):
+  ///   slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+  ///
+  /// * [String] query (required):
+  ///   Search Query. Usually it is the title of the game but specific providers may have their own syntax.
+  Future<Response> getSearchResultsByProviderWithHttpInfo(
+    String providerSlug,
+    String query,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/metadata/providers/{provider_slug}/search'
+        .replaceAll('{provider_slug}', providerSlug);
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    BuiltList<MetadataProviderDto>? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType:
-                  const FullType(BuiltList, [FullType(MetadataProviderDto)]),
-            ) as BuiltList<MetadataProviderDto>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
+    queryParams.addAll(_queryParams('', 'query', query));
 
-    return Response<BuiltList<MetadataProviderDto>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Search for games using a metadata provider.
   ///
-  ///
   /// Parameters:
-  /// * [providerSlug] - slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  /// * [query] - Search Query. Usually it is the title of the game but specific providers may have their own syntax.
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<MinimalGameMetadataDto>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<MinimalGameMetadataDto>>>
-      getSearchResultsByProvider({
-    required String providerSlug,
-    required String query,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/metadata/providers/{provider_slug}/search'.replaceAll(
-        '{' r'provider_slug' '}',
-        encodeQueryParameter(_serializers, providerSlug, const FullType(String))
-            .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [String] providerSlug (required):
+  ///   slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+  ///
+  /// * [String] query (required):
+  ///   Search Query. Usually it is the title of the game but specific providers may have their own syntax.
+  Future<List<MinimalGameMetadataDto>?> getSearchResultsByProvider(
+    String providerSlug,
+    String query,
+  ) async {
+    final response = await getSearchResultsByProviderWithHttpInfo(
+      providerSlug,
+      query,
     );
-
-    final _queryParameters = <String, dynamic>{
-      r'query':
-          encodeQueryParameter(_serializers, query, const FullType(String)),
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    BuiltList<MinimalGameMetadataDto>? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType:
-                  const FullType(BuiltList, [FullType(MinimalGameMetadataDto)]),
-            ) as BuiltList<MinimalGameMetadataDto>;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    return Response<BuiltList<MinimalGameMetadataDto>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<MinimalGameMetadataDto>') as List)
+          .cast<MinimalGameMetadataDto>()
+          .toList(growable: false);
+    }
+    return null;
   }
 }

@@ -1,144 +1,150 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'map_game_dto.g.dart';
+part of openapi.api;
 
-/// MapGameDto
-///
-/// Properties:
-/// * [providerSlug] - slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-/// * [providerPriority] - used to override the priority of usage for this provider. Lower priority providers are tried first, while higher priority providers fill in gaps.
-/// * [providerDataId] - id of the target game from the provider. If not provided, the metadata for the specified provider will be unmapped.
-@BuiltValue()
-abstract class MapGameDto implements Built<MapGameDto, MapGameDtoBuilder> {
+class MapGameDto {
+  /// Returns a new [MapGameDto] instance.
+  MapGameDto({
+    required this.providerSlug,
+    required this.providerPriority,
+    this.providerDataId,
+  });
+
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  @BuiltValueField(wireName: r'provider_slug')
-  String get providerSlug;
+  String providerSlug;
 
   /// used to override the priority of usage for this provider. Lower priority providers are tried first, while higher priority providers fill in gaps.
-  @BuiltValueField(wireName: r'provider_priority')
-  num get providerPriority;
+  num providerPriority;
 
   /// id of the target game from the provider. If not provided, the metadata for the specified provider will be unmapped.
-  @BuiltValueField(wireName: r'provider_data_id')
-  String? get providerDataId;
-
-  MapGameDto._();
-
-  factory MapGameDto([void updates(MapGameDtoBuilder b)]) = _$MapGameDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MapGameDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<MapGameDto> get serializer => _$MapGameDtoSerializer();
-}
-
-class _$MapGameDtoSerializer implements PrimitiveSerializer<MapGameDto> {
-  @override
-  final Iterable<Type> types = const [MapGameDto, _$MapGameDto];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? providerDataId;
 
   @override
-  final String wireName = r'MapGameDto';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MapGameDto &&
+          other.providerSlug == providerSlug &&
+          other.providerPriority == providerPriority &&
+          other.providerDataId == providerDataId;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    MapGameDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'provider_slug';
-    yield serializers.serialize(
-      object.providerSlug,
-      specifiedType: const FullType(String),
-    );
-    yield r'provider_priority';
-    yield serializers.serialize(
-      object.providerPriority,
-      specifiedType: const FullType(num),
-    );
-    if (object.providerDataId != null) {
-      yield r'provider_data_id';
-      yield serializers.serialize(
-        object.providerDataId,
-        specifiedType: const FullType(String),
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (providerSlug.hashCode) +
+      (providerPriority.hashCode) +
+      (providerDataId == null ? 0 : providerDataId!.hashCode);
+
+  @override
+  String toString() =>
+      'MapGameDto[providerSlug=$providerSlug, providerPriority=$providerPriority, providerDataId=$providerDataId]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'provider_slug'] = this.providerSlug;
+    json[r'provider_priority'] = this.providerPriority;
+    if (this.providerDataId != null) {
+      json[r'provider_data_id'] = this.providerDataId;
+    } else {
+      json[r'provider_data_id'] = null;
+    }
+    return json;
+  }
+
+  /// Returns a new [MapGameDto] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static MapGameDto? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "MapGameDto[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "MapGameDto[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return MapGameDto(
+        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
+        providerPriority: num.parse('${json[r'provider_priority']}'),
+        providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
       );
     }
+    return null;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    MapGameDto object, {
-    FullType specifiedType = FullType.unspecified,
+  static List<MapGameDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required MapGameDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'provider_slug':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerSlug = valueDes;
-          break;
-        case r'provider_priority':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.providerPriority = valueDes;
-          break;
-        case r'provider_data_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerDataId = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <MapGameDto>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MapGameDto.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  MapGameDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = MapGameDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, MapGameDto> mapFromJson(dynamic json) {
+    final map = <String, MapGameDto>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = MapGameDto.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of MapGameDto-objects as value to a dart map
+  static Map<String, List<MapGameDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<MapGameDto>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = MapGameDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'provider_slug',
+    'provider_priority',
+  };
 }

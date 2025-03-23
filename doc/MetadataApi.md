@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getProviders**
-> BuiltList<MetadataProviderDto> getProviders()
+> List<MetadataProviderDto> getProviders()
 
 Get a list of all registered metadata providers.
 
@@ -25,12 +25,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getMetadataApi();
+final api_instance = MetadataApi();
 
 try {
-    final response = api.getProviders();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProviders();
+    print(result);
+} catch (e) {
     print('Exception when calling MetadataApi->getProviders: $e\n');
 }
 ```
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;MetadataProviderDto&gt;**](MetadataProviderDto.md)
+[**List<MetadataProviderDto>**](MetadataProviderDto.md)
 
 ### Authorization
 
@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSearchResultsByProvider**
-> BuiltList<MinimalGameMetadataDto> getSearchResultsByProvider(providerSlug, query)
+> List<MinimalGameMetadataDto> getSearchResultsByProvider(providerSlug, query)
 
 Search for games using a metadata provider.
 
@@ -65,14 +65,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getMetadataApi();
-final String providerSlug = igdb; // String | slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-final String query = query_example; // String | Search Query. Usually it is the title of the game but specific providers may have their own syntax.
+final api_instance = MetadataApi();
+final providerSlug = igdb; // String | slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+final query = query_example; // String | Search Query. Usually it is the title of the game but specific providers may have their own syntax.
 
 try {
-    final response = api.getSearchResultsByProvider(providerSlug, query);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getSearchResultsByProvider(providerSlug, query);
+    print(result);
+} catch (e) {
     print('Exception when calling MetadataApi->getSearchResultsByProvider: $e\n');
 }
 ```
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;MinimalGameMetadataDto&gt;**](MinimalGameMetadataDto.md)
+[**List<MinimalGameMetadataDto>**](MinimalGameMetadataDto.md)
 
 ### Authorization
 

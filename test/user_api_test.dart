@@ -1,11 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 /// tests for UserApi
 void main() {
-  final instance = Openapi().getUserApi();
+  // final instance = UserApi();
 
-  group(UserApi, () {
+  group('tests for UserApi', () {
     // delete any user
     //
     //Future<GamevaultUser> deleteUserByUserId(num userId) async
@@ -36,7 +46,7 @@ void main() {
 
     // get an overview of all users. admins can see hidden users using this endpoint aswell.
     //
-    //Future<BuiltList<GamevaultUser>> getUsers() async
+    //Future<List<GamevaultUser>> getUsers() async
     test('test getUsers', () async {
       // TODO
     });

@@ -1,466 +1,425 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'media.dart';
-import 'gamevault_game.dart';
-import 'progress.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'gamevault_user.g.dart';
+part of openapi.api;
 
-/// GamevaultUser
-///
-/// Properties:
-/// * [id] - Unique gamevault-identifier of the entity
-/// * [createdAt] - date the entity was created
-/// * [entityVersion] - incremental version number of the entity
-/// * [username] - username of the user
-/// * [socketSecret] - the user's socket secret is used for authentication with the server over the websocket protocol.
-/// * [email] - email address of the user
-/// * [firstName] - first name of the user
-/// * [lastName] - last name of the user
-/// * [activated] - indicates if the user is activated
-/// * [role] - The role determines the set of permissions and access rights for a user in the system.
-/// * [bookmarkedGames] - games bookmarked by this user
-/// * [updatedAt] - date the entity was updated
-/// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
-/// * [password] - encrypted password of the user
-/// * [avatar] - the user's avatar image
-/// * [background] - the user's profile background image
-/// * [birthDate] - birthday of the user
-/// * [progresses] - progresses of the user
-/// * [uploadedMedia] - media uploaded by this user
-@BuiltValue()
-abstract class GamevaultUser
-    implements Built<GamevaultUser, GamevaultUserBuilder> {
+class GamevaultUser {
+  /// Returns a new [GamevaultUser] instance.
+  GamevaultUser({
+    required this.id,
+    required this.createdAt,
+    required this.entityVersion,
+    required this.username,
+    required this.socketSecret,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.activated,
+    required this.role,
+    this.bookmarkedGames = const [],
+    this.updatedAt,
+    this.deletedAt,
+    this.password,
+    this.avatar,
+    this.background,
+    this.birthDate,
+    this.progresses = const [],
+    this.uploadedMedia = const [],
+  });
+
   /// Unique gamevault-identifier of the entity
-  @BuiltValueField(wireName: r'id')
-  num get id;
+  num id;
 
   /// date the entity was created
-  @BuiltValueField(wireName: r'created_at')
-  DateTime get createdAt;
+  DateTime createdAt;
 
   /// incremental version number of the entity
-  @BuiltValueField(wireName: r'entity_version')
-  num get entityVersion;
+  num entityVersion;
 
   /// username of the user
-  @BuiltValueField(wireName: r'username')
-  String get username;
+  String username;
 
   /// the user's socket secret is used for authentication with the server over the websocket protocol.
-  @BuiltValueField(wireName: r'socket_secret')
-  String get socketSecret;
+  String socketSecret;
 
   /// email address of the user
-  @BuiltValueField(wireName: r'email')
-  String get email;
+  String email;
 
   /// first name of the user
-  @BuiltValueField(wireName: r'first_name')
-  String get firstName;
+  String firstName;
 
   /// last name of the user
-  @BuiltValueField(wireName: r'last_name')
-  String get lastName;
+  String lastName;
 
   /// indicates if the user is activated
-  @BuiltValueField(wireName: r'activated')
-  bool get activated;
+  bool activated;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueField(wireName: r'role')
-  GamevaultUserRoleEnum get role;
-  // enum roleEnum {  0,  1,  2,  3,  };
+  GamevaultUserRoleEnum role;
 
   /// games bookmarked by this user
-  @BuiltValueField(wireName: r'bookmarked_games')
-  BuiltList<GamevaultGame> get bookmarkedGames;
+  List<GamevaultGame> bookmarkedGames;
 
   /// date the entity was updated
-  @BuiltValueField(wireName: r'updated_at')
-  DateTime? get updatedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? updatedAt;
 
   /// date the entity was soft-deleted (null if not deleted)
-  @BuiltValueField(wireName: r'deleted_at')
-  DateTime? get deletedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? deletedAt;
 
   /// encrypted password of the user
-  @BuiltValueField(wireName: r'password')
-  String? get password;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? password;
 
   /// the user's avatar image
-  @BuiltValueField(wireName: r'avatar')
-  Media? get avatar;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Media? avatar;
 
   /// the user's profile background image
-  @BuiltValueField(wireName: r'background')
-  Media? get background;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Media? background;
 
   /// birthday of the user
-  @BuiltValueField(wireName: r'birth_date')
-  DateTime? get birthDate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? birthDate;
 
   /// progresses of the user
-  @BuiltValueField(wireName: r'progresses')
-  BuiltList<Progress>? get progresses;
+  List<Progress> progresses;
 
   /// media uploaded by this user
-  @BuiltValueField(wireName: r'uploaded_media')
-  BuiltList<Media>? get uploadedMedia;
-
-  GamevaultUser._();
-
-  factory GamevaultUser([void updates(GamevaultUserBuilder b)]) =
-      _$GamevaultUser;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GamevaultUserBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GamevaultUser> get serializer =>
-      _$GamevaultUserSerializer();
-}
-
-class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
-  @override
-  final Iterable<Type> types = const [GamevaultUser, _$GamevaultUser];
+  List<Media> uploadedMedia;
 
   @override
-  final String wireName = r'GamevaultUser';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GamevaultUser &&
+          other.id == id &&
+          other.createdAt == createdAt &&
+          other.entityVersion == entityVersion &&
+          other.username == username &&
+          other.socketSecret == socketSecret &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.activated == activated &&
+          other.role == role &&
+          _deepEquality.equals(other.bookmarkedGames, bookmarkedGames) &&
+          other.updatedAt == updatedAt &&
+          other.deletedAt == deletedAt &&
+          other.password == password &&
+          other.avatar == avatar &&
+          other.background == background &&
+          other.birthDate == birthDate &&
+          _deepEquality.equals(other.progresses, progresses) &&
+          _deepEquality.equals(other.uploadedMedia, uploadedMedia);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GamevaultUser object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(num),
-    );
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'entity_version';
-    yield serializers.serialize(
-      object.entityVersion,
-      specifiedType: const FullType(num),
-    );
-    yield r'username';
-    yield serializers.serialize(
-      object.username,
-      specifiedType: const FullType(String),
-    );
-    yield r'socket_secret';
-    yield serializers.serialize(
-      object.socketSecret,
-      specifiedType: const FullType(String),
-    );
-    yield r'email';
-    yield serializers.serialize(
-      object.email,
-      specifiedType: const FullType(String),
-    );
-    yield r'first_name';
-    yield serializers.serialize(
-      object.firstName,
-      specifiedType: const FullType(String),
-    );
-    yield r'last_name';
-    yield serializers.serialize(
-      object.lastName,
-      specifiedType: const FullType(String),
-    );
-    yield r'activated';
-    yield serializers.serialize(
-      object.activated,
-      specifiedType: const FullType(bool),
-    );
-    yield r'role';
-    yield serializers.serialize(
-      object.role,
-      specifiedType: const FullType(GamevaultUserRoleEnum),
-    );
-    yield r'bookmarked_games';
-    yield serializers.serialize(
-      object.bookmarkedGames,
-      specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-    );
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (createdAt.hashCode) +
+      (entityVersion.hashCode) +
+      (username.hashCode) +
+      (socketSecret.hashCode) +
+      (email.hashCode) +
+      (firstName.hashCode) +
+      (lastName.hashCode) +
+      (activated.hashCode) +
+      (role.hashCode) +
+      (bookmarkedGames.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (deletedAt == null ? 0 : deletedAt!.hashCode) +
+      (password == null ? 0 : password!.hashCode) +
+      (avatar == null ? 0 : avatar!.hashCode) +
+      (background == null ? 0 : background!.hashCode) +
+      (birthDate == null ? 0 : birthDate!.hashCode) +
+      (progresses.hashCode) +
+      (uploadedMedia.hashCode);
+
+  @override
+  String toString() =>
+      'GamevaultUser[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, username=$username, socketSecret=$socketSecret, email=$email, firstName=$firstName, lastName=$lastName, activated=$activated, role=$role, bookmarkedGames=$bookmarkedGames, updatedAt=$updatedAt, deletedAt=$deletedAt, password=$password, avatar=$avatar, background=$background, birthDate=$birthDate, progresses=$progresses, uploadedMedia=$uploadedMedia]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'id'] = this.id;
+    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
+    json[r'entity_version'] = this.entityVersion;
+    json[r'username'] = this.username;
+    json[r'socket_secret'] = this.socketSecret;
+    json[r'email'] = this.email;
+    json[r'first_name'] = this.firstName;
+    json[r'last_name'] = this.lastName;
+    json[r'activated'] = this.activated;
+    json[r'role'] = this.role;
+    json[r'bookmarked_games'] = this.bookmarkedGames;
+    if (this.updatedAt != null) {
+      json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'updated_at'] = null;
     }
-    if (object.deletedAt != null) {
-      yield r'deleted_at';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.deletedAt != null) {
+      json[r'deleted_at'] = this.deletedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'deleted_at'] = null;
     }
-    if (object.password != null) {
-      yield r'password';
-      yield serializers.serialize(
-        object.password,
-        specifiedType: const FullType(String),
-      );
+    if (this.password != null) {
+      json[r'password'] = this.password;
+    } else {
+      json[r'password'] = null;
     }
-    if (object.avatar != null) {
-      yield r'avatar';
-      yield serializers.serialize(
-        object.avatar,
-        specifiedType: const FullType(Media),
-      );
+    if (this.avatar != null) {
+      json[r'avatar'] = this.avatar;
+    } else {
+      json[r'avatar'] = null;
     }
-    if (object.background != null) {
-      yield r'background';
-      yield serializers.serialize(
-        object.background,
-        specifiedType: const FullType(Media),
-      );
+    if (this.background != null) {
+      json[r'background'] = this.background;
+    } else {
+      json[r'background'] = null;
     }
-    if (object.birthDate != null) {
-      yield r'birth_date';
-      yield serializers.serialize(
-        object.birthDate,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.birthDate != null) {
+      json[r'birth_date'] = this.birthDate!.toUtc().toIso8601String();
+    } else {
+      json[r'birth_date'] = null;
     }
-    if (object.progresses != null) {
-      yield r'progresses';
-      yield serializers.serialize(
-        object.progresses,
-        specifiedType: const FullType(BuiltList, [FullType(Progress)]),
-      );
-    }
-    if (object.uploadedMedia != null) {
-      yield r'uploaded_media';
-      yield serializers.serialize(
-        object.uploadedMedia,
-        specifiedType: const FullType(BuiltList, [FullType(Media)]),
-      );
-    }
+    json[r'progresses'] = this.progresses;
+    json[r'uploaded_media'] = this.uploadedMedia;
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GamevaultUser object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [GamevaultUser] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GamevaultUser? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "GamevaultUser[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "GamevaultUser[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GamevaultUser(
+        id: num.parse('${json[r'id']}'),
+        createdAt: mapDateTime(json, r'created_at', r'')!,
+        entityVersion: num.parse('${json[r'entity_version']}'),
+        username: mapValueOfType<String>(json, r'username')!,
+        socketSecret: mapValueOfType<String>(json, r'socket_secret')!,
+        email: mapValueOfType<String>(json, r'email')!,
+        firstName: mapValueOfType<String>(json, r'first_name')!,
+        lastName: mapValueOfType<String>(json, r'last_name')!,
+        activated: mapValueOfType<bool>(json, r'activated')!,
+        role: GamevaultUserRoleEnum.parse('${json[r'role']}'),
+        bookmarkedGames: GamevaultGame.listFromJson(json[r'bookmarked_games']),
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
+        password: mapValueOfType<String>(json, r'password'),
+        avatar: Media.fromJson(json[r'avatar']),
+        background: Media.fromJson(json[r'background']),
+        birthDate: mapDateTime(json, r'birth_date', r''),
+        progresses: Progress.listFromJson(json[r'progresses']),
+        uploadedMedia: Media.listFromJson(json[r'uploaded_media']),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GamevaultUserBuilder result,
-    required List<Object?> unhandled,
+  static List<GamevaultUser> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.id = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'entity_version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.entityVersion = valueDes;
-          break;
-        case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.username = valueDes;
-          break;
-        case r'socket_secret':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.socketSecret = valueDes;
-          break;
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'first_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.firstName = valueDes;
-          break;
-        case r'last_name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.lastName = valueDes;
-          break;
-        case r'activated':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.activated = valueDes;
-          break;
-        case r'role':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GamevaultUserRoleEnum),
-          ) as GamevaultUserRoleEnum;
-          result.role = valueDes;
-          break;
-        case r'bookmarked_games':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-          ) as BuiltList<GamevaultGame>;
-          result.bookmarkedGames.replace(valueDes);
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deleted_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        case r'avatar':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Media),
-          ) as Media;
-          result.avatar.replace(valueDes);
-          break;
-        case r'background':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Media),
-          ) as Media;
-          result.background.replace(valueDes);
-          break;
-        case r'birth_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.birthDate = valueDes;
-          break;
-        case r'progresses':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(Progress)]),
-          ) as BuiltList<Progress>;
-          result.progresses.replace(valueDes);
-          break;
-        case r'uploaded_media':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(Media)]),
-          ) as BuiltList<Media>;
-          result.uploadedMedia.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <GamevaultUser>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GamevaultUser.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  GamevaultUser deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
+  static Map<String, GamevaultUser> mapFromJson(dynamic json) {
+    final map = <String, GamevaultUser>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GamevaultUser.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of GamevaultUser-objects as value to a dart map
+  static Map<String, List<GamevaultUser>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    final result = GamevaultUserBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+    final map = <String, List<GamevaultUser>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GamevaultUser.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'created_at',
+    'entity_version',
+    'username',
+    'socket_secret',
+    'email',
+    'first_name',
+    'last_name',
+    'activated',
+    'role',
+    'bookmarked_games',
+  };
+}
+
+/// The role determines the set of permissions and access rights for a user in the system.
+class GamevaultUserRoleEnum {
+  /// Instantiate a new enum with the provided [value].
+  const GamevaultUserRoleEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final num value;
+
+  @override
+  String toString() => value.toString();
+
+  num toJson() => value;
+
+  static const n0 = GamevaultUserRoleEnum._('0');
+  static const n1 = GamevaultUserRoleEnum._('1');
+  static const n2 = GamevaultUserRoleEnum._('2');
+  static const n3 = GamevaultUserRoleEnum._('3');
+
+  /// List of all possible values in this [enum][GamevaultUserRoleEnum].
+  static const values = <GamevaultUserRoleEnum>[
+    n0,
+    n1,
+    n2,
+    n3,
+  ];
+
+  static GamevaultUserRoleEnum? fromJson(dynamic value) =>
+      GamevaultUserRoleEnumTypeTransformer().decode(value);
+
+  static List<GamevaultUserRoleEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <GamevaultUserRoleEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GamevaultUserRoleEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
   }
 }
 
-class GamevaultUserRoleEnum extends EnumClass {
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'0')
-  static const GamevaultUserRoleEnum n0 = _$gamevaultUserRoleEnum_n0;
+/// Transformation class that can [encode] an instance of [GamevaultUserRoleEnum] to num,
+/// and [decode] dynamic data back to [GamevaultUserRoleEnum].
+class GamevaultUserRoleEnumTypeTransformer {
+  factory GamevaultUserRoleEnumTypeTransformer() =>
+      _instance ??= const GamevaultUserRoleEnumTypeTransformer._();
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'1')
-  static const GamevaultUserRoleEnum n1 = _$gamevaultUserRoleEnum_n1;
+  const GamevaultUserRoleEnumTypeTransformer._();
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'2')
-  static const GamevaultUserRoleEnum n2 = _$gamevaultUserRoleEnum_n2;
+  num encode(GamevaultUserRoleEnum data) => data.value;
 
-  /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'3')
-  static const GamevaultUserRoleEnum n3 = _$gamevaultUserRoleEnum_n3;
+  /// Decodes a [dynamic value][data] to a GamevaultUserRoleEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  GamevaultUserRoleEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case '0':
+          return GamevaultUserRoleEnum.n0;
+        case '1':
+          return GamevaultUserRoleEnum.n1;
+        case '2':
+          return GamevaultUserRoleEnum.n2;
+        case '3':
+          return GamevaultUserRoleEnum.n3;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
 
-  static Serializer<GamevaultUserRoleEnum> get serializer =>
-      _$gamevaultUserRoleEnumSerializer;
-
-  const GamevaultUserRoleEnum._(String name) : super(name);
-
-  static BuiltSet<GamevaultUserRoleEnum> get values =>
-      _$gamevaultUserRoleEnumValues;
-  static GamevaultUserRoleEnum valueOf(String name) =>
-      _$gamevaultUserRoleEnumValueOf(name);
+  /// Singleton [GamevaultUserRoleEnumTypeTransformer] instance.
+  static GamevaultUserRoleEnumTypeTransformer? _instance;
 }

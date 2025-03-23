@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 // tests for UpdateGameUserMetadataDto
 void main() {
-  final instance = UpdateGameUserMetadataDtoBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = UpdateGameUserMetadataDto();
 
-  group(UpdateGameUserMetadataDto, () {
+  group('test UpdateGameUserMetadataDto', () {
     // indicates if the game is in early access
     // bool earlyAccess
     test('to test the property `earlyAccess`', () async {
@@ -92,49 +101,49 @@ void main() {
     });
 
     // URLs of externally hosted screenshots of the game
-    // BuiltList<BuiltList<String>> urlScreenshots
+    // List<List<String>> urlScreenshots (default value: const [])
     test('to test the property `urlScreenshots`', () async {
       // TODO
     });
 
     // URLs of externally hosted trailer videos of the game
-    // BuiltList<BuiltList<String>> urlTrailers
+    // List<List<String>> urlTrailers (default value: const [])
     test('to test the property `urlTrailers`', () async {
       // TODO
     });
 
     // URLs of externally hosted gameplay videos of the game
-    // BuiltList<BuiltList<String>> urlGameplays
+    // List<List<String>> urlGameplays (default value: const [])
     test('to test the property `urlGameplays`', () async {
       // TODO
     });
 
     // URLs of websites of the game
-    // BuiltList<BuiltList<String>> urlWebsites
+    // List<List<String>> urlWebsites (default value: const [])
     test('to test the property `urlWebsites`', () async {
       // TODO
     });
 
     // publishers of the game
-    // BuiltList<BuiltList<String>> publishers
+    // List<List<String>> publishers (default value: const [])
     test('to test the property `publishers`', () async {
       // TODO
     });
 
     // developers of the game
-    // BuiltList<BuiltList<String>> developers
+    // List<List<String>> developers (default value: const [])
     test('to test the property `developers`', () async {
       // TODO
     });
 
     // tags of the game
-    // BuiltList<BuiltList<String>> tags
+    // List<List<String>> tags (default value: const [])
     test('to test the property `tags`', () async {
       // TODO
     });
 
     // genres of the game
-    // BuiltList<BuiltList<String>> genres
+    // List<List<String>> genres (default value: const [])
     test('to test the property `genres`', () async {
       // TODO
     });

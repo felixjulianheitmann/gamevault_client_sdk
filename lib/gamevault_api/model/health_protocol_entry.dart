@@ -1,173 +1,219 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'health_protocol_entry.g.dart';
+part of openapi.api;
 
-/// HealthProtocolEntry
-///
-/// Properties:
-/// * [timestamp] - Timestamp of the protocol entry
-/// * [status] - Status that was set
-/// * [reason] - Reason for the status to be set
-@BuiltValue()
-abstract class HealthProtocolEntry
-    implements Built<HealthProtocolEntry, HealthProtocolEntryBuilder> {
+class HealthProtocolEntry {
+  /// Returns a new [HealthProtocolEntry] instance.
+  HealthProtocolEntry({
+    required this.timestamp,
+    required this.status,
+    required this.reason,
+  });
+
   /// Timestamp of the protocol entry
-  @BuiltValueField(wireName: r'timestamp')
-  DateTime get timestamp;
+  DateTime timestamp;
 
   /// Status that was set
-  @BuiltValueField(wireName: r'status')
-  HealthProtocolEntryStatusEnum get status;
-  // enum statusEnum {  HEALTHY,  UNHEALTHY,  };
+  HealthProtocolEntryStatusEnum status;
 
   /// Reason for the status to be set
-  @BuiltValueField(wireName: r'reason')
-  String get reason;
-
-  HealthProtocolEntry._();
-
-  factory HealthProtocolEntry([void updates(HealthProtocolEntryBuilder b)]) =
-      _$HealthProtocolEntry;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(HealthProtocolEntryBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<HealthProtocolEntry> get serializer =>
-      _$HealthProtocolEntrySerializer();
-}
-
-class _$HealthProtocolEntrySerializer
-    implements PrimitiveSerializer<HealthProtocolEntry> {
-  @override
-  final Iterable<Type> types = const [
-    HealthProtocolEntry,
-    _$HealthProtocolEntry
-  ];
+  String reason;
 
   @override
-  final String wireName = r'HealthProtocolEntry';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HealthProtocolEntry &&
+          other.timestamp == timestamp &&
+          other.status == status &&
+          other.reason == reason;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    HealthProtocolEntry object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'timestamp';
-    yield serializers.serialize(
-      object.timestamp,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'status';
-    yield serializers.serialize(
-      object.status,
-      specifiedType: const FullType(HealthProtocolEntryStatusEnum),
-    );
-    yield r'reason';
-    yield serializers.serialize(
-      object.reason,
-      specifiedType: const FullType(String),
-    );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (timestamp.hashCode) + (status.hashCode) + (reason.hashCode);
+
+  @override
+  String toString() =>
+      'HealthProtocolEntry[timestamp=$timestamp, status=$status, reason=$reason]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'timestamp'] = this.timestamp.toUtc().toIso8601String();
+    json[r'status'] = this.status;
+    json[r'reason'] = this.reason;
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    HealthProtocolEntry object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [HealthProtocolEntry] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static HealthProtocolEntry? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "HealthProtocolEntry[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "HealthProtocolEntry[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return HealthProtocolEntry(
+        timestamp: mapDateTime(json, r'timestamp', r'')!,
+        status: HealthProtocolEntryStatusEnum.fromJson(json[r'status'])!,
+        reason: mapValueOfType<String>(json, r'reason')!,
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required HealthProtocolEntryBuilder result,
-    required List<Object?> unhandled,
+  static List<HealthProtocolEntry> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'timestamp':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.timestamp = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(HealthProtocolEntryStatusEnum),
-          ) as HealthProtocolEntryStatusEnum;
-          result.status = valueDes;
-          break;
-        case r'reason':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.reason = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <HealthProtocolEntry>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = HealthProtocolEntry.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  HealthProtocolEntry deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
+  static Map<String, HealthProtocolEntry> mapFromJson(dynamic json) {
+    final map = <String, HealthProtocolEntry>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = HealthProtocolEntry.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of HealthProtocolEntry-objects as value to a dart map
+  static Map<String, List<HealthProtocolEntry>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    final result = HealthProtocolEntryBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+    final map = <String, List<HealthProtocolEntry>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = HealthProtocolEntry.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'timestamp',
+    'status',
+    'reason',
+  };
+}
+
+/// Status that was set
+class HealthProtocolEntryStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const HealthProtocolEntryStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const HEALTHY = HealthProtocolEntryStatusEnum._(r'HEALTHY');
+  static const UNHEALTHY = HealthProtocolEntryStatusEnum._(r'UNHEALTHY');
+
+  /// List of all possible values in this [enum][HealthProtocolEntryStatusEnum].
+  static const values = <HealthProtocolEntryStatusEnum>[
+    HEALTHY,
+    UNHEALTHY,
+  ];
+
+  static HealthProtocolEntryStatusEnum? fromJson(dynamic value) =>
+      HealthProtocolEntryStatusEnumTypeTransformer().decode(value);
+
+  static List<HealthProtocolEntryStatusEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <HealthProtocolEntryStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = HealthProtocolEntryStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
   }
 }
 
-class HealthProtocolEntryStatusEnum extends EnumClass {
-  /// Status that was set
-  @BuiltValueEnumConst(wireName: r'HEALTHY')
-  static const HealthProtocolEntryStatusEnum HEALTHY =
-      _$healthProtocolEntryStatusEnum_HEALTHY;
+/// Transformation class that can [encode] an instance of [HealthProtocolEntryStatusEnum] to String,
+/// and [decode] dynamic data back to [HealthProtocolEntryStatusEnum].
+class HealthProtocolEntryStatusEnumTypeTransformer {
+  factory HealthProtocolEntryStatusEnumTypeTransformer() =>
+      _instance ??= const HealthProtocolEntryStatusEnumTypeTransformer._();
 
-  /// Status that was set
-  @BuiltValueEnumConst(wireName: r'UNHEALTHY')
-  static const HealthProtocolEntryStatusEnum UNHEALTHY =
-      _$healthProtocolEntryStatusEnum_UNHEALTHY;
+  const HealthProtocolEntryStatusEnumTypeTransformer._();
 
-  static Serializer<HealthProtocolEntryStatusEnum> get serializer =>
-      _$healthProtocolEntryStatusEnumSerializer;
+  String encode(HealthProtocolEntryStatusEnum data) => data.value;
 
-  const HealthProtocolEntryStatusEnum._(String name) : super(name);
+  /// Decodes a [dynamic value][data] to a HealthProtocolEntryStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  HealthProtocolEntryStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'HEALTHY':
+          return HealthProtocolEntryStatusEnum.HEALTHY;
+        case r'UNHEALTHY':
+          return HealthProtocolEntryStatusEnum.UNHEALTHY;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
 
-  static BuiltSet<HealthProtocolEntryStatusEnum> get values =>
-      _$healthProtocolEntryStatusEnumValues;
-  static HealthProtocolEntryStatusEnum valueOf(String name) =>
-      _$healthProtocolEntryStatusEnumValueOf(name);
+  /// Singleton [HealthProtocolEntryStatusEnumTypeTransformer] instance.
+  static HealthProtocolEntryStatusEnumTypeTransformer? _instance;
 }

@@ -24,12 +24,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getConfigApi();
+final api_instance = ConfigApi();
 
 try {
-    final response = api.getNews();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getNews();
+    print(result);
+} catch (e) {
     print('Exception when calling ConfigApi->getNews: $e\n');
 }
 ```

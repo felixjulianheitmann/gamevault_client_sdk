@@ -1,250 +1,213 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'game_metadata.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'tag_metadata.g.dart';
+part of openapi.api;
 
-/// TagMetadata
-///
-/// Properties:
-/// * [id] - Unique gamevault-identifier of the entity
-/// * [createdAt] - date the entity was created
-/// * [entityVersion] - incremental version number of the entity
-/// * [providerSlug] - slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-/// * [providerDataId] - id of the developer from the provider
-/// * [name] - name of the tag
-/// * [games] - games tagged with the tag
-/// * [updatedAt] - date the entity was updated
-/// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
-@BuiltValue()
-abstract class TagMetadata implements Built<TagMetadata, TagMetadataBuilder> {
+class TagMetadata {
+  /// Returns a new [TagMetadata] instance.
+  TagMetadata({
+    required this.id,
+    required this.createdAt,
+    required this.entityVersion,
+    required this.providerSlug,
+    required this.providerDataId,
+    required this.name,
+    this.games = const [],
+    this.updatedAt,
+    this.deletedAt,
+  });
+
   /// Unique gamevault-identifier of the entity
-  @BuiltValueField(wireName: r'id')
-  num get id;
+  num id;
 
   /// date the entity was created
-  @BuiltValueField(wireName: r'created_at')
-  DateTime get createdAt;
+  DateTime createdAt;
 
   /// incremental version number of the entity
-  @BuiltValueField(wireName: r'entity_version')
-  num get entityVersion;
+  num entityVersion;
 
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  @BuiltValueField(wireName: r'provider_slug')
-  String get providerSlug;
+  String providerSlug;
 
   /// id of the developer from the provider
-  @BuiltValueField(wireName: r'provider_data_id')
-  String get providerDataId;
+  String providerDataId;
 
   /// name of the tag
-  @BuiltValueField(wireName: r'name')
-  String get name;
+  String name;
 
   /// games tagged with the tag
-  @BuiltValueField(wireName: r'games')
-  BuiltList<GameMetadata> get games;
+  List<GameMetadata> games;
 
   /// date the entity was updated
-  @BuiltValueField(wireName: r'updated_at')
-  DateTime? get updatedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? updatedAt;
 
   /// date the entity was soft-deleted (null if not deleted)
-  @BuiltValueField(wireName: r'deleted_at')
-  DateTime? get deletedAt;
-
-  TagMetadata._();
-
-  factory TagMetadata([void updates(TagMetadataBuilder b)]) = _$TagMetadata;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(TagMetadataBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<TagMetadata> get serializer => _$TagMetadataSerializer();
-}
-
-class _$TagMetadataSerializer implements PrimitiveSerializer<TagMetadata> {
-  @override
-  final Iterable<Type> types = const [TagMetadata, _$TagMetadata];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? deletedAt;
 
   @override
-  final String wireName = r'TagMetadata';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TagMetadata &&
+          other.id == id &&
+          other.createdAt == createdAt &&
+          other.entityVersion == entityVersion &&
+          other.providerSlug == providerSlug &&
+          other.providerDataId == providerDataId &&
+          other.name == name &&
+          _deepEquality.equals(other.games, games) &&
+          other.updatedAt == updatedAt &&
+          other.deletedAt == deletedAt;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    TagMetadata object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(num),
-    );
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'entity_version';
-    yield serializers.serialize(
-      object.entityVersion,
-      specifiedType: const FullType(num),
-    );
-    yield r'provider_slug';
-    yield serializers.serialize(
-      object.providerSlug,
-      specifiedType: const FullType(String),
-    );
-    yield r'provider_data_id';
-    yield serializers.serialize(
-      object.providerDataId,
-      specifiedType: const FullType(String),
-    );
-    yield r'name';
-    yield serializers.serialize(
-      object.name,
-      specifiedType: const FullType(String),
-    );
-    yield r'games';
-    yield serializers.serialize(
-      object.games,
-      specifiedType: const FullType(BuiltList, [FullType(GameMetadata)]),
-    );
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (createdAt.hashCode) +
+      (entityVersion.hashCode) +
+      (providerSlug.hashCode) +
+      (providerDataId.hashCode) +
+      (name.hashCode) +
+      (games.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (deletedAt == null ? 0 : deletedAt!.hashCode);
+
+  @override
+  String toString() =>
+      'TagMetadata[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, providerSlug=$providerSlug, providerDataId=$providerDataId, name=$name, games=$games, updatedAt=$updatedAt, deletedAt=$deletedAt]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'id'] = this.id;
+    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
+    json[r'entity_version'] = this.entityVersion;
+    json[r'provider_slug'] = this.providerSlug;
+    json[r'provider_data_id'] = this.providerDataId;
+    json[r'name'] = this.name;
+    json[r'games'] = this.games;
+    if (this.updatedAt != null) {
+      json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'updated_at'] = null;
     }
-    if (object.deletedAt != null) {
-      yield r'deleted_at';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.deletedAt != null) {
+      json[r'deleted_at'] = this.deletedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'deleted_at'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    TagMetadata object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [TagMetadata] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static TagMetadata? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "TagMetadata[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "TagMetadata[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return TagMetadata(
+        id: num.parse('${json[r'id']}'),
+        createdAt: mapDateTime(json, r'created_at', r'')!,
+        entityVersion: num.parse('${json[r'entity_version']}'),
+        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
+        providerDataId: mapValueOfType<String>(json, r'provider_data_id')!,
+        name: mapValueOfType<String>(json, r'name')!,
+        games: GameMetadata.listFromJson(json[r'games']),
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required TagMetadataBuilder result,
-    required List<Object?> unhandled,
+  static List<TagMetadata> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.id = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'entity_version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.entityVersion = valueDes;
-          break;
-        case r'provider_slug':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerSlug = valueDes;
-          break;
-        case r'provider_data_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerDataId = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.name = valueDes;
-          break;
-        case r'games':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GameMetadata)]),
-          ) as BuiltList<GameMetadata>;
-          result.games.replace(valueDes);
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deleted_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <TagMetadata>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TagMetadata.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  TagMetadata deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = TagMetadataBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, TagMetadata> mapFromJson(dynamic json) {
+    final map = <String, TagMetadata>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = TagMetadata.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of TagMetadata-objects as value to a dart map
+  static Map<String, List<TagMetadata>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<TagMetadata>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = TagMetadata.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'created_at',
+    'entity_version',
+    'provider_slug',
+    'provider_data_id',
+    'name',
+    'games',
+  };
 }

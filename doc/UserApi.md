@@ -34,13 +34,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num userId = 1; // num | id of the user
+final api_instance = UserApi();
+final userId = 1; // num | id of the user
 
 try {
-    final response = api.deleteUserByUserId(userId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.deleteUserByUserId(userId);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->deleteUserByUserId: $e\n');
 }
 ```
@@ -78,12 +78,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
+final api_instance = UserApi();
 
 try {
-    final response = api.deleteUserMe();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.deleteUserMe();
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->deleteUserMe: $e\n');
 }
 ```
@@ -118,12 +118,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num gameId = 1; // num | id of the game
+final api_instance = UserApi();
+final gameId = 1; // num | id of the game
 
 try {
-    api.deleteUsersMeBookmark(gameId);
-} catch on DioException (e) {
+    api_instance.deleteUsersMeBookmark(gameId);
+} catch (e) {
     print('Exception when calling UserApi->deleteUsersMeBookmark: $e\n');
 }
 ```
@@ -161,13 +161,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num userId = 1; // num | id of the user
+final api_instance = UserApi();
+final userId = 1; // num | id of the user
 
 try {
-    final response = api.getUserByUserId(userId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getUserByUserId(userId);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->getUserByUserId: $e\n');
 }
 ```
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUsers**
-> BuiltList<GamevaultUser> getUsers()
+> List<GamevaultUser> getUsers()
 
 get an overview of all users. admins can see hidden users using this endpoint aswell.
 
@@ -205,12 +205,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
+final api_instance = UserApi();
 
 try {
-    final response = api.getUsers();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getUsers();
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->getUsers: $e\n');
 }
 ```
@@ -220,7 +220,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;GamevaultUser&gt;**](GamevaultUser.md)
+[**List<GamevaultUser>**](GamevaultUser.md)
 
 ### Authorization
 
@@ -245,12 +245,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
+final api_instance = UserApi();
 
 try {
-    final response = api.getUsersMe();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getUsersMe();
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->getUsersMe: $e\n');
 }
 ```
@@ -285,13 +285,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num userId = 1; // num | id of the user
+final api_instance = UserApi();
+final userId = 1; // num | id of the user
 
 try {
-    final response = api.postUserRecoverByUserId(userId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.postUserRecoverByUserId(userId);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->postUserRecoverByUserId: $e\n');
 }
 ```
@@ -331,13 +331,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final RegisterUserDto registerUserDto = ; // RegisterUserDto | 
+final api_instance = UserApi();
+final registerUserDto = RegisterUserDto(); // RegisterUserDto | 
 
 try {
-    final response = api.postUserRegister(registerUserDto);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.postUserRegister(registerUserDto);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->postUserRegister: $e\n');
 }
 ```
@@ -375,12 +375,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num gameId = 1; // num | id of the game
+final api_instance = UserApi();
+final gameId = 1; // num | id of the game
 
 try {
-    api.postUsersMeBookmark(gameId);
-} catch on DioException (e) {
+    api_instance.postUsersMeBookmark(gameId);
+} catch (e) {
     print('Exception when calling UserApi->postUsersMeBookmark: $e\n');
 }
 ```
@@ -418,14 +418,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final num userId = 1; // num | id of the user
-final UpdateUserDto updateUserDto = ; // UpdateUserDto | 
+final api_instance = UserApi();
+final userId = 1; // num | id of the user
+final updateUserDto = UpdateUserDto(); // UpdateUserDto | 
 
 try {
-    final response = api.putUserByUserId(userId, updateUserDto);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putUserByUserId(userId, updateUserDto);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->putUserByUserId: $e\n');
 }
 ```
@@ -464,13 +464,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getUserApi();
-final UpdateUserDto updateUserDto = ; // UpdateUserDto | 
+final api_instance = UserApi();
+final updateUserDto = UpdateUserDto(); // UpdateUserDto | 
 
 try {
-    final response = api.putUsersMe(updateUserDto);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putUsersMe(updateUserDto);
+    print(result);
+} catch (e) {
     print('Exception when calling UserApi->putUsersMe: $e\n');
 }
 ```

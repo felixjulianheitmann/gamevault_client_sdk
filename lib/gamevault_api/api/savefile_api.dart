@@ -1,263 +1,260 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_value/json_object.dart';
-import '../api_util.dart';
+part of openapi.api;
 
 class SavefileApi {
-  final Dio _dio;
+  SavefileApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const SavefileApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// Delete a save file from the server
+  ///
+  /// Only admins or the user who is associated to the savefile can delete a games save file.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> deleteSaveFileByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete a save file from the server
+  ///
   /// Only admins or the user who is associated to the savefile can delete a games save file.
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteSaveFileByUserIdAndGameId({
-    required num userId,
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'DELETE',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<void> deleteSaveFileByUserIdAndGameId(
+    num userId,
+    num gameId,
+  ) async {
+    final response = await deleteSaveFileByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
     );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// Download a save file from the server
+  ///
+  /// Only admins or the user who is associated to the savefile can download a games save file.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Response> getSaveFileByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId,
+  ) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Download a save file from the server
+  ///
   /// Only admins or the user who is associated to the savefile can download a games save file.
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [JsonObject] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<JsonObject>> getSaveFileByUserIdAndGameId({
-    required num userId,
-    required num gameId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  Future<Object?> getSaveFileByUserIdAndGameId(
+    num userId,
+    num gameId,
+  ) async {
+    final response = await getSaveFileByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Object',
+      ) as Object;
+    }
+    return null;
+  }
+
+  /// Upload a save file to the server
+  ///
+  /// Only admins or the user who is associated to the savefile can upload a games save file. The savefile must be a .zip file. Installation ID is optional for multi-device tracking.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] xInstallationId:
+  ///   Optional installation identifier (UUID v4 format) for multi-device save management and uninstall-detection
+  ///
+  /// * [MultipartFile] file:
+  ///   The save file to upload
+  Future<Response> postSavefileByUserIdAndGameIdWithHttpInfo(
+    num userId,
+    num gameId, {
+    String? xInstallationId,
+    MultipartFile? file,
   }) async {
-    final _path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+    // ignore: prefer_const_declarations
+    final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
+        .replaceAll('{user_id}', userId.toString())
+        .replaceAll('{game_id}', gameId.toString());
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    JsonObject? _responseData;
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(JsonObject),
-            ) as JsonObject;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (xInstallationId != null) {
+      headerParams[r'X-Installation-Id'] = parameterToString(xInstallationId);
     }
 
-    return Response<JsonObject>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (file != null) {
+      hasFields = true;
+      mp.fields[r'file'] = file.field;
+      mp.files.add(file);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Upload a save file to the server
+  ///
   /// Only admins or the user who is associated to the savefile can upload a games save file. The savefile must be a .zip file. Installation ID is optional for multi-device tracking.
   ///
   /// Parameters:
-  /// * [userId] - id of the user
-  /// * [gameId] - id of the game
-  /// * [xInstallationId] - Optional installation identifier (UUID v4 format) for multi-device save management and uninstall-detection
-  /// * [file] - The save file to upload
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> postSavefileByUserIdAndGameId({
-    required num userId,
-    required num gameId,
+  /// * [num] userId (required):
+  ///   id of the user
+  ///
+  /// * [num] gameId (required):
+  ///   id of the game
+  ///
+  /// * [String] xInstallationId:
+  ///   Optional installation identifier (UUID v4 format) for multi-device save management and uninstall-detection
+  ///
+  /// * [MultipartFile] file:
+  ///   The save file to upload
+  Future<void> postSavefileByUserIdAndGameId(
+    num userId,
+    num gameId, {
     String? xInstallationId,
     MultipartFile? file,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll(
-            '{' r'user_id' '}',
-            encodeQueryParameter(_serializers, userId, const FullType(num))
-                .toString())
-        .replaceAll(
-            '{' r'game_id' '}',
-            encodeQueryParameter(_serializers, gameId, const FullType(num))
-                .toString());
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        if (xInstallationId != null) r'X-Installation-Id': xInstallationId,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'multipart/form-data',
-      validateStatus: validateStatus,
+    final response = await postSavefileByUserIdAndGameIdWithHttpInfo(
+      userId,
+      gameId,
+      xInstallationId: xInstallationId,
+      file: file,
     );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = FormData.fromMap(<String, dynamic>{
-        if (file != null) r'file': file,
-      });
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
   }
 }

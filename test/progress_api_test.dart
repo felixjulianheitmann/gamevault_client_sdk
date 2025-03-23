@@ -1,11 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 /// tests for ProgressApi
 void main() {
-  final instance = Openapi().getProgressApi();
+  // final instance = ProgressApi();
 
-  group(ProgressApi, () {
+  group('tests for ProgressApi', () {
     // delete a progress by progress id.
     //
     // Only admins or the user who is associated to the progress can delete it. DEPRECATED: Use DELETE /user/:user_id/game/:game_id instead.
@@ -26,14 +36,14 @@ void main() {
 
     // get an array of files to ignore for progess-tracking
     //
-    //Future<BuiltList<JsonObject>> getIgnoreFile() async
+    //Future<List<Object>> getIgnoreFile() async
     test('test getIgnoreFile', () async {
       // TODO
     });
 
     // get a specific progress by progress id. DEPRECATED: Use GET /user/:user_id/game/:game_id instead.
     //
-    //Future<BuiltList<Progress>> getProgressByProgressId(num progressId) async
+    //Future<List<Progress>> getProgressByProgressId(num progressId) async
     test('test getProgressByProgressId', () async {
       // TODO
     });
@@ -47,7 +57,7 @@ void main() {
 
     // get a list of progresses
     //
-    //Future<GetProgresses200Response> getProgresses({ num page, num limit, String search, JsonObject sortBy, BuiltList<JsonObject> filter }) async
+    //Future<GetProgresses200Response> getProgresses({ num page, num limit, String search, Object sortBy, List<Object> filter }) async
     test('test getProgresses', () async {
       // TODO
     });

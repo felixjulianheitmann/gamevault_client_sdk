@@ -22,14 +22,14 @@ Name | Type | Description | Notes
 **launchParameters** | **String** | Predefined launch parameters for the game. | [optional] 
 **launchExecutable** | **String** | Predefined launch executable for the game. | [optional] 
 **installerExecutable** | **String** | Predefined installer executable for the game. | [optional] 
-**urlScreenshots** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | URLs of externally hosted screenshots of the game | [optional] 
-**urlTrailers** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | URLs of externally hosted trailer videos of the game | [optional] 
-**urlGameplays** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | URLs of externally hosted gameplay videos of the game | [optional] 
-**urlWebsites** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | URLs of websites of the game | [optional] 
-**publishers** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | publishers of the game | [optional] 
-**developers** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | developers of the game | [optional] 
-**tags** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | tags of the game | [optional] 
-**genres** | [**BuiltList&lt;BuiltList&lt;String&gt;&gt;**](BuiltList.md) | genres of the game | [optional] 
+**urlScreenshots** | [**List<List<String>>**](List.md) | URLs of externally hosted screenshots of the game | [optional] [default to const []]
+**urlTrailers** | [**List<List<String>>**](List.md) | URLs of externally hosted trailer videos of the game | [optional] [default to const []]
+**urlGameplays** | [**List<List<String>>**](List.md) | URLs of externally hosted gameplay videos of the game | [optional] [default to const []]
+**urlWebsites** | [**List<List<String>>**](List.md) | URLs of websites of the game | [optional] [default to const []]
+**publishers** | [**List<List<String>>**](List.md) | publishers of the game | [optional] [default to const []]
+**developers** | [**List<List<String>>**](List.md) | developers of the game | [optional] [default to const []]
+**tags** | [**List<List<String>>**](List.md) | tags of the game | [optional] [default to const []]
+**genres** | [**List<List<String>>**](List.md) | genres of the game | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

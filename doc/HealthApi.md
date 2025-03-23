@@ -21,12 +21,12 @@ returns a lifesign
 ```dart
 import 'package:openapi/api.dart';
 
-final api = Openapi().getHealthApi();
+final api_instance = HealthApi();
 
 try {
-    final response = api.getHealth();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getHealth();
+    print(result);
+} catch (e) {
     print('Exception when calling HealthApi->getHealth: $e\n');
 }
 ```

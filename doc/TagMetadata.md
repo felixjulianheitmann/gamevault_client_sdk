@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **providerSlug** | **String** | slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug. | 
 **providerDataId** | **String** | id of the developer from the provider | 
 **name** | **String** | name of the tag | 
-**games** | [**BuiltList&lt;GameMetadata&gt;**](GameMetadata.md) | games tagged with the tag | 
+**games** | [**List<GameMetadata>**](GameMetadata.md) | games tagged with the tag | [default to const []]
 **updatedAt** | [**DateTime**](DateTime.md) | date the entity was updated | [optional] 
 **deletedAt** | [**DateTime**](DateTime.md) | date the entity was soft-deleted (null if not deleted) | [optional] 
 

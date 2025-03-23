@@ -1,184 +1,195 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'links.g.dart';
+part of openapi.api;
 
-/// Links
-///
-/// Properties:
-/// * [current] - current page
-/// * [first] - first page
-/// * [previous] - previous page
-/// * [next] - next page
-/// * [last] - last page
-@BuiltValue()
-abstract class Links implements Built<Links, LinksBuilder> {
+class Links {
+  /// Returns a new [Links] instance.
+  Links({
+    required this.current,
+    this.first,
+    this.previous,
+    this.next,
+    this.last,
+  });
+
   /// current page
-  @BuiltValueField(wireName: r'current')
-  String get current;
+  String current;
 
   /// first page
-  @BuiltValueField(wireName: r'first')
-  String? get first;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? first;
 
   /// previous page
-  @BuiltValueField(wireName: r'previous')
-  String? get previous;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? previous;
 
   /// next page
-  @BuiltValueField(wireName: r'next')
-  String? get next;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? next;
 
   /// last page
-  @BuiltValueField(wireName: r'last')
-  String? get last;
-
-  Links._();
-
-  factory Links([void updates(LinksBuilder b)]) = _$Links;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LinksBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Links> get serializer => _$LinksSerializer();
-}
-
-class _$LinksSerializer implements PrimitiveSerializer<Links> {
-  @override
-  final Iterable<Type> types = const [Links, _$Links];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? last;
 
   @override
-  final String wireName = r'Links';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Links &&
+          other.current == current &&
+          other.first == first &&
+          other.previous == previous &&
+          other.next == next &&
+          other.last == last;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Links object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'current';
-    yield serializers.serialize(
-      object.current,
-      specifiedType: const FullType(String),
-    );
-    if (object.first != null) {
-      yield r'first';
-      yield serializers.serialize(
-        object.first,
-        specifiedType: const FullType(String),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (current.hashCode) +
+      (first == null ? 0 : first!.hashCode) +
+      (previous == null ? 0 : previous!.hashCode) +
+      (next == null ? 0 : next!.hashCode) +
+      (last == null ? 0 : last!.hashCode);
+
+  @override
+  String toString() =>
+      'Links[current=$current, first=$first, previous=$previous, next=$next, last=$last]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'current'] = this.current;
+    if (this.first != null) {
+      json[r'first'] = this.first;
+    } else {
+      json[r'first'] = null;
     }
-    if (object.previous != null) {
-      yield r'previous';
-      yield serializers.serialize(
-        object.previous,
-        specifiedType: const FullType(String),
-      );
+    if (this.previous != null) {
+      json[r'previous'] = this.previous;
+    } else {
+      json[r'previous'] = null;
     }
-    if (object.next != null) {
-      yield r'next';
-      yield serializers.serialize(
-        object.next,
-        specifiedType: const FullType(String),
-      );
+    if (this.next != null) {
+      json[r'next'] = this.next;
+    } else {
+      json[r'next'] = null;
     }
-    if (object.last != null) {
-      yield r'last';
-      yield serializers.serialize(
-        object.last,
-        specifiedType: const FullType(String),
-      );
+    if (this.last != null) {
+      json[r'last'] = this.last;
+    } else {
+      json[r'last'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Links object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [Links] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static Links? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "Links[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "Links[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return Links(
+        current: mapValueOfType<String>(json, r'current')!,
+        first: mapValueOfType<String>(json, r'first'),
+        previous: mapValueOfType<String>(json, r'previous'),
+        next: mapValueOfType<String>(json, r'next'),
+        last: mapValueOfType<String>(json, r'last'),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LinksBuilder result,
-    required List<Object?> unhandled,
+  static List<Links> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'current':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.current = valueDes;
-          break;
-        case r'first':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.first = valueDes;
-          break;
-        case r'previous':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.previous = valueDes;
-          break;
-        case r'next':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.next = valueDes;
-          break;
-        case r'last':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.last = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <Links>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = Links.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  Links deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LinksBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, Links> mapFromJson(dynamic json) {
+    final map = <String, Links>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = Links.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of Links-objects as value to a dart map
+  static Map<String, List<Links>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<Links>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = Links.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'current',
+  };
 }

@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 // tests for GamevaultGame
 void main() {
-  final instance = GamevaultGameBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = GamevaultGame();
 
-  group(GamevaultGame, () {
+  group('test GamevaultGame', () {
     // Unique gamevault-identifier of the entity
     // num id
     test('to test the property `id`', () async {
@@ -56,7 +65,7 @@ void main() {
     });
 
     // users that bookmarked this game
-    // BuiltList<GamevaultGame> bookmarkedUsers
+    // List<GamevaultGame> bookmarkedUsers (default value: const [])
     test('to test the property `bookmarkedUsers`', () async {
       // TODO
     });
@@ -98,7 +107,7 @@ void main() {
     });
 
     // metadata of various providers associated to the game
-    // BuiltList<GameMetadata> providerMetadata
+    // List<GameMetadata> providerMetadata (default value: const [])
     test('to test the property `providerMetadata`', () async {
       // TODO
     });
@@ -116,7 +125,7 @@ void main() {
     });
 
     // progresses associated to the game
-    // BuiltList<Progress> progresses
+    // List<Progress> progresses (default value: const [])
     test('to test the property `progresses`', () async {
       // TODO
     });

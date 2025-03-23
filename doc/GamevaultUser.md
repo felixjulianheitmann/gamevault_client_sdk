@@ -18,15 +18,15 @@ Name | Type | Description | Notes
 **lastName** | **String** | last name of the user | 
 **activated** | **bool** | indicates if the user is activated | 
 **role** | **num** | The role determines the set of permissions and access rights for a user in the system. | 
-**bookmarkedGames** | [**BuiltList&lt;GamevaultGame&gt;**](GamevaultGame.md) | games bookmarked by this user | 
+**bookmarkedGames** | [**List<GamevaultGame>**](GamevaultGame.md) | games bookmarked by this user | [default to const []]
 **updatedAt** | [**DateTime**](DateTime.md) | date the entity was updated | [optional] 
 **deletedAt** | [**DateTime**](DateTime.md) | date the entity was soft-deleted (null if not deleted) | [optional] 
 **password** | **String** | encrypted password of the user | [optional] 
 **avatar** | [**Media**](Media.md) | the user's avatar image | [optional] 
 **background** | [**Media**](Media.md) | the user's profile background image | [optional] 
 **birthDate** | [**DateTime**](DateTime.md) | birthday of the user | [optional] 
-**progresses** | [**BuiltList&lt;Progress&gt;**](Progress.md) | progresses of the user | [optional] 
-**uploadedMedia** | [**BuiltList&lt;Media&gt;**](Media.md) | media uploaded by this user | [optional] 
+**progresses** | [**List<Progress>**](Progress.md) | progresses of the user | [optional] [default to const []]
+**uploadedMedia** | [**List<Media>**](Media.md) | media uploaded by this user | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

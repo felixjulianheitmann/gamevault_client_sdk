@@ -29,13 +29,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
-final num gameId = 1; // num | id of the game
+final api_instance = GameApi();
+final gameId = 1; // num | id of the game
 
 try {
-    final response = api.getGameByGameId(gameId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getGameByGameId(gameId);
+    print(result);
+} catch (e) {
     print('Exception when calling GameApi->getGameByGameId: $e\n');
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getGameDownload**
-> JsonObject getGameDownload(gameId, xDownloadSpeedLimit, range)
+> Object getGameDownload(gameId, xDownloadSpeedLimit, range)
 
 download a game
 
@@ -73,15 +73,15 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
-final num gameId = 1; // num | id of the game
-final String xDownloadSpeedLimit = xDownloadSpeedLimit_example; // String | This header lets you set the maximum download speed limit in kibibytes per second (kiB/s) for your request.  If the header is not present the download speed limit will be unlimited.
-final String range = bytes=-1023; // String | This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
+final api_instance = GameApi();
+final gameId = 1; // num | id of the game
+final xDownloadSpeedLimit = xDownloadSpeedLimit_example; // String | This header lets you set the maximum download speed limit in kibibytes per second (kiB/s) for your request.  If the header is not present the download speed limit will be unlimited.
+final range = bytes=-1023; // String | This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
 
 try {
-    final response = api.getGameDownload(gameId, xDownloadSpeedLimit, range);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getGameDownload(gameId, xDownloadSpeedLimit, range);
+    print(result);
+} catch (e) {
     print('Exception when calling GameApi->getGameDownload: $e\n');
 }
 ```
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -121,12 +121,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
+final api_instance = GameApi();
 
 try {
-    final response = api.getGameRandom();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getGameRandom();
+    print(result);
+} catch (e) {
     print('Exception when calling GameApi->getGameRandom: $e\n');
 }
 ```
@@ -161,17 +161,17 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
-final num page = 8.14; // num | page to retrieve
-final num limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-final String search = search_example; // String | search query
-final JsonObject sortBy = title:DESC; // JsonObject | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-final BuiltList<JsonObject> filter = ["filter.early_access=$not:true"]; // BuiltList<JsonObject> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final api_instance = GameApi();
+final page = 8.14; // num | page to retrieve
+final limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+final search = search_example; // String | search query
+final sortBy = title:DESC; // Object | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final filter = [["filter.early_access=$not:true"]]; // List<Object> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
 
 try {
-    final response = api.getGames(page, limit, search, sortBy, filter);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getGames(page, limit, search, sortBy, filter);
+    print(result);
+} catch (e) {
     print('Exception when calling GameApi->getGames: $e\n');
 }
 ```
@@ -183,8 +183,8 @@ Name | Type | Description  | Notes
  **page** | **num**| page to retrieve | [optional] 
  **limit** | **num**| number of items per page to retrieve, default is 9007199254740991 (max safe integer) | [optional] 
  **search** | **String**| search query | [optional] 
- **sortBy** | [**JsonObject**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
- **filter** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **sortBy** | [**Object**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **filter** | [**List<Object>**](Object.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] [default to const []]
 
 ### Return type
 
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **putFilesReindex**
-> BuiltList<GamevaultGame> putFilesReindex()
+> List<GamevaultGame> putFilesReindex()
 
 manually triggers an index of all games
 
@@ -213,12 +213,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
+final api_instance = GameApi();
 
 try {
-    final response = api.putFilesReindex();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putFilesReindex();
+    print(result);
+} catch (e) {
     print('Exception when calling GameApi->putFilesReindex: $e\n');
 }
 ```
@@ -228,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;GamevaultGame&gt;**](GamevaultGame.md)
+[**List<GamevaultGame>**](GamevaultGame.md)
 
 ### Authorization
 
@@ -253,13 +253,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getGameApi();
-final num gameId = 1; // num | id of the game
-final UpdateGameDto updateGameDto = ; // UpdateGameDto | 
+final api_instance = GameApi();
+final gameId = 1; // num | id of the game
+final updateGameDto = UpdateGameDto(); // UpdateGameDto | 
 
 try {
-    api.putGameUpdate(gameId, updateGameDto);
-} catch on DioException (e) {
+    api_instance.putGameUpdate(gameId, updateGameDto);
+} catch (e) {
     print('Exception when calling GameApi->putGameUpdate: $e\n');
 }
 ```

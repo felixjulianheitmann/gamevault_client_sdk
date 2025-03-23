@@ -1,312 +1,345 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'gamevault_user.dart';
-import 'gamevault_game.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'progress.g.dart';
+part of openapi.api;
 
-/// Progress
-///
-/// Properties:
-/// * [id] - Unique gamevault-identifier of the entity
-/// * [createdAt] - date the entity was created
-/// * [entityVersion] - incremental version number of the entity
-/// * [minutesPlayed] - playtime in minutes
-/// * [state] - state of the game progress
-/// * [updatedAt] - date the entity was updated
-/// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
-/// * [user] - user the progress belongs to
-/// * [game] - game the progress belongs to
-/// * [lastPlayedAt] - date the progress was updated
-@BuiltValue()
-abstract class Progress implements Built<Progress, ProgressBuilder> {
+class Progress {
+  /// Returns a new [Progress] instance.
+  Progress({
+    required this.id,
+    required this.createdAt,
+    required this.entityVersion,
+    required this.minutesPlayed,
+    required this.state,
+    this.updatedAt,
+    this.deletedAt,
+    this.user,
+    this.game,
+    this.lastPlayedAt,
+  });
+
   /// Unique gamevault-identifier of the entity
-  @BuiltValueField(wireName: r'id')
-  num get id;
+  num id;
 
   /// date the entity was created
-  @BuiltValueField(wireName: r'created_at')
-  DateTime get createdAt;
+  DateTime createdAt;
 
   /// incremental version number of the entity
-  @BuiltValueField(wireName: r'entity_version')
-  num get entityVersion;
+  num entityVersion;
 
   /// playtime in minutes
-  @BuiltValueField(wireName: r'minutes_played')
-  num get minutesPlayed;
+  num minutesPlayed;
 
   /// state of the game progress
-  @BuiltValueField(wireName: r'state')
-  ProgressStateEnum get state;
-  // enum stateEnum {  UNPLAYED,  INFINITE,  PLAYING,  COMPLETED,  ABORTED_TEMPORARY,  ABORTED_PERMANENT,  };
+  ProgressStateEnum state;
 
   /// date the entity was updated
-  @BuiltValueField(wireName: r'updated_at')
-  DateTime? get updatedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? updatedAt;
 
   /// date the entity was soft-deleted (null if not deleted)
-  @BuiltValueField(wireName: r'deleted_at')
-  DateTime? get deletedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? deletedAt;
 
   /// user the progress belongs to
-  @BuiltValueField(wireName: r'user')
-  GamevaultUser? get user;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GamevaultUser? user;
 
   /// game the progress belongs to
-  @BuiltValueField(wireName: r'game')
-  GamevaultGame? get game;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GamevaultGame? game;
 
   /// date the progress was updated
-  @BuiltValueField(wireName: r'last_played_at')
-  DateTime? get lastPlayedAt;
-
-  Progress._();
-
-  factory Progress([void updates(ProgressBuilder b)]) = _$Progress;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ProgressBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Progress> get serializer => _$ProgressSerializer();
-}
-
-class _$ProgressSerializer implements PrimitiveSerializer<Progress> {
-  @override
-  final Iterable<Type> types = const [Progress, _$Progress];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? lastPlayedAt;
 
   @override
-  final String wireName = r'Progress';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Progress &&
+          other.id == id &&
+          other.createdAt == createdAt &&
+          other.entityVersion == entityVersion &&
+          other.minutesPlayed == minutesPlayed &&
+          other.state == state &&
+          other.updatedAt == updatedAt &&
+          other.deletedAt == deletedAt &&
+          other.user == user &&
+          other.game == game &&
+          other.lastPlayedAt == lastPlayedAt;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Progress object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(num),
-    );
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'entity_version';
-    yield serializers.serialize(
-      object.entityVersion,
-      specifiedType: const FullType(num),
-    );
-    yield r'minutes_played';
-    yield serializers.serialize(
-      object.minutesPlayed,
-      specifiedType: const FullType(num),
-    );
-    yield r'state';
-    yield serializers.serialize(
-      object.state,
-      specifiedType: const FullType(ProgressStateEnum),
-    );
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (createdAt.hashCode) +
+      (entityVersion.hashCode) +
+      (minutesPlayed.hashCode) +
+      (state.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (deletedAt == null ? 0 : deletedAt!.hashCode) +
+      (user == null ? 0 : user!.hashCode) +
+      (game == null ? 0 : game!.hashCode) +
+      (lastPlayedAt == null ? 0 : lastPlayedAt!.hashCode);
+
+  @override
+  String toString() =>
+      'Progress[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, minutesPlayed=$minutesPlayed, state=$state, updatedAt=$updatedAt, deletedAt=$deletedAt, user=$user, game=$game, lastPlayedAt=$lastPlayedAt]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'id'] = this.id;
+    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
+    json[r'entity_version'] = this.entityVersion;
+    json[r'minutes_played'] = this.minutesPlayed;
+    json[r'state'] = this.state;
+    if (this.updatedAt != null) {
+      json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'updated_at'] = null;
     }
-    if (object.deletedAt != null) {
-      yield r'deleted_at';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.deletedAt != null) {
+      json[r'deleted_at'] = this.deletedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'deleted_at'] = null;
     }
-    if (object.user != null) {
-      yield r'user';
-      yield serializers.serialize(
-        object.user,
-        specifiedType: const FullType(GamevaultUser),
-      );
+    if (this.user != null) {
+      json[r'user'] = this.user;
+    } else {
+      json[r'user'] = null;
     }
-    if (object.game != null) {
-      yield r'game';
-      yield serializers.serialize(
-        object.game,
-        specifiedType: const FullType(GamevaultGame),
-      );
+    if (this.game != null) {
+      json[r'game'] = this.game;
+    } else {
+      json[r'game'] = null;
     }
-    if (object.lastPlayedAt != null) {
-      yield r'last_played_at';
-      yield serializers.serialize(
-        object.lastPlayedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.lastPlayedAt != null) {
+      json[r'last_played_at'] = this.lastPlayedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'last_played_at'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Progress object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [Progress] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static Progress? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "Progress[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "Progress[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return Progress(
+        id: num.parse('${json[r'id']}'),
+        createdAt: mapDateTime(json, r'created_at', r'')!,
+        entityVersion: num.parse('${json[r'entity_version']}'),
+        minutesPlayed: num.parse('${json[r'minutes_played']}'),
+        state: ProgressStateEnum.fromJson(json[r'state'])!,
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
+        user: GamevaultUser.fromJson(json[r'user']),
+        game: GamevaultGame.fromJson(json[r'game']),
+        lastPlayedAt: mapDateTime(json, r'last_played_at', r''),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ProgressBuilder result,
-    required List<Object?> unhandled,
+  static List<Progress> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.id = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'entity_version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.entityVersion = valueDes;
-          break;
-        case r'minutes_played':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.minutesPlayed = valueDes;
-          break;
-        case r'state':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ProgressStateEnum),
-          ) as ProgressStateEnum;
-          result.state = valueDes;
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deleted_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        case r'user':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GamevaultUser),
-          ) as GamevaultUser;
-          result.user.replace(valueDes);
-          break;
-        case r'game':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GamevaultGame),
-          ) as GamevaultGame;
-          result.game.replace(valueDes);
-          break;
-        case r'last_played_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.lastPlayedAt = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <Progress>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = Progress.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  Progress deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
+  static Map<String, Progress> mapFromJson(dynamic json) {
+    final map = <String, Progress>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = Progress.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of Progress-objects as value to a dart map
+  static Map<String, List<Progress>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    final result = ProgressBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+    final map = <String, List<Progress>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = Progress.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'created_at',
+    'entity_version',
+    'minutes_played',
+    'state',
+  };
+}
+
+/// state of the game progress
+class ProgressStateEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ProgressStateEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const UNPLAYED = ProgressStateEnum._(r'UNPLAYED');
+  static const INFINITE = ProgressStateEnum._(r'INFINITE');
+  static const PLAYING = ProgressStateEnum._(r'PLAYING');
+  static const COMPLETED = ProgressStateEnum._(r'COMPLETED');
+  static const ABORTED_TEMPORARY = ProgressStateEnum._(r'ABORTED_TEMPORARY');
+  static const ABORTED_PERMANENT = ProgressStateEnum._(r'ABORTED_PERMANENT');
+
+  /// List of all possible values in this [enum][ProgressStateEnum].
+  static const values = <ProgressStateEnum>[
+    UNPLAYED,
+    INFINITE,
+    PLAYING,
+    COMPLETED,
+    ABORTED_TEMPORARY,
+    ABORTED_PERMANENT,
+  ];
+
+  static ProgressStateEnum? fromJson(dynamic value) =>
+      ProgressStateEnumTypeTransformer().decode(value);
+
+  static List<ProgressStateEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <ProgressStateEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProgressStateEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
   }
 }
 
-class ProgressStateEnum extends EnumClass {
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'UNPLAYED')
-  static const ProgressStateEnum UNPLAYED = _$progressStateEnum_UNPLAYED;
+/// Transformation class that can [encode] an instance of [ProgressStateEnum] to String,
+/// and [decode] dynamic data back to [ProgressStateEnum].
+class ProgressStateEnumTypeTransformer {
+  factory ProgressStateEnumTypeTransformer() =>
+      _instance ??= const ProgressStateEnumTypeTransformer._();
 
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'INFINITE')
-  static const ProgressStateEnum INFINITE = _$progressStateEnum_INFINITE;
+  const ProgressStateEnumTypeTransformer._();
 
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'PLAYING')
-  static const ProgressStateEnum PLAYING = _$progressStateEnum_PLAYING;
+  String encode(ProgressStateEnum data) => data.value;
 
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'COMPLETED')
-  static const ProgressStateEnum COMPLETED = _$progressStateEnum_COMPLETED;
+  /// Decodes a [dynamic value][data] to a ProgressStateEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ProgressStateEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'UNPLAYED':
+          return ProgressStateEnum.UNPLAYED;
+        case r'INFINITE':
+          return ProgressStateEnum.INFINITE;
+        case r'PLAYING':
+          return ProgressStateEnum.PLAYING;
+        case r'COMPLETED':
+          return ProgressStateEnum.COMPLETED;
+        case r'ABORTED_TEMPORARY':
+          return ProgressStateEnum.ABORTED_TEMPORARY;
+        case r'ABORTED_PERMANENT':
+          return ProgressStateEnum.ABORTED_PERMANENT;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
 
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'ABORTED_TEMPORARY')
-  static const ProgressStateEnum ABORTED_TEMPORARY =
-      _$progressStateEnum_ABORTED_TEMPORARY;
-
-  /// state of the game progress
-  @BuiltValueEnumConst(wireName: r'ABORTED_PERMANENT')
-  static const ProgressStateEnum ABORTED_PERMANENT =
-      _$progressStateEnum_ABORTED_PERMANENT;
-
-  static Serializer<ProgressStateEnum> get serializer =>
-      _$progressStateEnumSerializer;
-
-  const ProgressStateEnum._(String name) : super(name);
-
-  static BuiltSet<ProgressStateEnum> get values => _$progressStateEnumValues;
-  static ProgressStateEnum valueOf(String name) =>
-      _$progressStateEnumValueOf(name);
+  /// Singleton [ProgressStateEnumTypeTransformer] instance.
+  static ProgressStateEnumTypeTransformer? _instance;
 }

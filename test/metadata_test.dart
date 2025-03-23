@@ -1,12 +1,21 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
 
 // tests for Metadata
 void main() {
-  final instance = MetadataBuilder();
-  // TODO add properties to the builder and call build()
+  // final instance = Metadata();
 
-  group(Metadata, () {
+  group('test Metadata', () {
     // amount of items per page
     // num itemsPerPage
     test('to test the property `itemsPerPage`', () async {
@@ -32,13 +41,13 @@ void main() {
     });
 
     // sorting that was applied by the query
-    // BuiltList<String> sortBy
+    // List<String> sortBy (default value: const [])
     test('to test the property `sortBy`', () async {
       // TODO
     });
 
     // searches that were applied by the query
-    // BuiltList<String> searchBy
+    // List<String> searchBy (default value: const [])
     test('to test the property `searchBy`', () async {
       // TODO
     });
@@ -50,13 +59,13 @@ void main() {
     });
 
     // select string
-    // BuiltList<String> select
+    // List<String> select (default value: const [])
     test('to test the property `select`', () async {
       // TODO
     });
 
     // filters that were applied by the query
-    // JsonObject filter
+    // Object filter
     test('to test the property `filter`', () async {
       // TODO
     });

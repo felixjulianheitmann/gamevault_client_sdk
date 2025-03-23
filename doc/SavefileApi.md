@@ -28,13 +28,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getSavefileApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
+final api_instance = SavefileApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
 
 try {
-    api.deleteSaveFileByUserIdAndGameId(userId, gameId);
-} catch on DioException (e) {
+    api_instance.deleteSaveFileByUserIdAndGameId(userId, gameId);
+} catch (e) {
     print('Exception when calling SavefileApi->deleteSaveFileByUserIdAndGameId: $e\n');
 }
 ```
@@ -62,7 +62,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSaveFileByUserIdAndGameId**
-> JsonObject getSaveFileByUserIdAndGameId(userId, gameId)
+> Object getSaveFileByUserIdAndGameId(userId, gameId)
 
 Download a save file from the server
 
@@ -75,14 +75,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getSavefileApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
+final api_instance = SavefileApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
 
 try {
-    final response = api.getSaveFileByUserIdAndGameId(userId, gameId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getSaveFileByUserIdAndGameId(userId, gameId);
+    print(result);
+} catch (e) {
     print('Exception when calling SavefileApi->getSaveFileByUserIdAndGameId: $e\n');
 }
 ```
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -123,15 +123,15 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getSavefileApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
-final String xInstallationId = xInstallationId_example; // String | Optional installation identifier (UUID v4 format) for multi-device save management and uninstall-detection
-final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | The save file to upload
+final api_instance = SavefileApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
+final xInstallationId = xInstallationId_example; // String | Optional installation identifier (UUID v4 format) for multi-device save management and uninstall-detection
+final file = BINARY_DATA_HERE; // MultipartFile | The save file to upload
 
 try {
-    api.postSavefileByUserIdAndGameId(userId, gameId, xInstallationId, file);
-} catch on DioException (e) {
+    api_instance.postSavefileByUserIdAndGameId(userId, gameId, xInstallationId, file);
+} catch (e) {
     print('Exception when calling SavefileApi->postSavefileByUserIdAndGameId: $e\n');
 }
 ```

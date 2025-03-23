@@ -1,209 +1,204 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'minimal_game_metadata_dto.g.dart';
+part of openapi.api;
 
-/// MinimalGameMetadataDto
-///
-/// Properties:
-/// * [providerSlug] - slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-/// * [title] - title of the game
-/// * [providerDataId] - id of the game from the provider
-/// * [releaseDate] - release date of the game
-/// * [coverUrl] - box image url of the game
-/// * [description] - description of the game. markdown supported.
-@BuiltValue()
-abstract class MinimalGameMetadataDto
-    implements Built<MinimalGameMetadataDto, MinimalGameMetadataDtoBuilder> {
+class MinimalGameMetadataDto {
+  /// Returns a new [MinimalGameMetadataDto] instance.
+  MinimalGameMetadataDto({
+    required this.providerSlug,
+    required this.title,
+    this.providerDataId,
+    this.releaseDate,
+    this.coverUrl,
+    this.description,
+  });
+
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  @BuiltValueField(wireName: r'provider_slug')
-  String get providerSlug;
+  String providerSlug;
 
   /// title of the game
-  @BuiltValueField(wireName: r'title')
-  String get title;
+  String title;
 
   /// id of the game from the provider
-  @BuiltValueField(wireName: r'provider_data_id')
-  String? get providerDataId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? providerDataId;
 
   /// release date of the game
-  @BuiltValueField(wireName: r'release_date')
-  DateTime? get releaseDate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? releaseDate;
 
   /// box image url of the game
-  @BuiltValueField(wireName: r'cover_url')
-  String? get coverUrl;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? coverUrl;
 
   /// description of the game. markdown supported.
-  @BuiltValueField(wireName: r'description')
-  String? get description;
-
-  MinimalGameMetadataDto._();
-
-  factory MinimalGameMetadataDto(
-          [void updates(MinimalGameMetadataDtoBuilder b)]) =
-      _$MinimalGameMetadataDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MinimalGameMetadataDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<MinimalGameMetadataDto> get serializer =>
-      _$MinimalGameMetadataDtoSerializer();
-}
-
-class _$MinimalGameMetadataDtoSerializer
-    implements PrimitiveSerializer<MinimalGameMetadataDto> {
-  @override
-  final Iterable<Type> types = const [
-    MinimalGameMetadataDto,
-    _$MinimalGameMetadataDto
-  ];
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
 
   @override
-  final String wireName = r'MinimalGameMetadataDto';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MinimalGameMetadataDto &&
+          other.providerSlug == providerSlug &&
+          other.title == title &&
+          other.providerDataId == providerDataId &&
+          other.releaseDate == releaseDate &&
+          other.coverUrl == coverUrl &&
+          other.description == description;
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    MinimalGameMetadataDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'provider_slug';
-    yield serializers.serialize(
-      object.providerSlug,
-      specifiedType: const FullType(String),
-    );
-    yield r'title';
-    yield serializers.serialize(
-      object.title,
-      specifiedType: const FullType(String),
-    );
-    if (object.providerDataId != null) {
-      yield r'provider_data_id';
-      yield serializers.serialize(
-        object.providerDataId,
-        specifiedType: const FullType(String),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (providerSlug.hashCode) +
+      (title.hashCode) +
+      (providerDataId == null ? 0 : providerDataId!.hashCode) +
+      (releaseDate == null ? 0 : releaseDate!.hashCode) +
+      (coverUrl == null ? 0 : coverUrl!.hashCode) +
+      (description == null ? 0 : description!.hashCode);
+
+  @override
+  String toString() =>
+      'MinimalGameMetadataDto[providerSlug=$providerSlug, title=$title, providerDataId=$providerDataId, releaseDate=$releaseDate, coverUrl=$coverUrl, description=$description]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'provider_slug'] = this.providerSlug;
+    json[r'title'] = this.title;
+    if (this.providerDataId != null) {
+      json[r'provider_data_id'] = this.providerDataId;
+    } else {
+      json[r'provider_data_id'] = null;
     }
-    if (object.releaseDate != null) {
-      yield r'release_date';
-      yield serializers.serialize(
-        object.releaseDate,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.releaseDate != null) {
+      json[r'release_date'] = this.releaseDate!.toUtc().toIso8601String();
+    } else {
+      json[r'release_date'] = null;
     }
-    if (object.coverUrl != null) {
-      yield r'cover_url';
-      yield serializers.serialize(
-        object.coverUrl,
-        specifiedType: const FullType(String),
-      );
+    if (this.coverUrl != null) {
+      json[r'cover_url'] = this.coverUrl;
+    } else {
+      json[r'cover_url'] = null;
     }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType(String),
-      );
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
     }
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    MinimalGameMetadataDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [MinimalGameMetadataDto] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static MinimalGameMetadataDto? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "MinimalGameMetadataDto[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "MinimalGameMetadataDto[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return MinimalGameMetadataDto(
+        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
+        title: mapValueOfType<String>(json, r'title')!,
+        providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
+        releaseDate: mapDateTime(json, r'release_date', r''),
+        coverUrl: mapValueOfType<String>(json, r'cover_url'),
+        description: mapValueOfType<String>(json, r'description'),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required MinimalGameMetadataDtoBuilder result,
-    required List<Object?> unhandled,
+  static List<MinimalGameMetadataDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'provider_slug':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerSlug = valueDes;
-          break;
-        case r'title':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.title = valueDes;
-          break;
-        case r'provider_data_id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.providerDataId = valueDes;
-          break;
-        case r'release_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.releaseDate = valueDes;
-          break;
-        case r'cover_url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.coverUrl = valueDes;
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.description = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <MinimalGameMetadataDto>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = MinimalGameMetadataDto.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  MinimalGameMetadataDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = MinimalGameMetadataDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, MinimalGameMetadataDto> mapFromJson(dynamic json) {
+    final map = <String, MinimalGameMetadataDto>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = MinimalGameMetadataDto.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of MinimalGameMetadataDto-objects as value to a dart map
+  static Map<String, List<MinimalGameMetadataDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<MinimalGameMetadataDto>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = MinimalGameMetadataDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'provider_slug',
+    'title',
+  };
 }

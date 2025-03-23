@@ -26,17 +26,17 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getTagsApi();
-final num page = 8.14; // num | page to retrieve
-final num limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-final String search = search_example; // String | search query
-final JsonObject sortBy = title:DESC; // JsonObject | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-final BuiltList<JsonObject> filter = ["filter.early_access=$not:true"]; // BuiltList<JsonObject> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final api_instance = TagsApi();
+final page = 8.14; // num | page to retrieve
+final limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+final search = search_example; // String | search query
+final sortBy = title:DESC; // Object | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final filter = [["filter.early_access=$not:true"]]; // List<Object> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
 
 try {
-    final response = api.getTags(page, limit, search, sortBy, filter);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getTags(page, limit, search, sortBy, filter);
+    print(result);
+} catch (e) {
     print('Exception when calling TagsApi->getTags: $e\n');
 }
 ```
@@ -48,8 +48,8 @@ Name | Type | Description  | Notes
  **page** | **num**| page to retrieve | [optional] 
  **limit** | **num**| number of items per page to retrieve, default is 9007199254740991 (max safe integer) | [optional] 
  **search** | **String**| search query | [optional] 
- **sortBy** | [**JsonObject**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
- **filter** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **sortBy** | [**Object**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **filter** | [**List<Object>**](Object.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] [default to const []]
 
 ### Return type
 

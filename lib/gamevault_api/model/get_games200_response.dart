@@ -1,148 +1,139 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'metadata.dart';
-import 'links.dart';
-import 'paginated_entity.dart';
-import 'gamevault_game.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'get_games200_response.g.dart';
+part of openapi.api;
 
-/// GetGames200Response
-///
-/// Properties:
-/// * [meta] - metadata of this list
-/// * [links] - links to related queries
-/// * [data] - paginated list of entities
-@BuiltValue()
-abstract class GetGames200Response
-    implements
-        PaginatedEntity,
-        Built<GetGames200Response, GetGames200ResponseBuilder> {
+class GetGames200Response {
+  /// Returns a new [GetGames200Response] instance.
+  GetGames200Response({
+    required this.meta,
+    required this.links,
+    this.data = const [],
+  });
+
+  /// metadata of this list
+  Metadata meta;
+
+  /// links to related queries
+  Links links;
+
   /// paginated list of entities
-  @BuiltValueField(wireName: r'data')
-  BuiltList<GamevaultGame> get data;
-
-  GetGames200Response._();
-
-  factory GetGames200Response([void updates(GetGames200ResponseBuilder b)]) =
-      _$GetGames200Response;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GetGames200ResponseBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GetGames200Response> get serializer =>
-      _$GetGames200ResponseSerializer();
-}
-
-class _$GetGames200ResponseSerializer
-    implements PrimitiveSerializer<GetGames200Response> {
-  @override
-  final Iterable<Type> types = const [
-    GetGames200Response,
-    _$GetGames200Response
-  ];
+  List<GamevaultGame> data;
 
   @override
-  final String wireName = r'GetGames200Response';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GetGames200Response &&
+          other.meta == meta &&
+          other.links == links &&
+          _deepEquality.equals(other.data, data);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GetGames200Response object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'data';
-    yield serializers.serialize(
-      object.data,
-      specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-    );
-    yield r'meta';
-    yield serializers.serialize(
-      object.meta,
-      specifiedType: const FullType(Metadata),
-    );
-    yield r'links';
-    yield serializers.serialize(
-      object.links,
-      specifiedType: const FullType(Links),
-    );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (meta.hashCode) + (links.hashCode) + (data.hashCode);
+
+  @override
+  String toString() =>
+      'GetGames200Response[meta=$meta, links=$links, data=$data]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'meta'] = this.meta;
+    json[r'links'] = this.links;
+    json[r'data'] = this.data;
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GetGames200Response object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [GetGames200Response] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GetGames200Response? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "GetGames200Response[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "GetGames200Response[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GetGames200Response(
+        meta: Metadata.fromJson(json[r'meta'])!,
+        links: Links.fromJson(json[r'links'])!,
+        data: GamevaultGame.listFromJson(json[r'data']),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GetGames200ResponseBuilder result,
-    required List<Object?> unhandled,
+  static List<GetGames200Response> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-          ) as BuiltList<GamevaultGame>;
-          result.data.replace(valueDes);
-          break;
-        case r'meta':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Metadata),
-          ) as Metadata;
-          result.meta.replace(valueDes);
-          break;
-        case r'links':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(Links),
-          ) as Links;
-          result.links.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <GetGames200Response>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GetGames200Response.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  GetGames200Response deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = GetGames200ResponseBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  static Map<String, GetGames200Response> mapFromJson(dynamic json) {
+    final map = <String, GetGames200Response>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GetGames200Response.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
   }
+
+  // maps a json object with a list of GetGames200Response-objects as value to a dart map
+  static Map<String, List<GetGames200Response>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final map = <String, List<GetGames200Response>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GetGames200Response.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'meta',
+    'links',
+    'data',
+  };
 }

@@ -1,475 +1,443 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-// ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
-import 'game_metadata.dart';
-import 'progress.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-part 'gamevault_game.g.dart';
+part of openapi.api;
 
-/// GamevaultGame
-///
-/// Properties:
-/// * [id] - Unique gamevault-identifier of the entity
-/// * [createdAt] - date the entity was created
-/// * [entityVersion] - incremental version number of the entity
-/// * [filePath] - file path to the game or the game manifest (relative to root)
-/// * [size] - size of the game file in bytes
-/// * [earlyAccess] - indicates if the game is an early access title (extracted from filename e.g. '(EA)')
-/// * [downloadCount] - Indicates how many times the game has been downloaded on this server.
-/// * [type] - type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-/// * [bookmarkedUsers] - users that bookmarked this game
-/// * [updatedAt] - date the entity was updated
-/// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
-/// * [title] - title of the game (extracted from the filename')
-/// * [sortTitle] - sort title of the game, generated and used to optimize sorting.
-/// * [version] - version tag (extracted from the filename e.g. '(v1.0.0)')
-/// * [releaseDate] - release date of the game (extracted from filename e.g. '(2013)')
-/// * [providerMetadata] - metadata of various providers associated to the game
-/// * [userMetadata] - user-defined metadata of the game
-/// * [metadata] - effective and merged metadata of the game
-/// * [progresses] - progresses associated to the game
-@BuiltValue()
-abstract class GamevaultGame
-    implements Built<GamevaultGame, GamevaultGameBuilder> {
+class GamevaultGame {
+  /// Returns a new [GamevaultGame] instance.
+  GamevaultGame({
+    required this.id,
+    required this.createdAt,
+    required this.entityVersion,
+    required this.filePath,
+    required this.size,
+    this.earlyAccess = false,
+    this.downloadCount = 0,
+    required this.type,
+    this.bookmarkedUsers = const [],
+    this.updatedAt,
+    this.deletedAt,
+    this.title,
+    this.sortTitle,
+    this.version,
+    this.releaseDate,
+    this.providerMetadata = const [],
+    this.userMetadata,
+    this.metadata,
+    this.progresses = const [],
+  });
+
   /// Unique gamevault-identifier of the entity
-  @BuiltValueField(wireName: r'id')
-  num get id;
+  num id;
 
   /// date the entity was created
-  @BuiltValueField(wireName: r'created_at')
-  DateTime get createdAt;
+  DateTime createdAt;
 
   /// incremental version number of the entity
-  @BuiltValueField(wireName: r'entity_version')
-  num get entityVersion;
+  num entityVersion;
 
   /// file path to the game or the game manifest (relative to root)
-  @BuiltValueField(wireName: r'file_path')
-  String get filePath;
+  String filePath;
 
   /// size of the game file in bytes
-  @BuiltValueField(wireName: r'size')
-  String get size;
+  String size;
 
   /// indicates if the game is an early access title (extracted from filename e.g. '(EA)')
-  @BuiltValueField(wireName: r'early_access')
-  bool get earlyAccess;
+  bool earlyAccess;
 
   /// Indicates how many times the game has been downloaded on this server.
-  @BuiltValueField(wireName: r'download_count')
-  num get downloadCount;
+  num downloadCount;
 
   /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  @BuiltValueField(wireName: r'type')
-  GamevaultGameTypeEnum get type;
-  // enum typeEnum {  UNDETECTABLE,  WINDOWS_SETUP,  WINDOWS_PORTABLE,  LINUX_PORTABLE,  };
+  GamevaultGameTypeEnum type;
 
   /// users that bookmarked this game
-  @BuiltValueField(wireName: r'bookmarked_users')
-  BuiltList<GamevaultGame> get bookmarkedUsers;
+  List<GamevaultGame> bookmarkedUsers;
 
   /// date the entity was updated
-  @BuiltValueField(wireName: r'updated_at')
-  DateTime? get updatedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? updatedAt;
 
   /// date the entity was soft-deleted (null if not deleted)
-  @BuiltValueField(wireName: r'deleted_at')
-  DateTime? get deletedAt;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? deletedAt;
 
   /// title of the game (extracted from the filename')
-  @BuiltValueField(wireName: r'title')
-  String? get title;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? title;
 
   /// sort title of the game, generated and used to optimize sorting.
-  @BuiltValueField(wireName: r'sort_title')
-  String? get sortTitle;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? sortTitle;
 
   /// version tag (extracted from the filename e.g. '(v1.0.0)')
-  @BuiltValueField(wireName: r'version')
-  String? get version;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? version;
 
   /// release date of the game (extracted from filename e.g. '(2013)')
-  @BuiltValueField(wireName: r'release_date')
-  DateTime? get releaseDate;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DateTime? releaseDate;
 
   /// metadata of various providers associated to the game
-  @BuiltValueField(wireName: r'provider_metadata')
-  BuiltList<GameMetadata>? get providerMetadata;
+  List<GameMetadata> providerMetadata;
 
   /// user-defined metadata of the game
-  @BuiltValueField(wireName: r'user_metadata')
-  GameMetadata? get userMetadata;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GameMetadata? userMetadata;
 
   /// effective and merged metadata of the game
-  @BuiltValueField(wireName: r'metadata')
-  GameMetadata? get metadata;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GameMetadata? metadata;
 
   /// progresses associated to the game
-  @BuiltValueField(wireName: r'progresses')
-  BuiltList<Progress>? get progresses;
-
-  GamevaultGame._();
-
-  factory GamevaultGame([void updates(GamevaultGameBuilder b)]) =
-      _$GamevaultGame;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GamevaultGameBuilder b) => b
-    ..earlyAccess = false
-    ..downloadCount = 0;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<GamevaultGame> get serializer =>
-      _$GamevaultGameSerializer();
-}
-
-class _$GamevaultGameSerializer implements PrimitiveSerializer<GamevaultGame> {
-  @override
-  final Iterable<Type> types = const [GamevaultGame, _$GamevaultGame];
+  List<Progress> progresses;
 
   @override
-  final String wireName = r'GamevaultGame';
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GamevaultGame &&
+          other.id == id &&
+          other.createdAt == createdAt &&
+          other.entityVersion == entityVersion &&
+          other.filePath == filePath &&
+          other.size == size &&
+          other.earlyAccess == earlyAccess &&
+          other.downloadCount == downloadCount &&
+          other.type == type &&
+          _deepEquality.equals(other.bookmarkedUsers, bookmarkedUsers) &&
+          other.updatedAt == updatedAt &&
+          other.deletedAt == deletedAt &&
+          other.title == title &&
+          other.sortTitle == sortTitle &&
+          other.version == version &&
+          other.releaseDate == releaseDate &&
+          _deepEquality.equals(other.providerMetadata, providerMetadata) &&
+          other.userMetadata == userMetadata &&
+          other.metadata == metadata &&
+          _deepEquality.equals(other.progresses, progresses);
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    GamevaultGame object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(num),
-    );
-    yield r'created_at';
-    yield serializers.serialize(
-      object.createdAt,
-      specifiedType: const FullType(DateTime),
-    );
-    yield r'entity_version';
-    yield serializers.serialize(
-      object.entityVersion,
-      specifiedType: const FullType(num),
-    );
-    yield r'file_path';
-    yield serializers.serialize(
-      object.filePath,
-      specifiedType: const FullType(String),
-    );
-    yield r'size';
-    yield serializers.serialize(
-      object.size,
-      specifiedType: const FullType(String),
-    );
-    yield r'early_access';
-    yield serializers.serialize(
-      object.earlyAccess,
-      specifiedType: const FullType(bool),
-    );
-    yield r'download_count';
-    yield serializers.serialize(
-      object.downloadCount,
-      specifiedType: const FullType(num),
-    );
-    yield r'type';
-    yield serializers.serialize(
-      object.type,
-      specifiedType: const FullType(GamevaultGameTypeEnum),
-    );
-    yield r'bookmarked_users';
-    yield serializers.serialize(
-      object.bookmarkedUsers,
-      specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-    );
-    if (object.updatedAt != null) {
-      yield r'updated_at';
-      yield serializers.serialize(
-        object.updatedAt,
-        specifiedType: const FullType(DateTime),
-      );
+  @override
+  int get hashCode =>
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (createdAt.hashCode) +
+      (entityVersion.hashCode) +
+      (filePath.hashCode) +
+      (size.hashCode) +
+      (earlyAccess.hashCode) +
+      (downloadCount.hashCode) +
+      (type.hashCode) +
+      (bookmarkedUsers.hashCode) +
+      (updatedAt == null ? 0 : updatedAt!.hashCode) +
+      (deletedAt == null ? 0 : deletedAt!.hashCode) +
+      (title == null ? 0 : title!.hashCode) +
+      (sortTitle == null ? 0 : sortTitle!.hashCode) +
+      (version == null ? 0 : version!.hashCode) +
+      (releaseDate == null ? 0 : releaseDate!.hashCode) +
+      (providerMetadata.hashCode) +
+      (userMetadata == null ? 0 : userMetadata!.hashCode) +
+      (metadata == null ? 0 : metadata!.hashCode) +
+      (progresses.hashCode);
+
+  @override
+  String toString() =>
+      'GamevaultGame[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, filePath=$filePath, size=$size, earlyAccess=$earlyAccess, downloadCount=$downloadCount, type=$type, bookmarkedUsers=$bookmarkedUsers, updatedAt=$updatedAt, deletedAt=$deletedAt, title=$title, sortTitle=$sortTitle, version=$version, releaseDate=$releaseDate, providerMetadata=$providerMetadata, userMetadata=$userMetadata, metadata=$metadata, progresses=$progresses]';
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    json[r'id'] = this.id;
+    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
+    json[r'entity_version'] = this.entityVersion;
+    json[r'file_path'] = this.filePath;
+    json[r'size'] = this.size;
+    json[r'early_access'] = this.earlyAccess;
+    json[r'download_count'] = this.downloadCount;
+    json[r'type'] = this.type;
+    json[r'bookmarked_users'] = this.bookmarkedUsers;
+    if (this.updatedAt != null) {
+      json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'updated_at'] = null;
     }
-    if (object.deletedAt != null) {
-      yield r'deleted_at';
-      yield serializers.serialize(
-        object.deletedAt,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.deletedAt != null) {
+      json[r'deleted_at'] = this.deletedAt!.toUtc().toIso8601String();
+    } else {
+      json[r'deleted_at'] = null;
     }
-    if (object.title != null) {
-      yield r'title';
-      yield serializers.serialize(
-        object.title,
-        specifiedType: const FullType(String),
-      );
+    if (this.title != null) {
+      json[r'title'] = this.title;
+    } else {
+      json[r'title'] = null;
     }
-    if (object.sortTitle != null) {
-      yield r'sort_title';
-      yield serializers.serialize(
-        object.sortTitle,
-        specifiedType: const FullType(String),
-      );
+    if (this.sortTitle != null) {
+      json[r'sort_title'] = this.sortTitle;
+    } else {
+      json[r'sort_title'] = null;
     }
-    if (object.version != null) {
-      yield r'version';
-      yield serializers.serialize(
-        object.version,
-        specifiedType: const FullType(String),
-      );
+    if (this.version != null) {
+      json[r'version'] = this.version;
+    } else {
+      json[r'version'] = null;
     }
-    if (object.releaseDate != null) {
-      yield r'release_date';
-      yield serializers.serialize(
-        object.releaseDate,
-        specifiedType: const FullType(DateTime),
-      );
+    if (this.releaseDate != null) {
+      json[r'release_date'] = this.releaseDate!.toUtc().toIso8601String();
+    } else {
+      json[r'release_date'] = null;
     }
-    if (object.providerMetadata != null) {
-      yield r'provider_metadata';
-      yield serializers.serialize(
-        object.providerMetadata,
-        specifiedType: const FullType(BuiltList, [FullType(GameMetadata)]),
-      );
+    json[r'provider_metadata'] = this.providerMetadata;
+    if (this.userMetadata != null) {
+      json[r'user_metadata'] = this.userMetadata;
+    } else {
+      json[r'user_metadata'] = null;
     }
-    if (object.userMetadata != null) {
-      yield r'user_metadata';
-      yield serializers.serialize(
-        object.userMetadata,
-        specifiedType: const FullType(GameMetadata),
-      );
+    if (this.metadata != null) {
+      json[r'metadata'] = this.metadata;
+    } else {
+      json[r'metadata'] = null;
     }
-    if (object.metadata != null) {
-      yield r'metadata';
-      yield serializers.serialize(
-        object.metadata,
-        specifiedType: const FullType(GameMetadata),
-      );
-    }
-    if (object.progresses != null) {
-      yield r'progresses';
-      yield serializers.serialize(
-        object.progresses,
-        specifiedType: const FullType(BuiltList, [FullType(Progress)]),
-      );
-    }
+    json[r'progresses'] = this.progresses;
+    return json;
   }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    GamevaultGame object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+  /// Returns a new [GamevaultGame] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static GamevaultGame? fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key),
+              'Required key "GamevaultGame[$key]" is missing from JSON.');
+          assert(json[key] != null,
+              'Required key "GamevaultGame[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
+      return GamevaultGame(
+        id: num.parse('${json[r'id']}'),
+        createdAt: mapDateTime(json, r'created_at', r'')!,
+        entityVersion: num.parse('${json[r'entity_version']}'),
+        filePath: mapValueOfType<String>(json, r'file_path')!,
+        size: mapValueOfType<String>(json, r'size')!,
+        earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
+        downloadCount: num.parse('${json[r'download_count']}'),
+        type: GamevaultGameTypeEnum.fromJson(json[r'type'])!,
+        bookmarkedUsers: GamevaultGame.listFromJson(json[r'bookmarked_users']),
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
+        title: mapValueOfType<String>(json, r'title'),
+        sortTitle: mapValueOfType<String>(json, r'sort_title'),
+        version: mapValueOfType<String>(json, r'version'),
+        releaseDate: mapDateTime(json, r'release_date', r''),
+        providerMetadata: GameMetadata.listFromJson(json[r'provider_metadata']),
+        userMetadata: GameMetadata.fromJson(json[r'user_metadata']),
+        metadata: GameMetadata.fromJson(json[r'metadata']),
+        progresses: Progress.listFromJson(json[r'progresses']),
+      );
+    }
+    return null;
   }
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required GamevaultGameBuilder result,
-    required List<Object?> unhandled,
+  static List<GamevaultGame> listFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.id = valueDes;
-          break;
-        case r'created_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.createdAt = valueDes;
-          break;
-        case r'entity_version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.entityVersion = valueDes;
-          break;
-        case r'file_path':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.filePath = valueDes;
-          break;
-        case r'size':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.size = valueDes;
-          break;
-        case r'early_access':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.earlyAccess = valueDes;
-          break;
-        case r'download_count':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.downloadCount = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GamevaultGameTypeEnum),
-          ) as GamevaultGameTypeEnum;
-          result.type = valueDes;
-          break;
-        case r'bookmarked_users':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GamevaultGame)]),
-          ) as BuiltList<GamevaultGame>;
-          result.bookmarkedUsers.replace(valueDes);
-          break;
-        case r'updated_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.updatedAt = valueDes;
-          break;
-        case r'deleted_at':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.deletedAt = valueDes;
-          break;
-        case r'title':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.title = valueDes;
-          break;
-        case r'sort_title':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sortTitle = valueDes;
-          break;
-        case r'version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.version = valueDes;
-          break;
-        case r'release_date':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.releaseDate = valueDes;
-          break;
-        case r'provider_metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(GameMetadata)]),
-          ) as BuiltList<GameMetadata>;
-          result.providerMetadata.replace(valueDes);
-          break;
-        case r'user_metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GameMetadata),
-          ) as GameMetadata;
-          result.userMetadata.replace(valueDes);
-          break;
-        case r'metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GameMetadata),
-          ) as GameMetadata;
-          result.metadata.replace(valueDes);
-          break;
-        case r'progresses':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(Progress)]),
-          ) as BuiltList<Progress>;
-          result.progresses.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
+    final result = <GamevaultGame>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GamevaultGame.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
       }
     }
+    return result.toList(growable: growable);
   }
 
-  @override
-  GamevaultGame deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
+  static Map<String, GamevaultGame> mapFromJson(dynamic json) {
+    final map = <String, GamevaultGame>{};
+    if (json is Map && json.isNotEmpty) {
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = GamevaultGame.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
+    }
+    return map;
+  }
+
+  // maps a json object with a list of GamevaultGame-objects as value to a dart map
+  static Map<String, List<GamevaultGame>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
   }) {
-    final result = GamevaultGameBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+    final map = <String, List<GamevaultGame>>{};
+    if (json is Map && json.isNotEmpty) {
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
+      for (final entry in json.entries) {
+        map[entry.key] = GamevaultGame.listFromJson(
+          entry.value,
+          growable: growable,
+        );
+      }
+    }
+    return map;
+  }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'created_at',
+    'entity_version',
+    'file_path',
+    'size',
+    'early_access',
+    'download_count',
+    'type',
+    'bookmarked_users',
+  };
+}
+
+/// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
+class GamevaultGameTypeEnum {
+  /// Instantiate a new enum with the provided [value].
+  const GamevaultGameTypeEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const UNDETECTABLE = GamevaultGameTypeEnum._(r'UNDETECTABLE');
+  static const WINDOWS_SETUP = GamevaultGameTypeEnum._(r'WINDOWS_SETUP');
+  static const WINDOWS_PORTABLE = GamevaultGameTypeEnum._(r'WINDOWS_PORTABLE');
+  static const LINUX_PORTABLE = GamevaultGameTypeEnum._(r'LINUX_PORTABLE');
+
+  /// List of all possible values in this [enum][GamevaultGameTypeEnum].
+  static const values = <GamevaultGameTypeEnum>[
+    UNDETECTABLE,
+    WINDOWS_SETUP,
+    WINDOWS_PORTABLE,
+    LINUX_PORTABLE,
+  ];
+
+  static GamevaultGameTypeEnum? fromJson(dynamic value) =>
+      GamevaultGameTypeEnumTypeTransformer().decode(value);
+
+  static List<GamevaultGameTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
+    final result = <GamevaultGameTypeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = GamevaultGameTypeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
   }
 }
 
-class GamevaultGameTypeEnum extends EnumClass {
-  /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  @BuiltValueEnumConst(wireName: r'UNDETECTABLE')
-  static const GamevaultGameTypeEnum UNDETECTABLE =
-      _$gamevaultGameTypeEnum_UNDETECTABLE;
+/// Transformation class that can [encode] an instance of [GamevaultGameTypeEnum] to String,
+/// and [decode] dynamic data back to [GamevaultGameTypeEnum].
+class GamevaultGameTypeEnumTypeTransformer {
+  factory GamevaultGameTypeEnumTypeTransformer() =>
+      _instance ??= const GamevaultGameTypeEnumTypeTransformer._();
 
-  /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  @BuiltValueEnumConst(wireName: r'WINDOWS_SETUP')
-  static const GamevaultGameTypeEnum WINDOWS_SETUP =
-      _$gamevaultGameTypeEnum_WINDOWS_SETUP;
+  const GamevaultGameTypeEnumTypeTransformer._();
 
-  /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  @BuiltValueEnumConst(wireName: r'WINDOWS_PORTABLE')
-  static const GamevaultGameTypeEnum WINDOWS_PORTABLE =
-      _$gamevaultGameTypeEnum_WINDOWS_PORTABLE;
+  String encode(GamevaultGameTypeEnum data) => data.value;
 
-  /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  @BuiltValueEnumConst(wireName: r'LINUX_PORTABLE')
-  static const GamevaultGameTypeEnum LINUX_PORTABLE =
-      _$gamevaultGameTypeEnum_LINUX_PORTABLE;
+  /// Decodes a [dynamic value][data] to a GamevaultGameTypeEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  GamevaultGameTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'UNDETECTABLE':
+          return GamevaultGameTypeEnum.UNDETECTABLE;
+        case r'WINDOWS_SETUP':
+          return GamevaultGameTypeEnum.WINDOWS_SETUP;
+        case r'WINDOWS_PORTABLE':
+          return GamevaultGameTypeEnum.WINDOWS_PORTABLE;
+        case r'LINUX_PORTABLE':
+          return GamevaultGameTypeEnum.LINUX_PORTABLE;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
 
-  static Serializer<GamevaultGameTypeEnum> get serializer =>
-      _$gamevaultGameTypeEnumSerializer;
-
-  const GamevaultGameTypeEnum._(String name) : super(name);
-
-  static BuiltSet<GamevaultGameTypeEnum> get values =>
-      _$gamevaultGameTypeEnumValues;
-  static GamevaultGameTypeEnum valueOf(String name) =>
-      _$gamevaultGameTypeEnumValueOf(name);
+  /// Singleton [GamevaultGameTypeEnumTypeTransformer] instance.
+  static GamevaultGameTypeEnumTypeTransformer? _instance;
 }

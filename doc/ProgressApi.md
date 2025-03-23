@@ -34,13 +34,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num progressId = 1; // num | id of the progress
+final api_instance = ProgressApi();
+final progressId = 1; // num | id of the progress
 
 try {
-    final response = api.deleteProgressByProgressId(progressId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.deleteProgressByProgressId(progressId);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->deleteProgressByProgressId: $e\n');
 }
 ```
@@ -80,14 +80,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
+final api_instance = ProgressApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
 
 try {
-    final response = api.deleteProgressByUserIdAndGameId(userId, gameId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.deleteProgressByUserIdAndGameId(userId, gameId);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->deleteProgressByUserIdAndGameId: $e\n');
 }
 ```
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getIgnoreFile**
-> BuiltList<JsonObject> getIgnoreFile()
+> List<Object> getIgnoreFile()
 
 get an array of files to ignore for progess-tracking
 
@@ -126,12 +126,12 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
+final api_instance = ProgressApi();
 
 try {
-    final response = api.getIgnoreFile();
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getIgnoreFile();
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->getIgnoreFile: $e\n');
 }
 ```
@@ -141,7 +141,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltList&lt;JsonObject&gt;**](JsonObject.md)
+[**List<Object>**](Object.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProgressByProgressId**
-> BuiltList<Progress> getProgressByProgressId(progressId)
+> List<Progress> getProgressByProgressId(progressId)
 
 get a specific progress by progress id. DEPRECATED: Use GET /user/:user_id/game/:game_id instead.
 
@@ -166,13 +166,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num progressId = 1; // num | id of the progress
+final api_instance = ProgressApi();
+final progressId = 1; // num | id of the progress
 
 try {
-    final response = api.getProgressByProgressId(progressId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProgressByProgressId(progressId);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->getProgressByProgressId: $e\n');
 }
 ```
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Progress&gt;**](Progress.md)
+[**List<Progress>**](Progress.md)
 
 ### Authorization
 
@@ -210,14 +210,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
+final api_instance = ProgressApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
 
 try {
-    final response = api.getProgressByUserIdAndGameId(userId, gameId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProgressByUserIdAndGameId(userId, gameId);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->getProgressByUserIdAndGameId: $e\n');
 }
 ```
@@ -256,17 +256,17 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num page = 8.14; // num | page to retrieve
-final num limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-final String search = search_example; // String | search query
-final JsonObject sortBy = title:DESC; // JsonObject | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-final BuiltList<JsonObject> filter = ["filter.early_access=$not:true"]; // BuiltList<JsonObject> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final api_instance = ProgressApi();
+final page = 8.14; // num | page to retrieve
+final limit = 8.14; // num | number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+final search = search_example; // String | search query
+final sortBy = title:DESC; // Object | sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+final filter = [["filter.early_access=$not:true"]]; // List<Object> | filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
 
 try {
-    final response = api.getProgresses(page, limit, search, sortBy, filter);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getProgresses(page, limit, search, sortBy, filter);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->getProgresses: $e\n');
 }
 ```
@@ -278,8 +278,8 @@ Name | Type | Description  | Notes
  **page** | **num**| page to retrieve | [optional] 
  **limit** | **num**| number of items per page to retrieve, default is 9007199254740991 (max safe integer) | [optional] 
  **search** | **String**| search query | [optional] 
- **sortBy** | [**JsonObject**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
- **filter** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **sortBy** | [**Object**](.md)| sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] 
+ **filter** | [**List<Object>**](Object.md)| filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage | [optional] [default to const []]
 
 ### Return type
 
@@ -308,15 +308,15 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
-final UpdateProgressDto updateProgressDto = ; // UpdateProgressDto | 
+final api_instance = ProgressApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
+final updateProgressDto = UpdateProgressDto(); // UpdateProgressDto | 
 
 try {
-    final response = api.putProgressByUserIdAndGameId(userId, gameId, updateProgressDto);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putProgressByUserIdAndGameId(userId, gameId, updateProgressDto);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->putProgressByUserIdAndGameId: $e\n');
 }
 ```
@@ -356,15 +356,15 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
-final String minutes = 1; // String | the amount of minutes to increment the progress by
+final api_instance = ProgressApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
+final minutes = 1; // String | the amount of minutes to increment the progress by
 
 try {
-    final response = api.putProgressByUserIdAndGameIdIncrementByMinutes(userId, gameId, minutes);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putProgressByUserIdAndGameIdIncrementByMinutes(userId, gameId, minutes);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->putProgressByUserIdAndGameIdIncrementByMinutes: $e\n');
 }
 ```
@@ -404,14 +404,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getProgressApi();
-final num userId = 1; // num | id of the user
-final num gameId = 1; // num | id of the game
+final api_instance = ProgressApi();
+final userId = 1; // num | id of the user
+final gameId = 1; // num | id of the game
 
 try {
-    final response = api.putProgressByUserIdAndGameIdIncrementByOne(userId, gameId);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.putProgressByUserIdAndGameIdIncrementByOne(userId, gameId);
+    print(result);
+} catch (e) {
     print('Exception when calling ProgressApi->putProgressByUserIdAndGameIdIncrementByOne: $e\n');
 }
 ```

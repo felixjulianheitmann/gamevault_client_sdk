@@ -1,134 +1,136 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
+// @dart=2.18
 
-import 'dart:async';
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-import 'package:built_value/json_object.dart';
-import 'package:built_value/serializer.dart';
-import 'package:dio/dio.dart';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
-import '../api_util.dart';
-import '../model/get_publishers200_response.dart';
+part of openapi.api;
 
 class PublishersApi {
-  final Dio _dio;
+  PublishersApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
-  final Serializers _serializers;
-
-  const PublishersApi(this._dio, this._serializers);
+  final ApiClient apiClient;
 
   /// get a list of publishers
+  ///
   /// by default the list is sorted by the amount of games that are published by the publisher.
   ///
-  /// Parameters:
-  /// * [page] - page to retrieve
-  /// * [limit] - number of items per page to retrieve, default is 9007199254740991 (max safe integer)
-  /// * [search] - search query
-  /// * [sortBy] - sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [filter] - filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  /// Note: This method returns the HTTP [Response].
   ///
-  /// Returns a [Future] containing a [Response] with a [GetPublishers200Response] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetPublishers200Response>> getPublishers({
+  /// Parameters:
+  ///
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<Response> getPublishersWithHttpInfo({
     num? page,
     num? limit,
     String? search,
-    JsonObject? sortBy,
-    BuiltList<JsonObject>? filter,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    Object? sortBy,
+    List<Object>? filter,
   }) async {
-    final _path = r'/api/publishers';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'basic',
-            'name': 'basic',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
+    // ignore: prefer_const_declarations
+    final path = r'/api/publishers';
 
-    final _queryParameters = <String, dynamic>{
-      if (page != null)
-        r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null)
-        r'limit':
-            encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (search != null)
-        r'search':
-            encodeQueryParameter(_serializers, search, const FullType(String)),
-      if (sortBy != null)
-        r'sortBy': encodeQueryParameter(
-            _serializers, sortBy, const FullType(JsonObject)),
-      if (filter != null)
-        r'filter': encodeCollectionQueryParameter<JsonObject>(
-          _serializers,
-          filter,
-          const FullType(BuiltList, [FullType(JsonObject)]),
-          format: ListFormat.multi,
-        ),
-    };
+    // ignore: prefer_final_locals
+    Object? postBody;
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    GetPublishers200Response? _responseData;
-
-    try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null
-          ? null
-          : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GetPublishers200Response),
-            ) as GetPublishers200Response;
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+    if (search != null) {
+      queryParams.addAll(_queryParams('', 'search', search));
+    }
+    if (sortBy != null) {
+      queryParams.addAll(_queryParams('', 'sortBy', sortBy));
+    }
+    if (filter != null) {
+      queryParams.addAll(_queryParams('multi', 'filter', filter));
     }
 
-    return Response<GetPublishers200Response>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
+  }
+
+  /// get a list of publishers
+  ///
+  /// by default the list is sorted by the amount of games that are published by the publisher.
+  ///
+  /// Parameters:
+  ///
+  /// * [num] page:
+  ///   page to retrieve
+  ///
+  /// * [num] limit:
+  ///   number of items per page to retrieve, default is 9007199254740991 (max safe integer)
+  ///
+  /// * [String] search:
+  ///   search query
+  ///
+  /// * [Object] sortBy:
+  ///   sorting that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  ///
+  /// * [List<Object>] filter:
+  ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
+  Future<GetPublishers200Response?> getPublishers({
+    num? page,
+    num? limit,
+    String? search,
+    Object? sortBy,
+    List<Object>? filter,
+  }) async {
+    final response = await getPublishersWithHttpInfo(
+      page: page,
+      limit: limit,
+      search: search,
+      sortBy: sortBy,
+      filter: filter,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'GetPublishers200Response',
+      ) as GetPublishers200Response;
+    }
+    return null;
   }
 }

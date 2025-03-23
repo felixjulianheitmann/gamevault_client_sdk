@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getMediaByMediaId**
-> JsonObject getMediaByMediaId(id)
+> Object getMediaByMediaId(id)
 
 Retrieve media using its id
 
@@ -25,13 +25,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getMediaApi();
-final String id = id_example; // String | 
+final api_instance = MediaApi();
+final id = id_example; // String | 
 
 try {
-    final response = api.getMediaByMediaId(id);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.getMediaByMediaId(id);
+    print(result);
+} catch (e) {
     print('Exception when calling MediaApi->getMediaByMediaId: $e\n');
 }
 ```
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JsonObject**](JsonObject.md)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -71,13 +71,13 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
 
-final api = Openapi().getMediaApi();
-final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | The media file to upload
+final api_instance = MediaApi();
+final file = BINARY_DATA_HERE; // MultipartFile | The media file to upload
 
 try {
-    final response = api.postMedia(file);
-    print(response);
-} catch on DioException (e) {
+    final result = api_instance.postMedia(file);
+    print(result);
+} catch (e) {
     print('Exception when calling MediaApi->postMedia: $e\n');
 }
 ```
