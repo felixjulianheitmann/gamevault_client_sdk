@@ -425,7 +425,7 @@ class GameMetadata {
         providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
         providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
         providerDataUrl: mapValueOfType<String>(json, r'provider_data_url'),
-        providerPriority: num.parse('${json[r'provider_priority']}'),
+providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provider_priority']}') : null,
         ageRating: num.parse('${json[r'age_rating']}'),
         title: mapValueOfType<String>(json, r'title')!,
         releaseDate: mapDateTime(json, r'release_date', r''),
@@ -454,7 +454,7 @@ class GameMetadata {
               e == null ? const  <String>[] : (e as List).cast<String>()
             ).toList()
           :  const [],
-        rating: num.parse('${json[r'rating']}'),
+rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,
         earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
         launchParameters: mapValueOfType<String>(json, r'launch_parameters'),
         launchExecutable: mapValueOfType<String>(json, r'launch_executable'),
