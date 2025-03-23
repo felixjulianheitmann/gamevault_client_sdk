@@ -37,7 +37,7 @@ class Metadata {
   num totalPages;
 
   /// sorting that was applied by the query
-  List<String> sortBy;
+  List<List<String>> sortBy;
 
   /// searches that were applied by the query
   List<String> searchBy;
@@ -136,9 +136,11 @@ class Metadata {
         totalItems: num.parse('${json[r'totalItems']}'),
         currentPage: num.parse('${json[r'currentPage']}'),
         totalPages: num.parse('${json[r'totalPages']}'),
-        sortBy: json[r'sortBy'] is Iterable
-            ? (json[r'sortBy'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
+        sortBy: json[r'sortBy'] is List
+          ? (json[r'sortBy'] as List).map((e) =>
+              e == null ? const  <String>[] : (e as List).cast<String>()
+            ).toList()
+          :  const [],
         searchBy: json[r'searchBy'] is Iterable
             ? (json[r'searchBy'] as Iterable).cast<String>().toList(growable: false)
             : const [],

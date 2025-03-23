@@ -41,7 +41,7 @@ void main() {
     });
 
     // sorting that was applied by the query
-    // List<String> sortBy (default value: const [])
+    // List<List<String>> sortBy (default value: const [])
     test('to test the property `sortBy`', () async {
       // TODO
     });

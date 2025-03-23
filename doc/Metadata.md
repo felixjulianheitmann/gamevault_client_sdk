@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **totalItems** | **num** | total amount of items | 
 **currentPage** | **num** | current page number | 
 **totalPages** | **num** | total number of pages | 
-**sortBy** | **List<String>** | sorting that was applied by the query | [default to const []]
+**sortBy** | [**List<List<String>>**](List.md) | sorting that was applied by the query | [default to const []]
 **searchBy** | **List<String>** | searches that were applied by the query | [optional] [default to const []]
 **search** | **String** | search query | [optional] 
 **select** | **List<String>** | select string | [optional] [default to const []]
