@@ -2951,7 +2951,6 @@
                     "created_at",
                     "entity_version",
                     "username",
-                    "password",
                     "socket_secret",
                     "email",
                     "first_name",

@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **createdAt** | [**DateTime**](DateTime.md) | date the entity was created | 
 **entityVersion** | **num** | incremental version number of the entity | 
 **username** | **String** | username of the user | 
-**password** | **String** | encrypted password of the user | 
 **socketSecret** | **String** | the user's socket secret is used for authentication with the server over the websocket protocol. | 
 **email** | **String** | email address of the user | 
 **firstName** | **String** | first name of the user | 
@@ -22,6 +21,7 @@ Name | Type | Description | Notes
 **bookmarkedGames** | [**BuiltList&lt;GamevaultGame&gt;**](GamevaultGame.md) | games bookmarked by this user | 
 **updatedAt** | [**DateTime**](DateTime.md) | date the entity was updated | [optional] 
 **deletedAt** | [**DateTime**](DateTime.md) | date the entity was soft-deleted (null if not deleted) | [optional] 
+**password** | **String** | encrypted password of the user | [optional] 
 **avatar** | [**Media**](Media.md) | the user's avatar image | [optional] 
 **background** | [**Media**](Media.md) | the user's profile background image | [optional] 
 **birthDate** | [**DateTime**](DateTime.md) | birthday of the user | [optional] 

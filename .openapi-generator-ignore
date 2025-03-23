@@ -28,3 +28,4 @@ openapi_generator_config
 README.md
 pubspec.lock
 pubspec.yaml
+lib/api.dart

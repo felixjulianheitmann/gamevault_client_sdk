@@ -83,8 +83,6 @@ class _$GamevaultUser extends GamevaultUser {
   @override
   final String username;
   @override
-  final String password;
-  @override
   final String socketSecret;
   @override
   final String email;
@@ -102,6 +100,8 @@ class _$GamevaultUser extends GamevaultUser {
   final DateTime? updatedAt;
   @override
   final DateTime? deletedAt;
+  @override
+  final String? password;
   @override
   final Media? avatar;
   @override
@@ -121,7 +121,6 @@ class _$GamevaultUser extends GamevaultUser {
       required this.createdAt,
       required this.entityVersion,
       required this.username,
-      required this.password,
       required this.socketSecret,
       required this.email,
       required this.firstName,
@@ -131,6 +130,7 @@ class _$GamevaultUser extends GamevaultUser {
       required this.bookmarkedGames,
       this.updatedAt,
       this.deletedAt,
+      this.password,
       this.avatar,
       this.background,
       this.birthDate,
@@ -144,8 +144,6 @@ class _$GamevaultUser extends GamevaultUser {
         entityVersion, r'GamevaultUser', 'entityVersion');
     BuiltValueNullFieldError.checkNotNull(
         username, r'GamevaultUser', 'username');
-    BuiltValueNullFieldError.checkNotNull(
-        password, r'GamevaultUser', 'password');
     BuiltValueNullFieldError.checkNotNull(
         socketSecret, r'GamevaultUser', 'socketSecret');
     BuiltValueNullFieldError.checkNotNull(email, r'GamevaultUser', 'email');
@@ -175,7 +173,6 @@ class _$GamevaultUser extends GamevaultUser {
         createdAt == other.createdAt &&
         entityVersion == other.entityVersion &&
         username == other.username &&
-        password == other.password &&
         socketSecret == other.socketSecret &&
         email == other.email &&
         firstName == other.firstName &&
@@ -185,6 +182,7 @@ class _$GamevaultUser extends GamevaultUser {
         bookmarkedGames == other.bookmarkedGames &&
         updatedAt == other.updatedAt &&
         deletedAt == other.deletedAt &&
+        password == other.password &&
         avatar == other.avatar &&
         background == other.background &&
         birthDate == other.birthDate &&
@@ -199,7 +197,6 @@ class _$GamevaultUser extends GamevaultUser {
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, entityVersion.hashCode);
     _$hash = $jc(_$hash, username.hashCode);
-    _$hash = $jc(_$hash, password.hashCode);
     _$hash = $jc(_$hash, socketSecret.hashCode);
     _$hash = $jc(_$hash, email.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
@@ -209,6 +206,7 @@ class _$GamevaultUser extends GamevaultUser {
     _$hash = $jc(_$hash, bookmarkedGames.hashCode);
     _$hash = $jc(_$hash, updatedAt.hashCode);
     _$hash = $jc(_$hash, deletedAt.hashCode);
+    _$hash = $jc(_$hash, password.hashCode);
     _$hash = $jc(_$hash, avatar.hashCode);
     _$hash = $jc(_$hash, background.hashCode);
     _$hash = $jc(_$hash, birthDate.hashCode);
@@ -225,7 +223,6 @@ class _$GamevaultUser extends GamevaultUser {
           ..add('createdAt', createdAt)
           ..add('entityVersion', entityVersion)
           ..add('username', username)
-          ..add('password', password)
           ..add('socketSecret', socketSecret)
           ..add('email', email)
           ..add('firstName', firstName)
@@ -235,6 +232,7 @@ class _$GamevaultUser extends GamevaultUser {
           ..add('bookmarkedGames', bookmarkedGames)
           ..add('updatedAt', updatedAt)
           ..add('deletedAt', deletedAt)
+          ..add('password', password)
           ..add('avatar', avatar)
           ..add('background', background)
           ..add('birthDate', birthDate)
@@ -264,10 +262,6 @@ class GamevaultUserBuilder
   String? _username;
   String? get username => _$this._username;
   set username(String? username) => _$this._username = username;
-
-  String? _password;
-  String? get password => _$this._password;
-  set password(String? password) => _$this._password = password;
 
   String? _socketSecret;
   String? get socketSecret => _$this._socketSecret;
@@ -307,6 +301,10 @@ class GamevaultUserBuilder
   DateTime? get deletedAt => _$this._deletedAt;
   set deletedAt(DateTime? deletedAt) => _$this._deletedAt = deletedAt;
 
+  String? _password;
+  String? get password => _$this._password;
+  set password(String? password) => _$this._password = password;
+
   MediaBuilder? _avatar;
   MediaBuilder get avatar => _$this._avatar ??= new MediaBuilder();
   set avatar(MediaBuilder? avatar) => _$this._avatar = avatar;
@@ -342,7 +340,6 @@ class GamevaultUserBuilder
       _createdAt = $v.createdAt;
       _entityVersion = $v.entityVersion;
       _username = $v.username;
-      _password = $v.password;
       _socketSecret = $v.socketSecret;
       _email = $v.email;
       _firstName = $v.firstName;
@@ -352,6 +349,7 @@ class GamevaultUserBuilder
       _bookmarkedGames = $v.bookmarkedGames.toBuilder();
       _updatedAt = $v.updatedAt;
       _deletedAt = $v.deletedAt;
+      _password = $v.password;
       _avatar = $v.avatar?.toBuilder();
       _background = $v.background?.toBuilder();
       _birthDate = $v.birthDate;
@@ -389,8 +387,6 @@ class GamevaultUserBuilder
                 entityVersion, r'GamevaultUser', 'entityVersion'),
             username: BuiltValueNullFieldError.checkNotNull(
                 username, r'GamevaultUser', 'username'),
-            password: BuiltValueNullFieldError.checkNotNull(
-                password, r'GamevaultUser', 'password'),
             socketSecret: BuiltValueNullFieldError.checkNotNull(
                 socketSecret, r'GamevaultUser', 'socketSecret'),
             email: BuiltValueNullFieldError.checkNotNull(
@@ -406,6 +402,7 @@ class GamevaultUserBuilder
             bookmarkedGames: bookmarkedGames.build(),
             updatedAt: updatedAt,
             deletedAt: deletedAt,
+            password: password,
             avatar: _avatar?.build(),
             background: _background?.build(),
             birthDate: birthDate,

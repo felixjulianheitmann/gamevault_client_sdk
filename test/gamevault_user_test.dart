@@ -31,12 +31,6 @@ void main() {
       // TODO
     });
 
-    // encrypted password of the user
-    // String password
-    test('to test the property `password`', () async {
-      // TODO
-    });
-
     // the user's socket secret is used for authentication with the server over the websocket protocol.
     // String socketSecret
     test('to test the property `socketSecret`', () async {
@@ -88,6 +82,12 @@ void main() {
     // date the entity was soft-deleted (null if not deleted)
     // DateTime deletedAt
     test('to test the property `deletedAt`', () async {
+      // TODO
+    });
+
+    // encrypted password of the user
+    // String password
+    test('to test the property `password`', () async {
       // TODO
     });
 

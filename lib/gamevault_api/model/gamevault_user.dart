@@ -19,7 +19,6 @@ part 'gamevault_user.g.dart';
 /// * [createdAt] - date the entity was created
 /// * [entityVersion] - incremental version number of the entity
 /// * [username] - username of the user
-/// * [password] - encrypted password of the user
 /// * [socketSecret] - the user's socket secret is used for authentication with the server over the websocket protocol.
 /// * [email] - email address of the user
 /// * [firstName] - first name of the user
@@ -29,6 +28,7 @@ part 'gamevault_user.g.dart';
 /// * [bookmarkedGames] - games bookmarked by this user
 /// * [updatedAt] - date the entity was updated
 /// * [deletedAt] - date the entity was soft-deleted (null if not deleted)
+/// * [password] - encrypted password of the user
 /// * [avatar] - the user's avatar image
 /// * [background] - the user's profile background image
 /// * [birthDate] - birthday of the user
@@ -52,10 +52,6 @@ abstract class GamevaultUser
   /// username of the user
   @BuiltValueField(wireName: r'username')
   String get username;
-
-  /// encrypted password of the user
-  @BuiltValueField(wireName: r'password')
-  String get password;
 
   /// the user's socket secret is used for authentication with the server over the websocket protocol.
   @BuiltValueField(wireName: r'socket_secret')
@@ -93,6 +89,10 @@ abstract class GamevaultUser
   /// date the entity was soft-deleted (null if not deleted)
   @BuiltValueField(wireName: r'deleted_at')
   DateTime? get deletedAt;
+
+  /// encrypted password of the user
+  @BuiltValueField(wireName: r'password')
+  String? get password;
 
   /// the user's avatar image
   @BuiltValueField(wireName: r'avatar')
@@ -159,11 +159,6 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
       object.username,
       specifiedType: const FullType(String),
     );
-    yield r'password';
-    yield serializers.serialize(
-      object.password,
-      specifiedType: const FullType(String),
-    );
     yield r'socket_secret';
     yield serializers.serialize(
       object.socketSecret,
@@ -211,6 +206,13 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
       yield serializers.serialize(
         object.deletedAt,
         specifiedType: const FullType(DateTime),
+      );
+    }
+    if (object.password != null) {
+      yield r'password';
+      yield serializers.serialize(
+        object.password,
+        specifiedType: const FullType(String),
       );
     }
     if (object.avatar != null) {
@@ -301,13 +303,6 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
           ) as String;
           result.username = valueDes;
           break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
         case r'socket_secret':
           final valueDes = serializers.deserialize(
             value,
@@ -370,6 +365,13 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
             specifiedType: const FullType(DateTime),
           ) as DateTime;
           result.deletedAt = valueDes;
+          break;
+        case r'password':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.password = valueDes;
           break;
         case r'avatar':
           final valueDes = serializers.deserialize(
@@ -437,19 +439,19 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
 
 class GamevaultUserRoleEnum extends EnumClass {
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireNumber: 0)
+  @BuiltValueEnumConst(wireName: r'0')
   static const GamevaultUserRoleEnum n0 = _$gamevaultUserRoleEnum_n0;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireNumber: 1)
+  @BuiltValueEnumConst(wireName: r'1')
   static const GamevaultUserRoleEnum n1 = _$gamevaultUserRoleEnum_n1;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireNumber: 2)
+  @BuiltValueEnumConst(wireName: r'2')
   static const GamevaultUserRoleEnum n2 = _$gamevaultUserRoleEnum_n2;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireNumber: 3)
+  @BuiltValueEnumConst(wireName: r'3')
   static const GamevaultUserRoleEnum n3 = _$gamevaultUserRoleEnum_n3;
 
   static Serializer<GamevaultUserRoleEnum> get serializer =>
