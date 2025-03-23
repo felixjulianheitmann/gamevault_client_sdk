@@ -274,7 +274,7 @@ class GamevaultUser {
         socketSecret: mapValueOfType<String>(json, r'socket_secret')!,
         firstName: mapValueOfType<String>(json, r'first_name')!,
         activated: mapValueOfType<bool>(json, r'activated')!,
-        role: GamevaultUserRoleEnum.parse('${json[r'role']}'),
+        role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,
         bookmarkedGames: GamevaultGame.listFromJson(json[r'bookmarked_games']),
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
@@ -367,10 +367,10 @@ class GamevaultUserRoleEnum {
 
   num toJson() => value;
 
-  static const n0 = GamevaultUserRoleEnum._('0');
-  static const n1 = GamevaultUserRoleEnum._('1');
-  static const n2 = GamevaultUserRoleEnum._('2');
-  static const n3 = GamevaultUserRoleEnum._('3');
+  static const n0 = GamevaultUserRoleEnum._(0);
+  static const n1 = GamevaultUserRoleEnum._(1);
+  static const n2 = GamevaultUserRoleEnum._(2);
+  static const n3 = GamevaultUserRoleEnum._(3);
 
   /// List of all possible values in this [enum][GamevaultUserRoleEnum].
   static const values = <GamevaultUserRoleEnum>[

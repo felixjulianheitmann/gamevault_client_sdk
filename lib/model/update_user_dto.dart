@@ -227,7 +227,7 @@ class UpdateUserDto {
         avatarId: num.parse('${json[r'avatar_id']}'),
         backgroundId: num.parse('${json[r'background_id']}'),
         activated: mapValueOfType<bool>(json, r'activated'),
-        role: UpdateUserDtoRoleEnum.parse('${json[r'role']}'),
+        role: UpdateUserDtoRoleEnum.fromJson(json[r'role'])!,
       );
     }
     return null;
@@ -299,10 +299,10 @@ class UpdateUserDtoRoleEnum {
 
   num toJson() => value;
 
-  static const n0 = UpdateUserDtoRoleEnum._('0');
-  static const n1 = UpdateUserDtoRoleEnum._('1');
-  static const n2 = UpdateUserDtoRoleEnum._('2');
-  static const n3 = UpdateUserDtoRoleEnum._('3');
+  static const n0 = UpdateUserDtoRoleEnum._(0);
+  static const n1 = UpdateUserDtoRoleEnum._(1);
+  static const n2 = UpdateUserDtoRoleEnum._(2);
+  static const n3 = UpdateUserDtoRoleEnum._(3);
 
   /// List of all possible values in this [enum][UpdateUserDtoRoleEnum].
   static const values = <UpdateUserDtoRoleEnum>[
