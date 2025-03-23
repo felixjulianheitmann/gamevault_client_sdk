@@ -431,7 +431,7 @@ providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provi
         releaseDate: mapDateTime(json, r'release_date', r''),
         description: mapValueOfType<String>(json, r'description'),
         notes: mapValueOfType<String>(json, r'notes'),
-        averagePlaytime: num.parse('${json[r'average_playtime']}'),
+averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,
         cover: Media.fromJson(json[r'cover']),
         background: Media.fromJson(json[r'background']),
         urlScreenshots: json[r'url_screenshots'] is List
