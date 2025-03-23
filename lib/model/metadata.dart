@@ -19,7 +19,7 @@ class Metadata {
     required this.totalPages,
     this.sortBy = const [],
     this.searchBy = const [],
-    required this.search,
+    this.search,
     this.select = const [],
     this.filter,
   });
@@ -43,7 +43,13 @@ class Metadata {
   List<String> searchBy;
 
   /// search query
-  String search;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? search;
 
   /// select string
   List<String> select;
@@ -78,7 +84,7 @@ class Metadata {
     (totalPages.hashCode) +
     (sortBy.hashCode) +
     (searchBy.hashCode) +
-    (search.hashCode) +
+    (search == null ? 0 : search!.hashCode) +
     (select.hashCode) +
     (filter == null ? 0 : filter!.hashCode);
 
@@ -93,7 +99,11 @@ class Metadata {
       json[r'totalPages'] = this.totalPages;
       json[r'sortBy'] = this.sortBy;
       json[r'searchBy'] = this.searchBy;
+    if (this.search != null) {
       json[r'search'] = this.search;
+    } else {
+      json[r'search'] = null;
+    }
       json[r'select'] = this.select;
     if (this.filter != null) {
       json[r'filter'] = this.filter;
@@ -132,7 +142,7 @@ class Metadata {
         searchBy: json[r'searchBy'] is Iterable
             ? (json[r'searchBy'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        search: mapValueOfType<String>(json, r'search')!,
+        search: mapValueOfType<String>(json, r'search'),
         select: json[r'select'] is Iterable
             ? (json[r'select'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -189,9 +199,6 @@ class Metadata {
     'currentPage',
     'totalPages',
     'sortBy',
-    'searchBy',
-    'search',
-    'select',
   };
 }
 

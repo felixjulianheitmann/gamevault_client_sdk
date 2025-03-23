@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **currentPage** | **num** | current page number | 
 **totalPages** | **num** | total number of pages | 
 **sortBy** | **List<String>** | sorting that was applied by the query | [default to const []]
-**searchBy** | **List<String>** | searches that were applied by the query | [default to const []]
-**search** | **String** | search query | 
-**select** | **List<String>** | select string | [default to const []]
+**searchBy** | **List<String>** | searches that were applied by the query | [optional] [default to const []]
+**search** | **String** | search query | [optional] 
+**select** | **List<String>** | select string | [optional] [default to const []]
 **filter** | [**Object**](.md) | filters that were applied by the query | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
