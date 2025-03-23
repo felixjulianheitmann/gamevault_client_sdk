@@ -1,8 +1,8 @@
-# openapi.api.SavefileApi
+# gamevault_client_sdk.api.SavefileApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 All URIs are relative to *http://localhost:8080*
@@ -23,7 +23,7 @@ Only admins or the user who is associated to the savefile can delete a games sav
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
@@ -70,7 +70,7 @@ Only admins or the user who is associated to the savefile can download a games s
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
@@ -118,7 +118,7 @@ Only admins or the user who is associated to the savefile can upload a games sav
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';

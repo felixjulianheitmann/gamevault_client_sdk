@@ -2,10 +2,10 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'openapi'
-version: '1.0.0'
-description: 'OpenAPI API client'
-homepage: 'homepage'
+name: 'gamevault_client_sdk'
+version: '0.0.1'
+description: 'Just the auto-generated client sdk for the gamevault API'
+homepage: 'https://github.com/felixjulianheitmann/gamevault_client_sdk.git'
 environment:
   sdk: '>=2.12.0 <4.0.0'
 dependencies:

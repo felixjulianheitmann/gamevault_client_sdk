@@ -1,8 +1,8 @@
-# openapi.api.GenresApi
+# gamevault_client_sdk.api.GenresApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 All URIs are relative to *http://localhost:8080*
@@ -21,7 +21,7 @@ by default the list is sorted by the amount of games that are in each genre.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';

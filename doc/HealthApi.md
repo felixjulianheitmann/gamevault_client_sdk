@@ -1,8 +1,8 @@
-# openapi.api.HealthApi
+# gamevault_client_sdk.api.HealthApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 All URIs are relative to *http://localhost:8080*
@@ -19,7 +19,7 @@ returns a lifesign
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 
 final api_instance = HealthApi();
 

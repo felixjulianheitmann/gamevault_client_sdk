@@ -1,8 +1,8 @@
-# openapi.api.AdminApi
+# gamevault_client_sdk.api.AdminApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 All URIs are relative to *http://localhost:8080*
@@ -21,7 +21,7 @@ Create and download a database backup. This process will generate an unencrypted
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
@@ -64,7 +64,7 @@ returns lifesign and additional server metrics for administrators
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';
@@ -104,7 +104,7 @@ Upload and restore a previously saved database dump. This action will replace al
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 // TODO Configure HTTP basic authorization: basic
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').username = 'YOUR_USERNAME'
 //defaultApiClient.getAuthentication<HttpBasicAuth>('basic').password = 'YOUR_PASSWORD';

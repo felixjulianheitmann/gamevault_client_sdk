@@ -1,8 +1,8 @@
-# openapi.model.Links
+# gamevault_client_sdk.model.Links
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 ## Properties

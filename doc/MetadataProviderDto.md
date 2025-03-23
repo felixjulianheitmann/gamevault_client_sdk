@@ -1,8 +1,8 @@
-# openapi.model.MetadataProviderDto
+# gamevault_client_sdk.model.MetadataProviderDto
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:gamevault_client_sdk/api.dart';
 ```
 
 ## Properties
