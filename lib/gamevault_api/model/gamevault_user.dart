@@ -437,19 +437,19 @@ class _$GamevaultUserSerializer implements PrimitiveSerializer<GamevaultUser> {
 
 class GamevaultUserRoleEnum extends EnumClass {
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'0')
+  @BuiltValueEnumConst(wireNumber: 0)
   static const GamevaultUserRoleEnum n0 = _$gamevaultUserRoleEnum_n0;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'1')
+  @BuiltValueEnumConst(wireNumber: 1)
   static const GamevaultUserRoleEnum n1 = _$gamevaultUserRoleEnum_n1;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'2')
+  @BuiltValueEnumConst(wireNumber: 2)
   static const GamevaultUserRoleEnum n2 = _$gamevaultUserRoleEnum_n2;
 
   /// The role determines the set of permissions and access rights for a user in the system.
-  @BuiltValueEnumConst(wireName: r'3')
+  @BuiltValueEnumConst(wireNumber: 3)
   static const GamevaultUserRoleEnum n3 = _$gamevaultUserRoleEnum_n3;
 
   static Serializer<GamevaultUserRoleEnum> get serializer =>
