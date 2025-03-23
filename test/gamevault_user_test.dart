@@ -46,21 +46,9 @@ void main() {
       // TODO
     });
 
-    // email address of the user
-    // String email
-    test('to test the property `email`', () async {
-      // TODO
-    });
-
     // first name of the user
     // String firstName
     test('to test the property `firstName`', () async {
-      // TODO
-    });
-
-    // last name of the user
-    // String lastName
-    test('to test the property `lastName`', () async {
       // TODO
     });
 
@@ -109,6 +97,18 @@ void main() {
     // the user's profile background image
     // Media background
     test('to test the property `background`', () async {
+      // TODO
+    });
+
+    // email address of the user
+    // String email
+    test('to test the property `email`', () async {
+      // TODO
+    });
+
+    // last name of the user
+    // String lastName
+    test('to test the property `lastName`', () async {
       // TODO
     });
 

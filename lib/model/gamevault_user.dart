@@ -18,9 +18,7 @@ class GamevaultUser {
     required this.entityVersion,
     required this.username,
     required this.socketSecret,
-    required this.email,
     required this.firstName,
-    required this.lastName,
     required this.activated,
     required this.role,
     this.bookmarkedGames = const [],
@@ -29,6 +27,8 @@ class GamevaultUser {
     this.password,
     this.avatar,
     this.background,
+    this.email,
+    this.lastName,
     this.birthDate,
     this.progresses = const [],
     this.uploadedMedia = const [],
@@ -49,14 +49,8 @@ class GamevaultUser {
   /// the user's socket secret is used for authentication with the server over the websocket protocol.
   String socketSecret;
 
-  /// email address of the user
-  String email;
-
   /// first name of the user
   String firstName;
-
-  /// last name of the user
-  String lastName;
 
   /// indicates if the user is activated
   bool activated;
@@ -112,6 +106,24 @@ class GamevaultUser {
   ///
   Media? background;
 
+  /// email address of the user
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
+  /// last name of the user
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? lastName;
+
   /// birthday of the user
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -136,9 +148,7 @@ class GamevaultUser {
           other.entityVersion == entityVersion &&
           other.username == username &&
           other.socketSecret == socketSecret &&
-          other.email == email &&
           other.firstName == firstName &&
-          other.lastName == lastName &&
           other.activated == activated &&
           other.role == role &&
           _deepEquality.equals(other.bookmarkedGames, bookmarkedGames) &&
@@ -147,6 +157,8 @@ class GamevaultUser {
           other.password == password &&
           other.avatar == avatar &&
           other.background == background &&
+          other.email == email &&
+          other.lastName == lastName &&
           other.birthDate == birthDate &&
           _deepEquality.equals(other.progresses, progresses) &&
           _deepEquality.equals(other.uploadedMedia, uploadedMedia);
@@ -159,9 +171,7 @@ class GamevaultUser {
       (entityVersion.hashCode) +
       (username.hashCode) +
       (socketSecret.hashCode) +
-      (email.hashCode) +
       (firstName.hashCode) +
-      (lastName.hashCode) +
       (activated.hashCode) +
       (role.hashCode) +
       (bookmarkedGames.hashCode) +
@@ -170,13 +180,15 @@ class GamevaultUser {
       (password == null ? 0 : password!.hashCode) +
       (avatar == null ? 0 : avatar!.hashCode) +
       (background == null ? 0 : background!.hashCode) +
+      (email == null ? 0 : email!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
       (birthDate == null ? 0 : birthDate!.hashCode) +
       (progresses.hashCode) +
       (uploadedMedia.hashCode);
 
   @override
   String toString() =>
-      'GamevaultUser[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, username=$username, socketSecret=$socketSecret, email=$email, firstName=$firstName, lastName=$lastName, activated=$activated, role=$role, bookmarkedGames=$bookmarkedGames, updatedAt=$updatedAt, deletedAt=$deletedAt, password=$password, avatar=$avatar, background=$background, birthDate=$birthDate, progresses=$progresses, uploadedMedia=$uploadedMedia]';
+      'GamevaultUser[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, username=$username, socketSecret=$socketSecret, firstName=$firstName, activated=$activated, role=$role, bookmarkedGames=$bookmarkedGames, updatedAt=$updatedAt, deletedAt=$deletedAt, password=$password, avatar=$avatar, background=$background, email=$email, lastName=$lastName, birthDate=$birthDate, progresses=$progresses, uploadedMedia=$uploadedMedia]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -185,9 +197,7 @@ class GamevaultUser {
     json[r'entity_version'] = this.entityVersion;
     json[r'username'] = this.username;
     json[r'socket_secret'] = this.socketSecret;
-    json[r'email'] = this.email;
     json[r'first_name'] = this.firstName;
-    json[r'last_name'] = this.lastName;
     json[r'activated'] = this.activated;
     json[r'role'] = this.role;
     json[r'bookmarked_games'] = this.bookmarkedGames;
@@ -215,6 +225,16 @@ class GamevaultUser {
       json[r'background'] = this.background;
     } else {
       json[r'background'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
+    }
+    if (this.lastName != null) {
+      json[r'last_name'] = this.lastName;
+    } else {
+      json[r'last_name'] = null;
     }
     if (this.birthDate != null) {
       json[r'birth_date'] = this.birthDate!.toUtc().toIso8601String();
@@ -252,17 +272,17 @@ class GamevaultUser {
         entityVersion: num.parse('${json[r'entity_version']}'),
         username: mapValueOfType<String>(json, r'username')!,
         socketSecret: mapValueOfType<String>(json, r'socket_secret')!,
-        email: mapValueOfType<String>(json, r'email')!,
         firstName: mapValueOfType<String>(json, r'first_name')!,
-        lastName: mapValueOfType<String>(json, r'last_name')!,
         activated: mapValueOfType<bool>(json, r'activated')!,
-        role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,
+        role: GamevaultUserRoleEnum.parse('${json[r'role']}'),
         bookmarkedGames: GamevaultGame.listFromJson(json[r'bookmarked_games']),
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
         password: mapValueOfType<String>(json, r'password'),
         avatar: Media.fromJson(json[r'avatar']),
         background: Media.fromJson(json[r'background']),
+        email: mapValueOfType<String>(json, r'email'),
+        lastName: mapValueOfType<String>(json, r'last_name'),
         birthDate: mapDateTime(json, r'birth_date', r''),
         progresses: Progress.listFromJson(json[r'progresses']),
         uploadedMedia: Media.listFromJson(json[r'uploaded_media']),
@@ -327,9 +347,7 @@ class GamevaultUser {
     'entity_version',
     'username',
     'socket_secret',
-    'email',
     'first_name',
-    'last_name',
     'activated',
     'role',
     'bookmarked_games',
@@ -349,10 +367,10 @@ class GamevaultUserRoleEnum {
 
   num toJson() => value;
 
-  static const n0 = GamevaultUserRoleEnum._(0);
-  static const n1 = GamevaultUserRoleEnum._(1);
-  static const n2 = GamevaultUserRoleEnum._(2);
-  static const n3 = GamevaultUserRoleEnum._(3);
+  static const n0 = GamevaultUserRoleEnum._('0');
+  static const n1 = GamevaultUserRoleEnum._('1');
+  static const n2 = GamevaultUserRoleEnum._('2');
+  static const n3 = GamevaultUserRoleEnum._('3');
 
   /// List of all possible values in this [enum][GamevaultUserRoleEnum].
   static const values = <GamevaultUserRoleEnum>[

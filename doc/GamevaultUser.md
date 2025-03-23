@@ -13,9 +13,7 @@ Name | Type | Description | Notes
 **entityVersion** | **num** | incremental version number of the entity | 
 **username** | **String** | username of the user | 
 **socketSecret** | **String** | the user's socket secret is used for authentication with the server over the websocket protocol. | 
-**email** | **String** | email address of the user | 
 **firstName** | **String** | first name of the user | 
-**lastName** | **String** | last name of the user | 
 **activated** | **bool** | indicates if the user is activated | 
 **role** | **num** | The role determines the set of permissions and access rights for a user in the system. | 
 **bookmarkedGames** | [**List<GamevaultGame>**](GamevaultGame.md) | games bookmarked by this user | [default to const []]
@@ -24,6 +22,8 @@ Name | Type | Description | Notes
 **password** | **String** | encrypted password of the user | [optional] 
 **avatar** | [**Media**](Media.md) | the user's avatar image | [optional] 
 **background** | [**Media**](Media.md) | the user's profile background image | [optional] 
+**email** | **String** | email address of the user | [optional] 
+**lastName** | **String** | last name of the user | [optional] 
 **birthDate** | [**DateTime**](DateTime.md) | birthday of the user | [optional] 
 **progresses** | [**List<Progress>**](Progress.md) | progresses of the user | [optional] [default to const []]
 **uploadedMedia** | [**List<Media>**](Media.md) | media uploaded by this user | [optional] [default to const []]
