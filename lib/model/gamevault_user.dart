@@ -402,10 +402,10 @@ class GamevaultUserRoleEnumTypeTransformer {
   GamevaultUserRoleEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case '0': return GamevaultUserRoleEnum.n0;
-        case '1': return GamevaultUserRoleEnum.n1;
-        case '2': return GamevaultUserRoleEnum.n2;
-        case '3': return GamevaultUserRoleEnum.n3;
+case 0: return GamevaultUserRoleEnum.n0;
+case 1: return GamevaultUserRoleEnum.n1;
+case 2: return GamevaultUserRoleEnum.n2;
+case 3: return GamevaultUserRoleEnum.n3;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

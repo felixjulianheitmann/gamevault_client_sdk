@@ -335,10 +335,10 @@ class UpdateUserDtoRoleEnumTypeTransformer {
   UpdateUserDtoRoleEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case '0': return UpdateUserDtoRoleEnum.n0;
-        case '1': return UpdateUserDtoRoleEnum.n1;
-        case '2': return UpdateUserDtoRoleEnum.n2;
-        case '3': return UpdateUserDtoRoleEnum.n3;
+case 0: return UpdateUserDtoRoleEnum.n0;
+case 1: return UpdateUserDtoRoleEnum.n1;
+case 2: return UpdateUserDtoRoleEnum.n2;
+case 3: return UpdateUserDtoRoleEnum.n3;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
