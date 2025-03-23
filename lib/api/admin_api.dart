@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class AdminApi {
   AdminApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,9 +24,7 @@ class AdminApi {
   ///
   /// * [String] xDatabasePassword (required):
   ///   This header should include the database password. Without the correct password, your request will be denied.
-  Future<Response> getAdminDatabaseBackupWithHttpInfo(
-    String xDatabasePassword,
-  ) async {
+  Future<Response> getAdminDatabaseBackupWithHttpInfo(String xDatabasePassword,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/admin/database/backup';
 
@@ -39,6 +38,7 @@ class AdminApi {
     headerParams[r'X-Database-Password'] = parameterToString(xDatabasePassword);
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -57,12 +57,8 @@ class AdminApi {
   ///
   /// * [String] xDatabasePassword (required):
   ///   This header should include the database password. Without the correct password, your request will be denied.
-  Future<void> getAdminDatabaseBackup(
-    String xDatabasePassword,
-  ) async {
-    final response = await getAdminDatabaseBackupWithHttpInfo(
-      xDatabasePassword,
-    );
+  Future<void> getAdminDatabaseBackup(String xDatabasePassword,) async {
+    final response = await getAdminDatabaseBackupWithHttpInfo(xDatabasePassword,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -84,6 +80,7 @@ class AdminApi {
 
     const contentTypes = <String>[];
 
+
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -104,12 +101,9 @@ class AdminApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'Health',
-      ) as Health;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Health',) as Health;
+    
     }
     return null;
   }
@@ -122,9 +116,7 @@ class AdminApi {
   ///
   /// * [String] xDatabasePassword (required):
   ///   This header should include the database password. Without the correct password, your request will be denied.
-  Future<Response> postAdminDatabaseRestoreWithHttpInfo(
-    String xDatabasePassword,
-  ) async {
+  Future<Response> postAdminDatabaseRestoreWithHttpInfo(String xDatabasePassword,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/admin/database/restore';
 
@@ -138,6 +130,7 @@ class AdminApi {
     headerParams[r'X-Database-Password'] = parameterToString(xDatabasePassword);
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -156,12 +149,8 @@ class AdminApi {
   ///
   /// * [String] xDatabasePassword (required):
   ///   This header should include the database password. Without the correct password, your request will be denied.
-  Future<void> postAdminDatabaseRestore(
-    String xDatabasePassword,
-  ) async {
-    final response = await postAdminDatabaseRestoreWithHttpInfo(
-      xDatabasePassword,
-    );
+  Future<void> postAdminDatabaseRestore(String xDatabasePassword,) async {
+    final response = await postAdminDatabaseRestoreWithHttpInfo(xDatabasePassword,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class UserApi {
   UserApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,12 +24,10 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<Response> deleteUserByUserIdWithHttpInfo(
-    num userId,
-  ) async {
+  Future<Response> deleteUserByUserIdWithHttpInfo(num userId,) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+    final path = r'/api/users/{user_id}'
+      .replaceAll('{user_id}', userId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -38,6 +37,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -56,24 +56,17 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<GamevaultUser?> deleteUserByUserId(
-    num userId,
-  ) async {
-    final response = await deleteUserByUserIdWithHttpInfo(
-      userId,
-    );
+  Future<GamevaultUser?> deleteUserByUserId(num userId,) async {
+    final response = await deleteUserByUserIdWithHttpInfo(userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -93,6 +86,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -114,12 +108,9 @@ class UserApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -132,12 +123,10 @@ class UserApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Response> deleteUsersMeBookmarkWithHttpInfo(
-    num gameId,
-  ) async {
+  Future<Response> deleteUsersMeBookmarkWithHttpInfo(num gameId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/me/bookmark/{game_id}'
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -147,6 +136,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -165,12 +155,8 @@ class UserApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<void> deleteUsersMeBookmark(
-    num gameId,
-  ) async {
-    final response = await deleteUsersMeBookmarkWithHttpInfo(
-      gameId,
-    );
+  Future<void> deleteUsersMeBookmark(num gameId,) async {
+    final response = await deleteUsersMeBookmarkWithHttpInfo(gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -184,12 +170,10 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<Response> getUserByUserIdWithHttpInfo(
-    num userId,
-  ) async {
+  Future<Response> getUserByUserIdWithHttpInfo(num userId,) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+    final path = r'/api/users/{user_id}'
+      .replaceAll('{user_id}', userId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -199,6 +183,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -217,24 +202,17 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<GamevaultUser?> getUserByUserId(
-    num userId,
-  ) async {
-    final response = await getUserByUserIdWithHttpInfo(
-      userId,
-    );
+  Future<GamevaultUser?> getUserByUserId(num userId,) async {
+    final response = await getUserByUserIdWithHttpInfo(userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -254,6 +232,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -275,13 +254,12 @@ class UserApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(
-              responseBody, 'List<GamevaultUser>') as List)
-          .cast<GamevaultUser>()
-          .toList(growable: false);
+      return (await apiClient.deserializeAsync(responseBody, 'List<GamevaultUser>') as List)
+        .cast<GamevaultUser>()
+        .toList(growable: false);
+
     }
     return null;
   }
@@ -301,6 +279,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -322,12 +301,9 @@ class UserApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -340,12 +316,10 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<Response> postUserRecoverByUserIdWithHttpInfo(
-    num userId,
-  ) async {
+  Future<Response> postUserRecoverByUserIdWithHttpInfo(num userId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/{user_id}/recover'
-        .replaceAll('{user_id}', userId.toString());
+      .replaceAll('{user_id}', userId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -355,6 +329,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -373,24 +348,17 @@ class UserApi {
   ///
   /// * [num] userId (required):
   ///   id of the user
-  Future<GamevaultUser?> postUserRecoverByUserId(
-    num userId,
-  ) async {
-    final response = await postUserRecoverByUserIdWithHttpInfo(
-      userId,
-    );
+  Future<GamevaultUser?> postUserRecoverByUserId(num userId,) async {
+    final response = await postUserRecoverByUserIdWithHttpInfo(userId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -404,9 +372,7 @@ class UserApi {
   /// Parameters:
   ///
   /// * [RegisterUserDto] registerUserDto (required):
-  Future<Response> postUserRegisterWithHttpInfo(
-    RegisterUserDto registerUserDto,
-  ) async {
+  Future<Response> postUserRegisterWithHttpInfo(RegisterUserDto registerUserDto,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/register';
 
@@ -419,6 +385,7 @@ class UserApi {
 
     const contentTypes = <String>['application/json'];
 
+
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -437,24 +404,17 @@ class UserApi {
   /// Parameters:
   ///
   /// * [RegisterUserDto] registerUserDto (required):
-  Future<GamevaultUser?> postUserRegister(
-    RegisterUserDto registerUserDto,
-  ) async {
-    final response = await postUserRegisterWithHttpInfo(
-      registerUserDto,
-    );
+  Future<GamevaultUser?> postUserRegister(RegisterUserDto registerUserDto,) async {
+    final response = await postUserRegisterWithHttpInfo(registerUserDto,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -467,12 +427,10 @@ class UserApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Response> postUsersMeBookmarkWithHttpInfo(
-    num gameId,
-  ) async {
+  Future<Response> postUsersMeBookmarkWithHttpInfo(num gameId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/me/bookmark/{game_id}'
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -482,6 +440,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -500,12 +459,8 @@ class UserApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<void> postUsersMeBookmark(
-    num gameId,
-  ) async {
-    final response = await postUsersMeBookmarkWithHttpInfo(
-      gameId,
-    );
+  Future<void> postUsersMeBookmark(num gameId,) async {
+    final response = await postUsersMeBookmarkWithHttpInfo(gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -521,13 +476,10 @@ class UserApi {
   ///   id of the user
   ///
   /// * [UpdateUserDto] updateUserDto (required):
-  Future<Response> putUserByUserIdWithHttpInfo(
-    num userId,
-    UpdateUserDto updateUserDto,
-  ) async {
+  Future<Response> putUserByUserIdWithHttpInfo(num userId, UpdateUserDto updateUserDto,) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/api/users/{user_id}'.replaceAll('{user_id}', userId.toString());
+    final path = r'/api/users/{user_id}'
+      .replaceAll('{user_id}', userId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = updateUserDto;
@@ -537,6 +489,7 @@ class UserApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
+
 
     return apiClient.invokeAPI(
       path,
@@ -557,26 +510,17 @@ class UserApi {
   ///   id of the user
   ///
   /// * [UpdateUserDto] updateUserDto (required):
-  Future<GamevaultUser?> putUserByUserId(
-    num userId,
-    UpdateUserDto updateUserDto,
-  ) async {
-    final response = await putUserByUserIdWithHttpInfo(
-      userId,
-      updateUserDto,
-    );
+  Future<GamevaultUser?> putUserByUserId(num userId, UpdateUserDto updateUserDto,) async {
+    final response = await putUserByUserIdWithHttpInfo(userId, updateUserDto,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }
@@ -588,9 +532,7 @@ class UserApi {
   /// Parameters:
   ///
   /// * [UpdateUserDto] updateUserDto (required):
-  Future<Response> putUsersMeWithHttpInfo(
-    UpdateUserDto updateUserDto,
-  ) async {
+  Future<Response> putUsersMeWithHttpInfo(UpdateUserDto updateUserDto,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/me';
 
@@ -603,6 +545,7 @@ class UserApi {
 
     const contentTypes = <String>['application/json'];
 
+
     return apiClient.invokeAPI(
       path,
       'PUT',
@@ -619,24 +562,17 @@ class UserApi {
   /// Parameters:
   ///
   /// * [UpdateUserDto] updateUserDto (required):
-  Future<GamevaultUser?> putUsersMe(
-    UpdateUserDto updateUserDto,
-  ) async {
-    final response = await putUsersMeWithHttpInfo(
-      updateUserDto,
-    );
+  Future<GamevaultUser?> putUsersMe(UpdateUserDto updateUserDto,) async {
+    final response = await putUsersMeWithHttpInfo(updateUserDto,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultUser',
-      ) as GamevaultUser;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultUser',) as GamevaultUser;
+    
     }
     return null;
   }

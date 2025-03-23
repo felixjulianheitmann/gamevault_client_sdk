@@ -13,15 +13,12 @@ part of openapi.api;
 class Links {
   /// Returns a new [Links] instance.
   Links({
-    required this.current,
     this.first,
     this.previous,
+    required this.current,
     this.next,
     this.last,
   });
-
-  /// current page
-  String current;
 
   /// first page
   ///
@@ -40,6 +37,9 @@ class Links {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? previous;
+
+  /// current page
+  String current;
 
   /// next page
   ///
@@ -60,31 +60,27 @@ class Links {
   String? last;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Links &&
-          other.current == current &&
-          other.first == first &&
-          other.previous == previous &&
-          other.next == next &&
-          other.last == last;
+  bool operator ==(Object other) => identical(this, other) || other is Links &&
+    other.first == first &&
+    other.previous == previous &&
+    other.current == current &&
+    other.next == next &&
+    other.last == last;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (current.hashCode) +
-      (first == null ? 0 : first!.hashCode) +
-      (previous == null ? 0 : previous!.hashCode) +
-      (next == null ? 0 : next!.hashCode) +
-      (last == null ? 0 : last!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (first == null ? 0 : first!.hashCode) +
+    (previous == null ? 0 : previous!.hashCode) +
+    (current.hashCode) +
+    (next == null ? 0 : next!.hashCode) +
+    (last == null ? 0 : last!.hashCode);
 
   @override
-  String toString() =>
-      'Links[current=$current, first=$first, previous=$previous, next=$next, last=$last]';
+  String toString() => 'Links[first=$first, previous=$previous, current=$current, next=$next, last=$last]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'current'] = this.current;
     if (this.first != null) {
       json[r'first'] = this.first;
     } else {
@@ -95,6 +91,7 @@ class Links {
     } else {
       json[r'previous'] = null;
     }
+      json[r'current'] = this.current;
     if (this.next != null) {
       json[r'next'] = this.next;
     } else {
@@ -120,18 +117,16 @@ class Links {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "Links[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "Links[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Links[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Links[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return Links(
-        current: mapValueOfType<String>(json, r'current')!,
         first: mapValueOfType<String>(json, r'first'),
         previous: mapValueOfType<String>(json, r'previous'),
+        current: mapValueOfType<String>(json, r'current')!,
         next: mapValueOfType<String>(json, r'next'),
         last: mapValueOfType<String>(json, r'last'),
       );
@@ -139,10 +134,7 @@ class Links {
     return null;
   }
 
-  static List<Links> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<Links> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Links>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -170,19 +162,13 @@ class Links {
   }
 
   // maps a json object with a list of Links-objects as value to a dart map
-  static Map<String, List<Links>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<Links>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Links>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Links.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = Links.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -193,3 +179,4 @@ class Links {
     'current',
   };
 }
+

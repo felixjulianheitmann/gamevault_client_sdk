@@ -28,24 +28,6 @@ void main() {
       // TODO
     });
 
-    // incremental version number of the entity
-    // num entityVersion
-    test('to test the property `entityVersion`', () async {
-      // TODO
-    });
-
-    // playtime in minutes
-    // num minutesPlayed
-    test('to test the property `minutesPlayed`', () async {
-      // TODO
-    });
-
-    // state of the game progress
-    // String state
-    test('to test the property `state`', () async {
-      // TODO
-    });
-
     // date the entity was updated
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
@@ -55,6 +37,12 @@ void main() {
     // date the entity was soft-deleted (null if not deleted)
     // DateTime deletedAt
     test('to test the property `deletedAt`', () async {
+      // TODO
+    });
+
+    // incremental version number of the entity
+    // num entityVersion
+    test('to test the property `entityVersion`', () async {
       // TODO
     });
 
@@ -70,10 +58,25 @@ void main() {
       // TODO
     });
 
+    // playtime in minutes
+    // num minutesPlayed
+    test('to test the property `minutesPlayed`', () async {
+      // TODO
+    });
+
+    // state of the game progress
+    // String state
+    test('to test the property `state`', () async {
+      // TODO
+    });
+
     // date the progress was updated
     // DateTime lastPlayedAt
     test('to test the property `lastPlayedAt`', () async {
       // TODO
     });
+
+
   });
+
 }

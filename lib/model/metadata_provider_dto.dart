@@ -28,27 +28,26 @@ class MetadataProviderDto {
   bool enabled;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MetadataProviderDto &&
-          other.slug == slug &&
-          other.priority == priority &&
-          other.enabled == enabled;
+  bool operator ==(Object other) => identical(this, other) || other is MetadataProviderDto &&
+    other.slug == slug &&
+    other.priority == priority &&
+    other.enabled == enabled;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (slug.hashCode) + (priority.hashCode) + (enabled.hashCode);
+    // ignore: unnecessary_parenthesis
+    (slug.hashCode) +
+    (priority.hashCode) +
+    (enabled.hashCode);
 
   @override
-  String toString() =>
-      'MetadataProviderDto[slug=$slug, priority=$priority, enabled=$enabled]';
+  String toString() => 'MetadataProviderDto[slug=$slug, priority=$priority, enabled=$enabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'slug'] = this.slug;
-    json[r'priority'] = this.priority;
-    json[r'enabled'] = this.enabled;
+      json[r'slug'] = this.slug;
+      json[r'priority'] = this.priority;
+      json[r'enabled'] = this.enabled;
     return json;
   }
 
@@ -64,10 +63,8 @@ class MetadataProviderDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "MetadataProviderDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "MetadataProviderDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "MetadataProviderDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "MetadataProviderDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -81,10 +78,7 @@ class MetadataProviderDto {
     return null;
   }
 
-  static List<MetadataProviderDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<MetadataProviderDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MetadataProviderDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -112,19 +106,13 @@ class MetadataProviderDto {
   }
 
   // maps a json object with a list of MetadataProviderDto-objects as value to a dart map
-  static Map<String, List<MetadataProviderDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<MetadataProviderDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<MetadataProviderDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MetadataProviderDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = MetadataProviderDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -137,3 +125,4 @@ class MetadataProviderDto {
     'enabled',
   };
 }
+

@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **num** | Unique gamevault-identifier of the entity | 
 **createdAt** | [**DateTime**](DateTime.md) | date the entity was created | 
-**entityVersion** | **num** | incremental version number of the entity | 
 **updatedAt** | [**DateTime**](DateTime.md) | date the entity was updated | [optional] 
 **deletedAt** | [**DateTime**](DateTime.md) | date the entity was soft-deleted (null if not deleted) | [optional] 
+**entityVersion** | **num** | incremental version number of the entity | 
 **sourceUrl** | **String** | the original source URL of the media | [optional] 
 **filePath** | **String** | the path of the media on the filesystem | [optional] 
 **type** | **String** | the media type of the media on the filesystem | [optional] 

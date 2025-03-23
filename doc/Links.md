@@ -8,9 +8,9 @@ import 'package:gamevault_client_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**current** | **String** | current page | 
 **first** | **String** | first page | [optional] 
 **previous** | **String** | previous page | [optional] 
+**current** | **String** | current page | 
 **next** | **String** | next page | [optional] 
 **last** | **String** | last page | [optional] 
 

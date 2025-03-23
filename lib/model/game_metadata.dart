@@ -15,17 +15,16 @@ class GameMetadata {
   GameMetadata({
     required this.id,
     required this.createdAt,
-    required this.entityVersion,
-    required this.providerSlug,
-    required this.title,
-    required this.earlyAccess,
     this.updatedAt,
     this.deletedAt,
+    required this.entityVersion,
     this.gamevaultGames = const [],
+    required this.providerSlug,
     this.providerDataId,
     this.providerDataUrl,
     this.providerPriority,
     this.ageRating = 0,
+    required this.title,
     this.releaseDate,
     this.description,
     this.notes,
@@ -37,6 +36,7 @@ class GameMetadata {
     this.urlGameplays = const [],
     this.urlWebsites = const [],
     this.rating,
+    required this.earlyAccess,
     this.launchParameters,
     this.launchExecutable,
     this.installerExecutable,
@@ -51,18 +51,6 @@ class GameMetadata {
 
   /// date the entity was created
   DateTime createdAt;
-
-  /// incremental version number of the entity
-  num entityVersion;
-
-  /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  String providerSlug;
-
-  /// title of the game
-  String title;
-
-  /// indicates if the game is in early access
-  bool earlyAccess;
 
   /// date the entity was updated
   ///
@@ -82,8 +70,14 @@ class GameMetadata {
   ///
   DateTime? deletedAt;
 
+  /// incremental version number of the entity
+  num entityVersion;
+
   /// games the metadata belongs to
   List<GamevaultGame> gamevaultGames;
+
+  /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+  String providerSlug;
 
   /// id of the game from the provider
   ///
@@ -114,6 +108,9 @@ class GameMetadata {
 
   /// the minimum age required to play the game
   num ageRating;
+
+  /// title of the game
+  String title;
 
   /// release date of the game
   ///
@@ -190,6 +187,9 @@ class GameMetadata {
   ///
   num? rating;
 
+  /// indicates if the game is in early access
+  bool earlyAccess;
+
   /// Predefined launch parameters for the game.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -230,88 +230,81 @@ class GameMetadata {
   List<GenreMetadata> genres;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GameMetadata &&
-          other.id == id &&
-          other.createdAt == createdAt &&
-          other.entityVersion == entityVersion &&
-          other.providerSlug == providerSlug &&
-          other.title == title &&
-          other.earlyAccess == earlyAccess &&
-          other.updatedAt == updatedAt &&
-          other.deletedAt == deletedAt &&
-          _deepEquality.equals(other.gamevaultGames, gamevaultGames) &&
-          other.providerDataId == providerDataId &&
-          other.providerDataUrl == providerDataUrl &&
-          other.providerPriority == providerPriority &&
-          other.ageRating == ageRating &&
-          other.releaseDate == releaseDate &&
-          other.description == description &&
-          other.notes == notes &&
-          other.averagePlaytime == averagePlaytime &&
-          other.cover == cover &&
-          other.background == background &&
-          _deepEquality.equals(other.urlScreenshots, urlScreenshots) &&
-          _deepEquality.equals(other.urlTrailers, urlTrailers) &&
-          _deepEquality.equals(other.urlGameplays, urlGameplays) &&
-          _deepEquality.equals(other.urlWebsites, urlWebsites) &&
-          other.rating == rating &&
-          other.launchParameters == launchParameters &&
-          other.launchExecutable == launchExecutable &&
-          other.installerExecutable == installerExecutable &&
-          _deepEquality.equals(other.publishers, publishers) &&
-          _deepEquality.equals(other.developers, developers) &&
-          _deepEquality.equals(other.tags, tags) &&
-          _deepEquality.equals(other.genres, genres);
+  bool operator ==(Object other) => identical(this, other) || other is GameMetadata &&
+    other.id == id &&
+    other.createdAt == createdAt &&
+    other.updatedAt == updatedAt &&
+    other.deletedAt == deletedAt &&
+    other.entityVersion == entityVersion &&
+    _deepEquality.equals(other.gamevaultGames, gamevaultGames) &&
+    other.providerSlug == providerSlug &&
+    other.providerDataId == providerDataId &&
+    other.providerDataUrl == providerDataUrl &&
+    other.providerPriority == providerPriority &&
+    other.ageRating == ageRating &&
+    other.title == title &&
+    other.releaseDate == releaseDate &&
+    other.description == description &&
+    other.notes == notes &&
+    other.averagePlaytime == averagePlaytime &&
+    other.cover == cover &&
+    other.background == background &&
+    _deepEquality.equals(other.urlScreenshots, urlScreenshots) &&
+    _deepEquality.equals(other.urlTrailers, urlTrailers) &&
+    _deepEquality.equals(other.urlGameplays, urlGameplays) &&
+    _deepEquality.equals(other.urlWebsites, urlWebsites) &&
+    other.rating == rating &&
+    other.earlyAccess == earlyAccess &&
+    other.launchParameters == launchParameters &&
+    other.launchExecutable == launchExecutable &&
+    other.installerExecutable == installerExecutable &&
+    _deepEquality.equals(other.publishers, publishers) &&
+    _deepEquality.equals(other.developers, developers) &&
+    _deepEquality.equals(other.tags, tags) &&
+    _deepEquality.equals(other.genres, genres);
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (createdAt.hashCode) +
-      (entityVersion.hashCode) +
-      (providerSlug.hashCode) +
-      (title.hashCode) +
-      (earlyAccess.hashCode) +
-      (updatedAt == null ? 0 : updatedAt!.hashCode) +
-      (deletedAt == null ? 0 : deletedAt!.hashCode) +
-      (gamevaultGames.hashCode) +
-      (providerDataId == null ? 0 : providerDataId!.hashCode) +
-      (providerDataUrl == null ? 0 : providerDataUrl!.hashCode) +
-      (providerPriority == null ? 0 : providerPriority!.hashCode) +
-      (ageRating.hashCode) +
-      (releaseDate == null ? 0 : releaseDate!.hashCode) +
-      (description == null ? 0 : description!.hashCode) +
-      (notes == null ? 0 : notes!.hashCode) +
-      (averagePlaytime == null ? 0 : averagePlaytime!.hashCode) +
-      (cover == null ? 0 : cover!.hashCode) +
-      (background == null ? 0 : background!.hashCode) +
-      (urlScreenshots.hashCode) +
-      (urlTrailers.hashCode) +
-      (urlGameplays.hashCode) +
-      (urlWebsites.hashCode) +
-      (rating == null ? 0 : rating!.hashCode) +
-      (launchParameters == null ? 0 : launchParameters!.hashCode) +
-      (launchExecutable == null ? 0 : launchExecutable!.hashCode) +
-      (installerExecutable == null ? 0 : installerExecutable!.hashCode) +
-      (publishers.hashCode) +
-      (developers.hashCode) +
-      (tags.hashCode) +
-      (genres.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (deletedAt == null ? 0 : deletedAt!.hashCode) +
+    (entityVersion.hashCode) +
+    (gamevaultGames.hashCode) +
+    (providerSlug.hashCode) +
+    (providerDataId == null ? 0 : providerDataId!.hashCode) +
+    (providerDataUrl == null ? 0 : providerDataUrl!.hashCode) +
+    (providerPriority == null ? 0 : providerPriority!.hashCode) +
+    (ageRating.hashCode) +
+    (title.hashCode) +
+    (releaseDate == null ? 0 : releaseDate!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (notes == null ? 0 : notes!.hashCode) +
+    (averagePlaytime == null ? 0 : averagePlaytime!.hashCode) +
+    (cover == null ? 0 : cover!.hashCode) +
+    (background == null ? 0 : background!.hashCode) +
+    (urlScreenshots.hashCode) +
+    (urlTrailers.hashCode) +
+    (urlGameplays.hashCode) +
+    (urlWebsites.hashCode) +
+    (rating == null ? 0 : rating!.hashCode) +
+    (earlyAccess.hashCode) +
+    (launchParameters == null ? 0 : launchParameters!.hashCode) +
+    (launchExecutable == null ? 0 : launchExecutable!.hashCode) +
+    (installerExecutable == null ? 0 : installerExecutable!.hashCode) +
+    (publishers.hashCode) +
+    (developers.hashCode) +
+    (tags.hashCode) +
+    (genres.hashCode);
 
   @override
-  String toString() =>
-      'GameMetadata[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, providerSlug=$providerSlug, title=$title, earlyAccess=$earlyAccess, updatedAt=$updatedAt, deletedAt=$deletedAt, gamevaultGames=$gamevaultGames, providerDataId=$providerDataId, providerDataUrl=$providerDataUrl, providerPriority=$providerPriority, ageRating=$ageRating, releaseDate=$releaseDate, description=$description, notes=$notes, averagePlaytime=$averagePlaytime, cover=$cover, background=$background, urlScreenshots=$urlScreenshots, urlTrailers=$urlTrailers, urlGameplays=$urlGameplays, urlWebsites=$urlWebsites, rating=$rating, launchParameters=$launchParameters, launchExecutable=$launchExecutable, installerExecutable=$installerExecutable, publishers=$publishers, developers=$developers, tags=$tags, genres=$genres]';
+  String toString() => 'GameMetadata[id=$id, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, entityVersion=$entityVersion, gamevaultGames=$gamevaultGames, providerSlug=$providerSlug, providerDataId=$providerDataId, providerDataUrl=$providerDataUrl, providerPriority=$providerPriority, ageRating=$ageRating, title=$title, releaseDate=$releaseDate, description=$description, notes=$notes, averagePlaytime=$averagePlaytime, cover=$cover, background=$background, urlScreenshots=$urlScreenshots, urlTrailers=$urlTrailers, urlGameplays=$urlGameplays, urlWebsites=$urlWebsites, rating=$rating, earlyAccess=$earlyAccess, launchParameters=$launchParameters, launchExecutable=$launchExecutable, installerExecutable=$installerExecutable, publishers=$publishers, developers=$developers, tags=$tags, genres=$genres]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-    json[r'entity_version'] = this.entityVersion;
-    json[r'provider_slug'] = this.providerSlug;
-    json[r'title'] = this.title;
-    json[r'early_access'] = this.earlyAccess;
+      json[r'id'] = this.id;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
@@ -322,7 +315,9 @@ class GameMetadata {
     } else {
       json[r'deleted_at'] = null;
     }
-    json[r'gamevault_games'] = this.gamevaultGames;
+      json[r'entity_version'] = this.entityVersion;
+      json[r'gamevault_games'] = this.gamevaultGames;
+      json[r'provider_slug'] = this.providerSlug;
     if (this.providerDataId != null) {
       json[r'provider_data_id'] = this.providerDataId;
     } else {
@@ -338,7 +333,8 @@ class GameMetadata {
     } else {
       json[r'provider_priority'] = null;
     }
-    json[r'age_rating'] = this.ageRating;
+      json[r'age_rating'] = this.ageRating;
+      json[r'title'] = this.title;
     if (this.releaseDate != null) {
       json[r'release_date'] = this.releaseDate!.toUtc().toIso8601String();
     } else {
@@ -369,15 +365,16 @@ class GameMetadata {
     } else {
       json[r'background'] = null;
     }
-    json[r'url_screenshots'] = this.urlScreenshots;
-    json[r'url_trailers'] = this.urlTrailers;
-    json[r'url_gameplays'] = this.urlGameplays;
-    json[r'url_websites'] = this.urlWebsites;
+      json[r'url_screenshots'] = this.urlScreenshots;
+      json[r'url_trailers'] = this.urlTrailers;
+      json[r'url_gameplays'] = this.urlGameplays;
+      json[r'url_websites'] = this.urlWebsites;
     if (this.rating != null) {
       json[r'rating'] = this.rating;
     } else {
       json[r'rating'] = null;
     }
+      json[r'early_access'] = this.earlyAccess;
     if (this.launchParameters != null) {
       json[r'launch_parameters'] = this.launchParameters;
     } else {
@@ -393,10 +390,10 @@ class GameMetadata {
     } else {
       json[r'installer_executable'] = null;
     }
-    json[r'publishers'] = this.publishers;
-    json[r'developers'] = this.developers;
-    json[r'tags'] = this.tags;
-    json[r'genres'] = this.genres;
+      json[r'publishers'] = this.publishers;
+      json[r'developers'] = this.developers;
+      json[r'tags'] = this.tags;
+      json[r'genres'] = this.genres;
     return json;
   }
 
@@ -412,10 +409,8 @@ class GameMetadata {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "GameMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "GameMetadata[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GameMetadata[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GameMetadata[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -423,17 +418,16 @@ class GameMetadata {
       return GameMetadata(
         id: num.parse('${json[r'id']}'),
         createdAt: mapDateTime(json, r'created_at', r'')!,
-        entityVersion: num.parse('${json[r'entity_version']}'),
-        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
-        title: mapValueOfType<String>(json, r'title')!,
-        earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
+        entityVersion: num.parse('${json[r'entity_version']}'),
         gamevaultGames: GamevaultGame.listFromJson(json[r'gamevault_games']),
+        providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
         providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
         providerDataUrl: mapValueOfType<String>(json, r'provider_data_url'),
         providerPriority: num.parse('${json[r'provider_priority']}'),
         ageRating: num.parse('${json[r'age_rating']}'),
+        title: mapValueOfType<String>(json, r'title')!,
         releaseDate: mapDateTime(json, r'release_date', r''),
         description: mapValueOfType<String>(json, r'description'),
         notes: mapValueOfType<String>(json, r'notes'),
@@ -441,34 +435,30 @@ class GameMetadata {
         cover: Media.fromJson(json[r'cover']),
         background: Media.fromJson(json[r'background']),
         urlScreenshots: json[r'url_screenshots'] is List
-            ? (json[r'url_screenshots'] as List)
-                .map((e) =>
-                    e == null ? const <String>[] : (e as List).cast<String>())
-                .toList()
-            : const [],
+          ? (json[r'url_screenshots'] as List).map((e) =>
+              e == null ? const  <String>[] : (e as List).cast<String>()
+            ).toList()
+          :  const [],
         urlTrailers: json[r'url_trailers'] is List
-            ? (json[r'url_trailers'] as List)
-                .map((e) =>
-                    e == null ? const <String>[] : (e as List).cast<String>())
-                .toList()
-            : const [],
+          ? (json[r'url_trailers'] as List).map((e) =>
+              e == null ? const  <String>[] : (e as List).cast<String>()
+            ).toList()
+          :  const [],
         urlGameplays: json[r'url_gameplays'] is List
-            ? (json[r'url_gameplays'] as List)
-                .map((e) =>
-                    e == null ? const <String>[] : (e as List).cast<String>())
-                .toList()
-            : const [],
+          ? (json[r'url_gameplays'] as List).map((e) =>
+              e == null ? const  <String>[] : (e as List).cast<String>()
+            ).toList()
+          :  const [],
         urlWebsites: json[r'url_websites'] is List
-            ? (json[r'url_websites'] as List)
-                .map((e) =>
-                    e == null ? const <String>[] : (e as List).cast<String>())
-                .toList()
-            : const [],
+          ? (json[r'url_websites'] as List).map((e) =>
+              e == null ? const  <String>[] : (e as List).cast<String>()
+            ).toList()
+          :  const [],
         rating: num.parse('${json[r'rating']}'),
+        earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
         launchParameters: mapValueOfType<String>(json, r'launch_parameters'),
         launchExecutable: mapValueOfType<String>(json, r'launch_executable'),
-        installerExecutable:
-            mapValueOfType<String>(json, r'installer_executable'),
+        installerExecutable: mapValueOfType<String>(json, r'installer_executable'),
         publishers: PublisherMetadata.listFromJson(json[r'publishers']),
         developers: DeveloperMetadata.listFromJson(json[r'developers']),
         tags: TagMetadata.listFromJson(json[r'tags']),
@@ -478,10 +468,7 @@ class GameMetadata {
     return null;
   }
 
-  static List<GameMetadata> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<GameMetadata> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GameMetadata>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -509,19 +496,13 @@ class GameMetadata {
   }
 
   // maps a json object with a list of GameMetadata-objects as value to a dart map
-  static Map<String, List<GameMetadata>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<GameMetadata>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GameMetadata>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GameMetadata.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = GameMetadata.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -537,3 +518,4 @@ class GameMetadata {
     'early_access',
   };
 }
+

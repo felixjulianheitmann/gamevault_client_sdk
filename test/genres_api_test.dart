@@ -11,6 +11,7 @@
 import 'package:gamevault_client_sdk/api.dart';
 import 'package:test/test.dart';
 
+
 /// tests for GenresApi
 void main() {
   // final instance = GenresApi();
@@ -24,5 +25,6 @@ void main() {
     test('test getGenres', () async {
       // TODO
     });
+
   });
 }

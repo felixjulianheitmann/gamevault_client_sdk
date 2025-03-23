@@ -14,8 +14,8 @@ class MinimalGameMetadataDto {
   /// Returns a new [MinimalGameMetadataDto] instance.
   MinimalGameMetadataDto({
     required this.providerSlug,
-    required this.title,
     this.providerDataId,
+    required this.title,
     this.releaseDate,
     this.coverUrl,
     this.description,
@@ -23,9 +23,6 @@ class MinimalGameMetadataDto {
 
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
   String providerSlug;
-
-  /// title of the game
-  String title;
 
   /// id of the game from the provider
   ///
@@ -35,6 +32,9 @@ class MinimalGameMetadataDto {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   String? providerDataId;
+
+  /// title of the game
+  String title;
 
   /// release date of the game
   ///
@@ -64,39 +64,36 @@ class MinimalGameMetadataDto {
   String? description;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MinimalGameMetadataDto &&
-          other.providerSlug == providerSlug &&
-          other.title == title &&
-          other.providerDataId == providerDataId &&
-          other.releaseDate == releaseDate &&
-          other.coverUrl == coverUrl &&
-          other.description == description;
+  bool operator ==(Object other) => identical(this, other) || other is MinimalGameMetadataDto &&
+    other.providerSlug == providerSlug &&
+    other.providerDataId == providerDataId &&
+    other.title == title &&
+    other.releaseDate == releaseDate &&
+    other.coverUrl == coverUrl &&
+    other.description == description;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (providerSlug.hashCode) +
-      (title.hashCode) +
-      (providerDataId == null ? 0 : providerDataId!.hashCode) +
-      (releaseDate == null ? 0 : releaseDate!.hashCode) +
-      (coverUrl == null ? 0 : coverUrl!.hashCode) +
-      (description == null ? 0 : description!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (providerSlug.hashCode) +
+    (providerDataId == null ? 0 : providerDataId!.hashCode) +
+    (title.hashCode) +
+    (releaseDate == null ? 0 : releaseDate!.hashCode) +
+    (coverUrl == null ? 0 : coverUrl!.hashCode) +
+    (description == null ? 0 : description!.hashCode);
 
   @override
-  String toString() =>
-      'MinimalGameMetadataDto[providerSlug=$providerSlug, title=$title, providerDataId=$providerDataId, releaseDate=$releaseDate, coverUrl=$coverUrl, description=$description]';
+  String toString() => 'MinimalGameMetadataDto[providerSlug=$providerSlug, providerDataId=$providerDataId, title=$title, releaseDate=$releaseDate, coverUrl=$coverUrl, description=$description]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'provider_slug'] = this.providerSlug;
-    json[r'title'] = this.title;
+      json[r'provider_slug'] = this.providerSlug;
     if (this.providerDataId != null) {
       json[r'provider_data_id'] = this.providerDataId;
     } else {
       json[r'provider_data_id'] = null;
     }
+      json[r'title'] = this.title;
     if (this.releaseDate != null) {
       json[r'release_date'] = this.releaseDate!.toUtc().toIso8601String();
     } else {
@@ -127,18 +124,16 @@ class MinimalGameMetadataDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "MinimalGameMetadataDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "MinimalGameMetadataDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "MinimalGameMetadataDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "MinimalGameMetadataDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return MinimalGameMetadataDto(
         providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
-        title: mapValueOfType<String>(json, r'title')!,
         providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
+        title: mapValueOfType<String>(json, r'title')!,
         releaseDate: mapDateTime(json, r'release_date', r''),
         coverUrl: mapValueOfType<String>(json, r'cover_url'),
         description: mapValueOfType<String>(json, r'description'),
@@ -147,10 +142,7 @@ class MinimalGameMetadataDto {
     return null;
   }
 
-  static List<MinimalGameMetadataDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<MinimalGameMetadataDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MinimalGameMetadataDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -178,19 +170,13 @@ class MinimalGameMetadataDto {
   }
 
   // maps a json object with a list of MinimalGameMetadataDto-objects as value to a dart map
-  static Map<String, List<MinimalGameMetadataDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<MinimalGameMetadataDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<MinimalGameMetadataDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MinimalGameMetadataDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = MinimalGameMetadataDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -202,3 +188,4 @@ class MinimalGameMetadataDto {
     'title',
   };
 }
+

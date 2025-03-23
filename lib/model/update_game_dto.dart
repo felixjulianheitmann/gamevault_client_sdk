@@ -30,25 +30,22 @@ class UpdateGameDto {
   UpdateGameUserMetadataDto? userMetadata;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateGameDto &&
-          _deepEquality.equals(other.mappingRequests, mappingRequests) &&
-          other.userMetadata == userMetadata;
+  bool operator ==(Object other) => identical(this, other) || other is UpdateGameDto &&
+    _deepEquality.equals(other.mappingRequests, mappingRequests) &&
+    other.userMetadata == userMetadata;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (mappingRequests.hashCode) +
-      (userMetadata == null ? 0 : userMetadata!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (mappingRequests.hashCode) +
+    (userMetadata == null ? 0 : userMetadata!.hashCode);
 
   @override
-  String toString() =>
-      'UpdateGameDto[mappingRequests=$mappingRequests, userMetadata=$userMetadata]';
+  String toString() => 'UpdateGameDto[mappingRequests=$mappingRequests, userMetadata=$userMetadata]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'mapping_requests'] = this.mappingRequests;
+      json[r'mapping_requests'] = this.mappingRequests;
     if (this.userMetadata != null) {
       json[r'user_metadata'] = this.userMetadata;
     } else {
@@ -69,27 +66,21 @@ class UpdateGameDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "UpdateGameDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "UpdateGameDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateGameDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateGameDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return UpdateGameDto(
         mappingRequests: MapGameDto.listFromJson(json[r'mapping_requests']),
-        userMetadata:
-            UpdateGameUserMetadataDto.fromJson(json[r'user_metadata']),
+        userMetadata: UpdateGameUserMetadataDto.fromJson(json[r'user_metadata']),
       );
     }
     return null;
   }
 
-  static List<UpdateGameDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<UpdateGameDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateGameDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -117,24 +108,20 @@ class UpdateGameDto {
   }
 
   // maps a json object with a list of UpdateGameDto-objects as value to a dart map
-  static Map<String, List<UpdateGameDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<UpdateGameDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UpdateGameDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateGameDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = UpdateGameDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
+

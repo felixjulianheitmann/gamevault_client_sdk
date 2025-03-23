@@ -14,15 +14,12 @@ class MapGameDto {
   /// Returns a new [MapGameDto] instance.
   MapGameDto({
     required this.providerSlug,
-    required this.providerPriority,
     this.providerDataId,
+    required this.providerPriority,
   });
 
   /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
   String providerSlug;
-
-  /// used to override the priority of usage for this provider. Lower priority providers are tried first, while higher priority providers fill in gaps.
-  num providerPriority;
 
   /// id of the target game from the provider. If not provided, the metadata for the specified provider will be unmapped.
   ///
@@ -33,34 +30,34 @@ class MapGameDto {
   ///
   String? providerDataId;
 
+  /// used to override the priority of usage for this provider. Lower priority providers are tried first, while higher priority providers fill in gaps.
+  num providerPriority;
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MapGameDto &&
-          other.providerSlug == providerSlug &&
-          other.providerPriority == providerPriority &&
-          other.providerDataId == providerDataId;
+  bool operator ==(Object other) => identical(this, other) || other is MapGameDto &&
+    other.providerSlug == providerSlug &&
+    other.providerDataId == providerDataId &&
+    other.providerPriority == providerPriority;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (providerSlug.hashCode) +
-      (providerPriority.hashCode) +
-      (providerDataId == null ? 0 : providerDataId!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (providerSlug.hashCode) +
+    (providerDataId == null ? 0 : providerDataId!.hashCode) +
+    (providerPriority.hashCode);
 
   @override
-  String toString() =>
-      'MapGameDto[providerSlug=$providerSlug, providerPriority=$providerPriority, providerDataId=$providerDataId]';
+  String toString() => 'MapGameDto[providerSlug=$providerSlug, providerDataId=$providerDataId, providerPriority=$providerPriority]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'provider_slug'] = this.providerSlug;
-    json[r'provider_priority'] = this.providerPriority;
+      json[r'provider_slug'] = this.providerSlug;
     if (this.providerDataId != null) {
       json[r'provider_data_id'] = this.providerDataId;
     } else {
       json[r'provider_data_id'] = null;
     }
+      json[r'provider_priority'] = this.providerPriority;
     return json;
   }
 
@@ -76,27 +73,22 @@ class MapGameDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "MapGameDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "MapGameDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "MapGameDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "MapGameDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
       return MapGameDto(
         providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
-        providerPriority: num.parse('${json[r'provider_priority']}'),
         providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
+        providerPriority: num.parse('${json[r'provider_priority']}'),
       );
     }
     return null;
   }
 
-  static List<MapGameDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<MapGameDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <MapGameDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -124,19 +116,13 @@ class MapGameDto {
   }
 
   // maps a json object with a list of MapGameDto-objects as value to a dart map
-  static Map<String, List<MapGameDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<MapGameDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<MapGameDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MapGameDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = MapGameDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -148,3 +134,4 @@ class MapGameDto {
     'provider_priority',
   };
 }
+

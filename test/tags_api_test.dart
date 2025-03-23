@@ -11,6 +11,7 @@
 import 'package:gamevault_client_sdk/api.dart';
 import 'package:test/test.dart';
 
+
 /// tests for TagsApi
 void main() {
   // final instance = TagsApi();
@@ -24,5 +25,6 @@ void main() {
     test('test getTags', () async {
       // TODO
     });
+
   });
 }

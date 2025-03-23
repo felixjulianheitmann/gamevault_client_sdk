@@ -15,13 +15,13 @@ class PublisherMetadata {
   PublisherMetadata({
     required this.id,
     required this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
     required this.entityVersion,
     required this.providerSlug,
     required this.providerDataId,
     required this.name,
     this.games = const [],
-    this.updatedAt,
-    this.deletedAt,
   });
 
   /// Unique gamevault-identifier of the entity
@@ -29,21 +29,6 @@ class PublisherMetadata {
 
   /// date the entity was created
   DateTime createdAt;
-
-  /// incremental version number of the entity
-  num entityVersion;
-
-  /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-  String providerSlug;
-
-  /// id of the developer from the provider
-  String providerDataId;
-
-  /// name of the publisher
-  String name;
-
-  /// games published by the publisher
-  List<GameMetadata> games;
 
   /// date the entity was updated
   ///
@@ -63,46 +48,53 @@ class PublisherMetadata {
   ///
   DateTime? deletedAt;
 
+  /// incremental version number of the entity
+  num entityVersion;
+
+  /// slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+  String providerSlug;
+
+  /// id of the developer from the provider
+  String providerDataId;
+
+  /// name of the publisher
+  String name;
+
+  /// games published by the publisher
+  List<GameMetadata> games;
+
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PublisherMetadata &&
-          other.id == id &&
-          other.createdAt == createdAt &&
-          other.entityVersion == entityVersion &&
-          other.providerSlug == providerSlug &&
-          other.providerDataId == providerDataId &&
-          other.name == name &&
-          _deepEquality.equals(other.games, games) &&
-          other.updatedAt == updatedAt &&
-          other.deletedAt == deletedAt;
+  bool operator ==(Object other) => identical(this, other) || other is PublisherMetadata &&
+    other.id == id &&
+    other.createdAt == createdAt &&
+    other.updatedAt == updatedAt &&
+    other.deletedAt == deletedAt &&
+    other.entityVersion == entityVersion &&
+    other.providerSlug == providerSlug &&
+    other.providerDataId == providerDataId &&
+    other.name == name &&
+    _deepEquality.equals(other.games, games);
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (createdAt.hashCode) +
-      (entityVersion.hashCode) +
-      (providerSlug.hashCode) +
-      (providerDataId.hashCode) +
-      (name.hashCode) +
-      (games.hashCode) +
-      (updatedAt == null ? 0 : updatedAt!.hashCode) +
-      (deletedAt == null ? 0 : deletedAt!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (deletedAt == null ? 0 : deletedAt!.hashCode) +
+    (entityVersion.hashCode) +
+    (providerSlug.hashCode) +
+    (providerDataId.hashCode) +
+    (name.hashCode) +
+    (games.hashCode);
 
   @override
-  String toString() =>
-      'PublisherMetadata[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, providerSlug=$providerSlug, providerDataId=$providerDataId, name=$name, games=$games, updatedAt=$updatedAt, deletedAt=$deletedAt]';
+  String toString() => 'PublisherMetadata[id=$id, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, entityVersion=$entityVersion, providerSlug=$providerSlug, providerDataId=$providerDataId, name=$name, games=$games]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-    json[r'entity_version'] = this.entityVersion;
-    json[r'provider_slug'] = this.providerSlug;
-    json[r'provider_data_id'] = this.providerDataId;
-    json[r'name'] = this.name;
-    json[r'games'] = this.games;
+      json[r'id'] = this.id;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
@@ -113,6 +105,11 @@ class PublisherMetadata {
     } else {
       json[r'deleted_at'] = null;
     }
+      json[r'entity_version'] = this.entityVersion;
+      json[r'provider_slug'] = this.providerSlug;
+      json[r'provider_data_id'] = this.providerDataId;
+      json[r'name'] = this.name;
+      json[r'games'] = this.games;
     return json;
   }
 
@@ -128,10 +125,8 @@ class PublisherMetadata {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "PublisherMetadata[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "PublisherMetadata[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PublisherMetadata[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PublisherMetadata[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -139,22 +134,19 @@ class PublisherMetadata {
       return PublisherMetadata(
         id: num.parse('${json[r'id']}'),
         createdAt: mapDateTime(json, r'created_at', r'')!,
+        updatedAt: mapDateTime(json, r'updated_at', r''),
+        deletedAt: mapDateTime(json, r'deleted_at', r''),
         entityVersion: num.parse('${json[r'entity_version']}'),
         providerSlug: mapValueOfType<String>(json, r'provider_slug')!,
         providerDataId: mapValueOfType<String>(json, r'provider_data_id')!,
         name: mapValueOfType<String>(json, r'name')!,
         games: GameMetadata.listFromJson(json[r'games']),
-        updatedAt: mapDateTime(json, r'updated_at', r''),
-        deletedAt: mapDateTime(json, r'deleted_at', r''),
       );
     }
     return null;
   }
 
-  static List<PublisherMetadata> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<PublisherMetadata> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PublisherMetadata>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -182,19 +174,13 @@ class PublisherMetadata {
   }
 
   // maps a json object with a list of PublisherMetadata-objects as value to a dart map
-  static Map<String, List<PublisherMetadata>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<PublisherMetadata>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PublisherMetadata>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PublisherMetadata.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = PublisherMetadata.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -211,3 +197,4 @@ class PublisherMetadata {
     'games',
   };
 }
+

@@ -15,9 +15,9 @@ class Media {
   Media({
     required this.id,
     required this.createdAt,
-    required this.entityVersion,
     this.updatedAt,
     this.deletedAt,
+    required this.entityVersion,
     this.sourceUrl,
     this.filePath,
     this.type,
@@ -29,9 +29,6 @@ class Media {
 
   /// date the entity was created
   DateTime createdAt;
-
-  /// incremental version number of the entity
-  num entityVersion;
 
   /// date the entity was updated
   ///
@@ -50,6 +47,9 @@ class Media {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   DateTime? deletedAt;
+
+  /// incremental version number of the entity
+  num entityVersion;
 
   /// the original source URL of the media
   ///
@@ -88,41 +88,37 @@ class Media {
   GamevaultUser? uploader;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Media &&
-          other.id == id &&
-          other.createdAt == createdAt &&
-          other.entityVersion == entityVersion &&
-          other.updatedAt == updatedAt &&
-          other.deletedAt == deletedAt &&
-          other.sourceUrl == sourceUrl &&
-          other.filePath == filePath &&
-          other.type == type &&
-          other.uploader == uploader;
+  bool operator ==(Object other) => identical(this, other) || other is Media &&
+    other.id == id &&
+    other.createdAt == createdAt &&
+    other.updatedAt == updatedAt &&
+    other.deletedAt == deletedAt &&
+    other.entityVersion == entityVersion &&
+    other.sourceUrl == sourceUrl &&
+    other.filePath == filePath &&
+    other.type == type &&
+    other.uploader == uploader;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (createdAt.hashCode) +
-      (entityVersion.hashCode) +
-      (updatedAt == null ? 0 : updatedAt!.hashCode) +
-      (deletedAt == null ? 0 : deletedAt!.hashCode) +
-      (sourceUrl == null ? 0 : sourceUrl!.hashCode) +
-      (filePath == null ? 0 : filePath!.hashCode) +
-      (type == null ? 0 : type!.hashCode) +
-      (uploader == null ? 0 : uploader!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (deletedAt == null ? 0 : deletedAt!.hashCode) +
+    (entityVersion.hashCode) +
+    (sourceUrl == null ? 0 : sourceUrl!.hashCode) +
+    (filePath == null ? 0 : filePath!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (uploader == null ? 0 : uploader!.hashCode);
 
   @override
-  String toString() =>
-      'Media[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, updatedAt=$updatedAt, deletedAt=$deletedAt, sourceUrl=$sourceUrl, filePath=$filePath, type=$type, uploader=$uploader]';
+  String toString() => 'Media[id=$id, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, entityVersion=$entityVersion, sourceUrl=$sourceUrl, filePath=$filePath, type=$type, uploader=$uploader]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-    json[r'entity_version'] = this.entityVersion;
+      json[r'id'] = this.id;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
@@ -133,6 +129,7 @@ class Media {
     } else {
       json[r'deleted_at'] = null;
     }
+      json[r'entity_version'] = this.entityVersion;
     if (this.sourceUrl != null) {
       json[r'source_url'] = this.sourceUrl;
     } else {
@@ -168,10 +165,8 @@ class Media {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "Media[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "Media[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Media[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Media[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -179,9 +174,9 @@ class Media {
       return Media(
         id: num.parse('${json[r'id']}'),
         createdAt: mapDateTime(json, r'created_at', r'')!,
-        entityVersion: num.parse('${json[r'entity_version']}'),
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
+        entityVersion: num.parse('${json[r'entity_version']}'),
         sourceUrl: mapValueOfType<String>(json, r'source_url'),
         filePath: mapValueOfType<String>(json, r'file_path'),
         type: mapValueOfType<String>(json, r'type'),
@@ -191,10 +186,7 @@ class Media {
     return null;
   }
 
-  static List<Media> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<Media> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Media>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -222,19 +214,13 @@ class Media {
   }
 
   // maps a json object with a list of Media-objects as value to a dart map
-  static Map<String, List<Media>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<Media>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Media>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Media.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = Media.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -247,3 +233,4 @@ class Media {
     'entity_version',
   };
 }
+

@@ -28,6 +28,18 @@ void main() {
       // TODO
     });
 
+    // date the entity was updated
+    // DateTime updatedAt
+    test('to test the property `updatedAt`', () async {
+      // TODO
+    });
+
+    // date the entity was soft-deleted (null if not deleted)
+    // DateTime deletedAt
+    test('to test the property `deletedAt`', () async {
+      // TODO
+    });
+
     // incremental version number of the entity
     // num entityVersion
     test('to test the property `entityVersion`', () async {
@@ -43,42 +55,6 @@ void main() {
     // size of the game file in bytes
     // String size
     test('to test the property `size`', () async {
-      // TODO
-    });
-
-    // indicates if the game is an early access title (extracted from filename e.g. '(EA)')
-    // bool earlyAccess (default value: false)
-    test('to test the property `earlyAccess`', () async {
-      // TODO
-    });
-
-    // Indicates how many times the game has been downloaded on this server.
-    // num downloadCount (default value: 0)
-    test('to test the property `downloadCount`', () async {
-      // TODO
-    });
-
-    // type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // users that bookmarked this game
-    // List<GamevaultGame> bookmarkedUsers (default value: const [])
-    test('to test the property `bookmarkedUsers`', () async {
-      // TODO
-    });
-
-    // date the entity was updated
-    // DateTime updatedAt
-    test('to test the property `updatedAt`', () async {
-      // TODO
-    });
-
-    // date the entity was soft-deleted (null if not deleted)
-    // DateTime deletedAt
-    test('to test the property `deletedAt`', () async {
       // TODO
     });
 
@@ -106,6 +82,24 @@ void main() {
       // TODO
     });
 
+    // indicates if the game is an early access title (extracted from filename e.g. '(EA)')
+    // bool earlyAccess (default value: false)
+    test('to test the property `earlyAccess`', () async {
+      // TODO
+    });
+
+    // Indicates how many times the game has been downloaded on this server.
+    // num downloadCount (default value: 0)
+    test('to test the property `downloadCount`', () async {
+      // TODO
+    });
+
+    // type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
     // metadata of various providers associated to the game
     // List<GameMetadata> providerMetadata (default value: const [])
     test('to test the property `providerMetadata`', () async {
@@ -129,5 +123,14 @@ void main() {
     test('to test the property `progresses`', () async {
       // TODO
     });
+
+    // users that bookmarked this game
+    // List<GamevaultGame> bookmarkedUsers (default value: const [])
+    test('to test the property `bookmarkedUsers`', () async {
+      // TODO
+    });
+
+
   });
+
 }

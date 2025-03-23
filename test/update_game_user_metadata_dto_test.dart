@@ -16,12 +16,6 @@ void main() {
   // final instance = UpdateGameUserMetadataDto();
 
   group('test UpdateGameUserMetadataDto', () {
-    // indicates if the game is in early access
-    // bool earlyAccess
-    test('to test the property `earlyAccess`', () async {
-      // TODO
-    });
-
     // the minimum age required to play the game
     // num ageRating (default value: 0)
     test('to test the property `ageRating`', () async {
@@ -79,6 +73,12 @@ void main() {
     // rating of the provider
     // num rating
     test('to test the property `rating`', () async {
+      // TODO
+    });
+
+    // indicates if the game is in early access
+    // bool earlyAccess
+    test('to test the property `earlyAccess`', () async {
       // TODO
     });
 
@@ -147,5 +147,8 @@ void main() {
     test('to test the property `genres`', () async {
       // TODO
     });
+
+
   });
+
 }

@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class GameApi {
   GameApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,12 +24,10 @@ class GameApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Response> getGameByGameIdWithHttpInfo(
-    num gameId,
-  ) async {
+  Future<Response> getGameByGameIdWithHttpInfo(num gameId,) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/api/games/{game_id}'.replaceAll('{game_id}', gameId.toString());
+    final path = r'/api/games/{game_id}'
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -38,6 +37,7 @@ class GameApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -56,24 +56,17 @@ class GameApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<GamevaultGame?> getGameByGameId(
-    num gameId,
-  ) async {
-    final response = await getGameByGameIdWithHttpInfo(
-      gameId,
-    );
+  Future<GamevaultGame?> getGameByGameId(num gameId,) async {
+    final response = await getGameByGameIdWithHttpInfo(gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultGame',
-      ) as GamevaultGame;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultGame',) as GamevaultGame;
+    
     }
     return null;
   }
@@ -92,14 +85,10 @@ class GameApi {
   ///
   /// * [String] range:
   ///   This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
-  Future<Response> getGameDownloadWithHttpInfo(
-    num gameId, {
-    String? xDownloadSpeedLimit,
-    String? range,
-  }) async {
+  Future<Response> getGameDownloadWithHttpInfo(num gameId, { String? xDownloadSpeedLimit, String? range, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/games/{game_id}/download'
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -109,14 +98,14 @@ class GameApi {
     final formParams = <String, String>{};
 
     if (xDownloadSpeedLimit != null) {
-      headerParams[r'X-Download-Speed-Limit'] =
-          parameterToString(xDownloadSpeedLimit);
+      headerParams[r'X-Download-Speed-Limit'] = parameterToString(xDownloadSpeedLimit);
     }
     if (range != null) {
       headerParams[r'Range'] = parameterToString(range);
     }
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -141,28 +130,17 @@ class GameApi {
   ///
   /// * [String] range:
   ///   This header lets you control the range of bytes to download. If the header is not present or not valid the entire file will be downloaded.
-  Future<Object?> getGameDownload(
-    num gameId, {
-    String? xDownloadSpeedLimit,
-    String? range,
-  }) async {
-    final response = await getGameDownloadWithHttpInfo(
-      gameId,
-      xDownloadSpeedLimit: xDownloadSpeedLimit,
-      range: range,
-    );
+  Future<Object?> getGameDownload(num gameId, { String? xDownloadSpeedLimit, String? range, }) async {
+    final response = await getGameDownloadWithHttpInfo(gameId,  xDownloadSpeedLimit: xDownloadSpeedLimit, range: range, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'Object',
-      ) as Object;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
     }
     return null;
   }
@@ -182,6 +160,7 @@ class GameApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -203,12 +182,9 @@ class GameApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GamevaultGame',
-      ) as GamevaultGame;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GamevaultGame',) as GamevaultGame;
+    
     }
     return null;
   }
@@ -233,13 +209,7 @@ class GameApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<Response> getGamesWithHttpInfo({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
+  Future<Response> getGamesWithHttpInfo({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/games';
 
@@ -268,6 +238,7 @@ class GameApi {
 
     const contentTypes = <String>[];
 
+
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -297,32 +268,17 @@ class GameApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<GetGames200Response?> getGames({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
-    final response = await getGamesWithHttpInfo(
-      page: page,
-      limit: limit,
-      search: search,
-      sortBy: sortBy,
-      filter: filter,
-    );
+  Future<GetGames200Response?> getGames({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
+    final response = await getGamesWithHttpInfo( page: page, limit: limit, search: search, sortBy: sortBy, filter: filter, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GetGames200Response',
-      ) as GetGames200Response;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetGames200Response',) as GetGames200Response;
+    
     }
     return null;
   }
@@ -342,6 +298,7 @@ class GameApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -363,13 +320,12 @@ class GameApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(
-              responseBody, 'List<GamevaultGame>') as List)
-          .cast<GamevaultGame>()
-          .toList(growable: false);
+      return (await apiClient.deserializeAsync(responseBody, 'List<GamevaultGame>') as List)
+        .cast<GamevaultGame>()
+        .toList(growable: false);
+
     }
     return null;
   }
@@ -384,13 +340,10 @@ class GameApi {
   ///   id of the game
   ///
   /// * [UpdateGameDto] updateGameDto (required):
-  Future<Response> putGameUpdateWithHttpInfo(
-    num gameId,
-    UpdateGameDto updateGameDto,
-  ) async {
+  Future<Response> putGameUpdateWithHttpInfo(num gameId, UpdateGameDto updateGameDto,) async {
     // ignore: prefer_const_declarations
-    final path =
-        r'/api/games/{game_id}'.replaceAll('{game_id}', gameId.toString());
+    final path = r'/api/games/{game_id}'
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = updateGameDto;
@@ -400,6 +353,7 @@ class GameApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
+
 
     return apiClient.invokeAPI(
       path,
@@ -420,14 +374,8 @@ class GameApi {
   ///   id of the game
   ///
   /// * [UpdateGameDto] updateGameDto (required):
-  Future<void> putGameUpdate(
-    num gameId,
-    UpdateGameDto updateGameDto,
-  ) async {
-    final response = await putGameUpdateWithHttpInfo(
-      gameId,
-      updateGameDto,
-    );
+  Future<void> putGameUpdate(num gameId, UpdateGameDto updateGameDto,) async {
+    final response = await putGameUpdateWithHttpInfo(gameId, updateGameDto,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -22,15 +22,15 @@ void main() {
       // TODO
     });
 
-    // title of the game
-    // String title
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
     // id of the game from the provider
     // String providerDataId
     test('to test the property `providerDataId`', () async {
+      // TODO
+    });
+
+    // title of the game
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 
@@ -51,5 +51,8 @@ void main() {
     test('to test the property `description`', () async {
       // TODO
     });
+
+
   });
+
 }

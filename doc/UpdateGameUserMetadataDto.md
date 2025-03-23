@@ -8,7 +8,6 @@ import 'package:gamevault_client_sdk/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**earlyAccess** | **bool** | indicates if the game is in early access | 
 **ageRating** | **num** | the minimum age required to play the game | [optional] [default to 0]
 **title** | **String** | title of the game | [optional] 
 **sortTitle** | **String** | sort title of the game, generated and used to optimize sorting. | [optional] 
@@ -19,6 +18,7 @@ Name | Type | Description | Notes
 **cover** | [**Media**](Media.md) | cover/boxart image of the game | [optional] 
 **background** | [**Media**](Media.md) | background image of the game | [optional] 
 **rating** | **num** | rating of the provider | [optional] 
+**earlyAccess** | **bool** | indicates if the game is in early access | 
 **launchParameters** | **String** | Predefined launch parameters for the game. | [optional] 
 **launchExecutable** | **String** | Predefined launch executable for the game. | [optional] 
 **installerExecutable** | **String** | Predefined installer executable for the game. | [optional] 

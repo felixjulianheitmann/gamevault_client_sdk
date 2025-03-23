@@ -24,22 +24,23 @@ class PaginatedEntity {
   Links links;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is PaginatedEntity && other.meta == meta && other.links == links;
+  bool operator ==(Object other) => identical(this, other) || other is PaginatedEntity &&
+    other.meta == meta &&
+    other.links == links;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (meta.hashCode) + (links.hashCode);
+    // ignore: unnecessary_parenthesis
+    (meta.hashCode) +
+    (links.hashCode);
 
   @override
   String toString() => 'PaginatedEntity[meta=$meta, links=$links]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'meta'] = this.meta;
-    json[r'links'] = this.links;
+      json[r'meta'] = this.meta;
+      json[r'links'] = this.links;
     return json;
   }
 
@@ -55,10 +56,8 @@ class PaginatedEntity {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "PaginatedEntity[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "PaginatedEntity[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "PaginatedEntity[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PaginatedEntity[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -71,10 +70,7 @@ class PaginatedEntity {
     return null;
   }
 
-  static List<PaginatedEntity> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<PaginatedEntity> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <PaginatedEntity>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -102,19 +98,13 @@ class PaginatedEntity {
   }
 
   // maps a json object with a list of PaginatedEntity-objects as value to a dart map
-  static Map<String, List<PaginatedEntity>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<PaginatedEntity>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PaginatedEntity>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = PaginatedEntity.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = PaginatedEntity.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -126,3 +116,4 @@ class PaginatedEntity {
     'links',
   };
 }
+

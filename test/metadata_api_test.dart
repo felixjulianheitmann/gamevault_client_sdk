@@ -11,6 +11,7 @@
 import 'package:gamevault_client_sdk/api.dart';
 import 'package:test/test.dart';
 
+
 /// tests for MetadataApi
 void main() {
   // final instance = MetadataApi();
@@ -29,5 +30,6 @@ void main() {
     test('test getSearchResultsByProvider', () async {
       // TODO
     });
+
   });
 }

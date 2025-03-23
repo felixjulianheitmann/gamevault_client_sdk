@@ -28,30 +28,6 @@ void main() {
       // TODO
     });
 
-    // incremental version number of the entity
-    // num entityVersion
-    test('to test the property `entityVersion`', () async {
-      // TODO
-    });
-
-    // slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
-    // String providerSlug
-    test('to test the property `providerSlug`', () async {
-      // TODO
-    });
-
-    // title of the game
-    // String title
-    test('to test the property `title`', () async {
-      // TODO
-    });
-
-    // indicates if the game is in early access
-    // bool earlyAccess
-    test('to test the property `earlyAccess`', () async {
-      // TODO
-    });
-
     // date the entity was updated
     // DateTime updatedAt
     test('to test the property `updatedAt`', () async {
@@ -64,9 +40,21 @@ void main() {
       // TODO
     });
 
+    // incremental version number of the entity
+    // num entityVersion
+    test('to test the property `entityVersion`', () async {
+      // TODO
+    });
+
     // games the metadata belongs to
     // List<GamevaultGame> gamevaultGames (default value: const [])
     test('to test the property `gamevaultGames`', () async {
+      // TODO
+    });
+
+    // slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug.
+    // String providerSlug
+    test('to test the property `providerSlug`', () async {
       // TODO
     });
 
@@ -91,6 +79,12 @@ void main() {
     // the minimum age required to play the game
     // num ageRating (default value: 0)
     test('to test the property `ageRating`', () async {
+      // TODO
+    });
+
+    // title of the game
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 
@@ -160,6 +154,12 @@ void main() {
       // TODO
     });
 
+    // indicates if the game is in early access
+    // bool earlyAccess
+    test('to test the property `earlyAccess`', () async {
+      // TODO
+    });
+
     // Predefined launch parameters for the game.
     // String launchParameters
     test('to test the property `launchParameters`', () async {
@@ -201,5 +201,8 @@ void main() {
     test('to test the property `genres`', () async {
       // TODO
     });
+
+
   });
+
 }

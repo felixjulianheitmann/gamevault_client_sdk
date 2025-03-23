@@ -58,46 +58,43 @@ class Metadata {
   Object? filter;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Metadata &&
-          other.itemsPerPage == itemsPerPage &&
-          other.totalItems == totalItems &&
-          other.currentPage == currentPage &&
-          other.totalPages == totalPages &&
-          _deepEquality.equals(other.sortBy, sortBy) &&
-          _deepEquality.equals(other.searchBy, searchBy) &&
-          other.search == search &&
-          _deepEquality.equals(other.select, select) &&
-          other.filter == filter;
+  bool operator ==(Object other) => identical(this, other) || other is Metadata &&
+    other.itemsPerPage == itemsPerPage &&
+    other.totalItems == totalItems &&
+    other.currentPage == currentPage &&
+    other.totalPages == totalPages &&
+    _deepEquality.equals(other.sortBy, sortBy) &&
+    _deepEquality.equals(other.searchBy, searchBy) &&
+    other.search == search &&
+    _deepEquality.equals(other.select, select) &&
+    other.filter == filter;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (itemsPerPage.hashCode) +
-      (totalItems.hashCode) +
-      (currentPage.hashCode) +
-      (totalPages.hashCode) +
-      (sortBy.hashCode) +
-      (searchBy.hashCode) +
-      (search.hashCode) +
-      (select.hashCode) +
-      (filter == null ? 0 : filter!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (itemsPerPage.hashCode) +
+    (totalItems.hashCode) +
+    (currentPage.hashCode) +
+    (totalPages.hashCode) +
+    (sortBy.hashCode) +
+    (searchBy.hashCode) +
+    (search.hashCode) +
+    (select.hashCode) +
+    (filter == null ? 0 : filter!.hashCode);
 
   @override
-  String toString() =>
-      'Metadata[itemsPerPage=$itemsPerPage, totalItems=$totalItems, currentPage=$currentPage, totalPages=$totalPages, sortBy=$sortBy, searchBy=$searchBy, search=$search, select=$select, filter=$filter]';
+  String toString() => 'Metadata[itemsPerPage=$itemsPerPage, totalItems=$totalItems, currentPage=$currentPage, totalPages=$totalPages, sortBy=$sortBy, searchBy=$searchBy, search=$search, select=$select, filter=$filter]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'itemsPerPage'] = this.itemsPerPage;
-    json[r'totalItems'] = this.totalItems;
-    json[r'currentPage'] = this.currentPage;
-    json[r'totalPages'] = this.totalPages;
-    json[r'sortBy'] = this.sortBy;
-    json[r'searchBy'] = this.searchBy;
-    json[r'search'] = this.search;
-    json[r'select'] = this.select;
+      json[r'itemsPerPage'] = this.itemsPerPage;
+      json[r'totalItems'] = this.totalItems;
+      json[r'currentPage'] = this.currentPage;
+      json[r'totalPages'] = this.totalPages;
+      json[r'sortBy'] = this.sortBy;
+      json[r'searchBy'] = this.searchBy;
+      json[r'search'] = this.search;
+      json[r'select'] = this.select;
     if (this.filter != null) {
       json[r'filter'] = this.filter;
     } else {
@@ -118,10 +115,8 @@ class Metadata {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "Metadata[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "Metadata[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Metadata[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Metadata[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -132,20 +127,14 @@ class Metadata {
         currentPage: num.parse('${json[r'currentPage']}'),
         totalPages: num.parse('${json[r'totalPages']}'),
         sortBy: json[r'sortBy'] is Iterable
-            ? (json[r'sortBy'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'sortBy'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         searchBy: json[r'searchBy'] is Iterable
-            ? (json[r'searchBy'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'searchBy'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         search: mapValueOfType<String>(json, r'search')!,
         select: json[r'select'] is Iterable
-            ? (json[r'select'] as Iterable)
-                .cast<String>()
-                .toList(growable: false)
+            ? (json[r'select'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         filter: mapValueOfType<Object>(json, r'filter'),
       );
@@ -153,10 +142,7 @@ class Metadata {
     return null;
   }
 
-  static List<Metadata> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<Metadata> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Metadata>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -184,19 +170,13 @@ class Metadata {
   }
 
   // maps a json object with a list of Metadata-objects as value to a dart map
-  static Map<String, List<Metadata>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<Metadata>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Metadata>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Metadata.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = Metadata.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -214,3 +194,4 @@ class Metadata {
     'select',
   };
 }
+

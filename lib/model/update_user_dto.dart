@@ -110,37 +110,34 @@ class UpdateUserDto {
   UpdateUserDtoRoleEnum? role;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateUserDto &&
-          other.username == username &&
-          other.email == email &&
-          other.password == password &&
-          other.firstName == firstName &&
-          other.lastName == lastName &&
-          other.birthDate == birthDate &&
-          other.avatarId == avatarId &&
-          other.backgroundId == backgroundId &&
-          other.activated == activated &&
-          other.role == role;
+  bool operator ==(Object other) => identical(this, other) || other is UpdateUserDto &&
+    other.username == username &&
+    other.email == email &&
+    other.password == password &&
+    other.firstName == firstName &&
+    other.lastName == lastName &&
+    other.birthDate == birthDate &&
+    other.avatarId == avatarId &&
+    other.backgroundId == backgroundId &&
+    other.activated == activated &&
+    other.role == role;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (username == null ? 0 : username!.hashCode) +
-      (email == null ? 0 : email!.hashCode) +
-      (password == null ? 0 : password!.hashCode) +
-      (firstName == null ? 0 : firstName!.hashCode) +
-      (lastName == null ? 0 : lastName!.hashCode) +
-      (birthDate == null ? 0 : birthDate!.hashCode) +
-      (avatarId == null ? 0 : avatarId!.hashCode) +
-      (backgroundId == null ? 0 : backgroundId!.hashCode) +
-      (activated == null ? 0 : activated!.hashCode) +
-      (role == null ? 0 : role!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (username == null ? 0 : username!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (password == null ? 0 : password!.hashCode) +
+    (firstName == null ? 0 : firstName!.hashCode) +
+    (lastName == null ? 0 : lastName!.hashCode) +
+    (birthDate == null ? 0 : birthDate!.hashCode) +
+    (avatarId == null ? 0 : avatarId!.hashCode) +
+    (backgroundId == null ? 0 : backgroundId!.hashCode) +
+    (activated == null ? 0 : activated!.hashCode) +
+    (role == null ? 0 : role!.hashCode);
 
   @override
-  String toString() =>
-      'UpdateUserDto[username=$username, email=$email, password=$password, firstName=$firstName, lastName=$lastName, birthDate=$birthDate, avatarId=$avatarId, backgroundId=$backgroundId, activated=$activated, role=$role]';
+  String toString() => 'UpdateUserDto[username=$username, email=$email, password=$password, firstName=$firstName, lastName=$lastName, birthDate=$birthDate, avatarId=$avatarId, backgroundId=$backgroundId, activated=$activated, role=$role]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -209,10 +206,8 @@ class UpdateUserDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "UpdateUserDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "UpdateUserDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateUserDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateUserDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -227,16 +222,13 @@ class UpdateUserDto {
         avatarId: num.parse('${json[r'avatar_id']}'),
         backgroundId: num.parse('${json[r'background_id']}'),
         activated: mapValueOfType<bool>(json, r'activated'),
-        role: UpdateUserDtoRoleEnum.fromJson(json[r'role'])!,
+role: UpdateUserDtoRoleEnum.fromJson(json[r'role'])!,
       );
     }
     return null;
   }
 
-  static List<UpdateUserDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<UpdateUserDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateUserDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -264,26 +256,21 @@ class UpdateUserDto {
   }
 
   // maps a json object with a list of UpdateUserDto-objects as value to a dart map
-  static Map<String, List<UpdateUserDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<UpdateUserDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UpdateUserDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateUserDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = UpdateUserDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
 
 /// The role determines the set of permissions and access rights for a user in the system.
@@ -299,10 +286,10 @@ class UpdateUserDtoRoleEnum {
 
   num toJson() => value;
 
-  static const n0 = UpdateUserDtoRoleEnum._(0);
-  static const n1 = UpdateUserDtoRoleEnum._(1);
-  static const n2 = UpdateUserDtoRoleEnum._(2);
-  static const n3 = UpdateUserDtoRoleEnum._(3);
+static const n0 = UpdateUserDtoRoleEnum._(0);
+static const n1 = UpdateUserDtoRoleEnum._(1);
+static const n2 = UpdateUserDtoRoleEnum._(2);
+static const n3 = UpdateUserDtoRoleEnum._(3);
 
   /// List of all possible values in this [enum][UpdateUserDtoRoleEnum].
   static const values = <UpdateUserDtoRoleEnum>[
@@ -312,13 +299,9 @@ class UpdateUserDtoRoleEnum {
     n3,
   ];
 
-  static UpdateUserDtoRoleEnum? fromJson(dynamic value) =>
-      UpdateUserDtoRoleEnumTypeTransformer().decode(value);
+  static UpdateUserDtoRoleEnum? fromJson(dynamic value) => UpdateUserDtoRoleEnumTypeTransformer().decode(value);
 
-  static List<UpdateUserDtoRoleEnum> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<UpdateUserDtoRoleEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateUserDtoRoleEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -335,8 +318,7 @@ class UpdateUserDtoRoleEnum {
 /// Transformation class that can [encode] an instance of [UpdateUserDtoRoleEnum] to num,
 /// and [decode] dynamic data back to [UpdateUserDtoRoleEnum].
 class UpdateUserDtoRoleEnumTypeTransformer {
-  factory UpdateUserDtoRoleEnumTypeTransformer() =>
-      _instance ??= const UpdateUserDtoRoleEnumTypeTransformer._();
+  factory UpdateUserDtoRoleEnumTypeTransformer() => _instance ??= const UpdateUserDtoRoleEnumTypeTransformer._();
 
   const UpdateUserDtoRoleEnumTypeTransformer._();
 
@@ -353,14 +335,10 @@ class UpdateUserDtoRoleEnumTypeTransformer {
   UpdateUserDtoRoleEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case '0':
-          return UpdateUserDtoRoleEnum.n0;
-        case '1':
-          return UpdateUserDtoRoleEnum.n1;
-        case '2':
-          return UpdateUserDtoRoleEnum.n2;
-        case '3':
-          return UpdateUserDtoRoleEnum.n3;
+        case '0': return UpdateUserDtoRoleEnum.n0;
+        case '1': return UpdateUserDtoRoleEnum.n1;
+        case '2': return UpdateUserDtoRoleEnum.n2;
+        case '3': return UpdateUserDtoRoleEnum.n3;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -373,3 +351,5 @@ class UpdateUserDtoRoleEnumTypeTransformer {
   /// Singleton [UpdateUserDtoRoleEnumTypeTransformer] instance.
   static UpdateUserDtoRoleEnumTypeTransformer? _instance;
 }
+
+

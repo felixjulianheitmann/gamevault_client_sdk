@@ -11,6 +11,7 @@
 import 'package:gamevault_client_sdk/api.dart';
 import 'package:test/test.dart';
 
+
 /// tests for GameApi
 void main() {
   // final instance = GameApi();
@@ -57,5 +58,6 @@ void main() {
     test('test putGameUpdate', () async {
       // TODO
     });
+
   });
 }

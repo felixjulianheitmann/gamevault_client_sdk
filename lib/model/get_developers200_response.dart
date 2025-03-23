@@ -28,27 +28,26 @@ class GetDevelopers200Response {
   List<DeveloperMetadata> data;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetDevelopers200Response &&
-          other.meta == meta &&
-          other.links == links &&
-          _deepEquality.equals(other.data, data);
+  bool operator ==(Object other) => identical(this, other) || other is GetDevelopers200Response &&
+    other.meta == meta &&
+    other.links == links &&
+    _deepEquality.equals(other.data, data);
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (meta.hashCode) + (links.hashCode) + (data.hashCode);
+    // ignore: unnecessary_parenthesis
+    (meta.hashCode) +
+    (links.hashCode) +
+    (data.hashCode);
 
   @override
-  String toString() =>
-      'GetDevelopers200Response[meta=$meta, links=$links, data=$data]';
+  String toString() => 'GetDevelopers200Response[meta=$meta, links=$links, data=$data]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'meta'] = this.meta;
-    json[r'links'] = this.links;
-    json[r'data'] = this.data;
+      json[r'meta'] = this.meta;
+      json[r'links'] = this.links;
+      json[r'data'] = this.data;
     return json;
   }
 
@@ -64,10 +63,8 @@ class GetDevelopers200Response {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "GetDevelopers200Response[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "GetDevelopers200Response[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetDevelopers200Response[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetDevelopers200Response[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -81,10 +78,7 @@ class GetDevelopers200Response {
     return null;
   }
 
-  static List<GetDevelopers200Response> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<GetDevelopers200Response> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetDevelopers200Response>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -112,19 +106,13 @@ class GetDevelopers200Response {
   }
 
   // maps a json object with a list of GetDevelopers200Response-objects as value to a dart map
-  static Map<String, List<GetDevelopers200Response>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<GetDevelopers200Response>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetDevelopers200Response>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GetDevelopers200Response.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = GetDevelopers200Response.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -137,3 +125,4 @@ class GetDevelopers200Response {
     'data',
   };
 }
+

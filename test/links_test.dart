@@ -16,12 +16,6 @@ void main() {
   // final instance = Links();
 
   group('test Links', () {
-    // current page
-    // String current
-    test('to test the property `current`', () async {
-      // TODO
-    });
-
     // first page
     // String first
     test('to test the property `first`', () async {
@@ -31,6 +25,12 @@ void main() {
     // previous page
     // String previous
     test('to test the property `previous`', () async {
+      // TODO
+    });
+
+    // current page
+    // String current
+    test('to test the property `current`', () async {
       // TODO
     });
 
@@ -45,5 +45,8 @@ void main() {
     test('to test the property `last`', () async {
       // TODO
     });
+
+
   });
+
 }

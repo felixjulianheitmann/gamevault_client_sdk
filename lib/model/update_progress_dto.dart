@@ -30,21 +30,18 @@ class UpdateProgressDto {
   UpdateProgressDtoStateEnum? state;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UpdateProgressDto &&
-          other.minutesPlayed == minutesPlayed &&
-          other.state == state;
+  bool operator ==(Object other) => identical(this, other) || other is UpdateProgressDto &&
+    other.minutesPlayed == minutesPlayed &&
+    other.state == state;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (minutesPlayed == null ? 0 : minutesPlayed!.hashCode) +
-      (state == null ? 0 : state!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (minutesPlayed == null ? 0 : minutesPlayed!.hashCode) +
+    (state == null ? 0 : state!.hashCode);
 
   @override
-  String toString() =>
-      'UpdateProgressDto[minutesPlayed=$minutesPlayed, state=$state]';
+  String toString() => 'UpdateProgressDto[minutesPlayed=$minutesPlayed, state=$state]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,10 +70,8 @@ class UpdateProgressDto {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "UpdateProgressDto[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "UpdateProgressDto[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "UpdateProgressDto[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "UpdateProgressDto[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -89,10 +84,7 @@ class UpdateProgressDto {
     return null;
   }
 
-  static List<UpdateProgressDto> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<UpdateProgressDto> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateProgressDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -120,26 +112,21 @@ class UpdateProgressDto {
   }
 
   // maps a json object with a list of UpdateProgressDto-objects as value to a dart map
-  static Map<String, List<UpdateProgressDto>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<UpdateProgressDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<UpdateProgressDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateProgressDto.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = UpdateProgressDto.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
 
 /// the new state of the game progress
@@ -159,10 +146,8 @@ class UpdateProgressDtoStateEnum {
   static const INFINITE = UpdateProgressDtoStateEnum._(r'INFINITE');
   static const PLAYING = UpdateProgressDtoStateEnum._(r'PLAYING');
   static const COMPLETED = UpdateProgressDtoStateEnum._(r'COMPLETED');
-  static const ABORTED_TEMPORARY =
-      UpdateProgressDtoStateEnum._(r'ABORTED_TEMPORARY');
-  static const ABORTED_PERMANENT =
-      UpdateProgressDtoStateEnum._(r'ABORTED_PERMANENT');
+  static const ABORTED_TEMPORARY = UpdateProgressDtoStateEnum._(r'ABORTED_TEMPORARY');
+  static const ABORTED_PERMANENT = UpdateProgressDtoStateEnum._(r'ABORTED_PERMANENT');
 
   /// List of all possible values in this [enum][UpdateProgressDtoStateEnum].
   static const values = <UpdateProgressDtoStateEnum>[
@@ -174,13 +159,9 @@ class UpdateProgressDtoStateEnum {
     ABORTED_PERMANENT,
   ];
 
-  static UpdateProgressDtoStateEnum? fromJson(dynamic value) =>
-      UpdateProgressDtoStateEnumTypeTransformer().decode(value);
+  static UpdateProgressDtoStateEnum? fromJson(dynamic value) => UpdateProgressDtoStateEnumTypeTransformer().decode(value);
 
-  static List<UpdateProgressDtoStateEnum> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<UpdateProgressDtoStateEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateProgressDtoStateEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -197,8 +178,7 @@ class UpdateProgressDtoStateEnum {
 /// Transformation class that can [encode] an instance of [UpdateProgressDtoStateEnum] to String,
 /// and [decode] dynamic data back to [UpdateProgressDtoStateEnum].
 class UpdateProgressDtoStateEnumTypeTransformer {
-  factory UpdateProgressDtoStateEnumTypeTransformer() =>
-      _instance ??= const UpdateProgressDtoStateEnumTypeTransformer._();
+  factory UpdateProgressDtoStateEnumTypeTransformer() => _instance ??= const UpdateProgressDtoStateEnumTypeTransformer._();
 
   const UpdateProgressDtoStateEnumTypeTransformer._();
 
@@ -215,18 +195,12 @@ class UpdateProgressDtoStateEnumTypeTransformer {
   UpdateProgressDtoStateEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'UNPLAYED':
-          return UpdateProgressDtoStateEnum.UNPLAYED;
-        case r'INFINITE':
-          return UpdateProgressDtoStateEnum.INFINITE;
-        case r'PLAYING':
-          return UpdateProgressDtoStateEnum.PLAYING;
-        case r'COMPLETED':
-          return UpdateProgressDtoStateEnum.COMPLETED;
-        case r'ABORTED_TEMPORARY':
-          return UpdateProgressDtoStateEnum.ABORTED_TEMPORARY;
-        case r'ABORTED_PERMANENT':
-          return UpdateProgressDtoStateEnum.ABORTED_PERMANENT;
+        case r'UNPLAYED': return UpdateProgressDtoStateEnum.UNPLAYED;
+        case r'INFINITE': return UpdateProgressDtoStateEnum.INFINITE;
+        case r'PLAYING': return UpdateProgressDtoStateEnum.PLAYING;
+        case r'COMPLETED': return UpdateProgressDtoStateEnum.COMPLETED;
+        case r'ABORTED_TEMPORARY': return UpdateProgressDtoStateEnum.ABORTED_TEMPORARY;
+        case r'ABORTED_PERMANENT': return UpdateProgressDtoStateEnum.ABORTED_PERMANENT;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -239,3 +213,5 @@ class UpdateProgressDtoStateEnumTypeTransformer {
   /// Singleton [UpdateProgressDtoStateEnumTypeTransformer] instance.
   static UpdateProgressDtoStateEnumTypeTransformer? _instance;
 }
+
+

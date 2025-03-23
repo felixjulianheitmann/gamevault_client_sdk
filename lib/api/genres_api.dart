@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class GenresApi {
   GenresApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -37,13 +38,7 @@ class GenresApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<Response> getGenresWithHttpInfo({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
+  Future<Response> getGenresWithHttpInfo({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/genres';
 
@@ -71,6 +66,7 @@ class GenresApi {
     }
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -103,32 +99,17 @@ class GenresApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<GetGenres200Response?> getGenres({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
-    final response = await getGenresWithHttpInfo(
-      page: page,
-      limit: limit,
-      search: search,
-      sortBy: sortBy,
-      filter: filter,
-    );
+  Future<GetGenres200Response?> getGenres({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
+    final response = await getGenresWithHttpInfo( page: page, limit: limit, search: search, sortBy: sortBy, filter: filter, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GetGenres200Response',
-      ) as GetGenres200Response;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetGenres200Response',) as GetGenres200Response;
+    
     }
     return null;
   }

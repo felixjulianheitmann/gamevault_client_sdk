@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
+
 class SavefileApi {
-  SavefileApi([ApiClient? apiClient])
-      : apiClient = apiClient ?? defaultApiClient;
+  SavefileApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -29,14 +29,11 @@ class SavefileApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Response> deleteSaveFileByUserIdAndGameIdWithHttpInfo(
-    num userId,
-    num gameId,
-  ) async {
+  Future<Response> deleteSaveFileByUserIdAndGameIdWithHttpInfo(num userId, num gameId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll('{user_id}', userId.toString())
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{user_id}', userId.toString())
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -46,6 +43,7 @@ class SavefileApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -69,14 +67,8 @@ class SavefileApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<void> deleteSaveFileByUserIdAndGameId(
-    num userId,
-    num gameId,
-  ) async {
-    final response = await deleteSaveFileByUserIdAndGameIdWithHttpInfo(
-      userId,
-      gameId,
-    );
+  Future<void> deleteSaveFileByUserIdAndGameId(num userId, num gameId,) async {
+    final response = await deleteSaveFileByUserIdAndGameIdWithHttpInfo(userId, gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -95,14 +87,11 @@ class SavefileApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Response> getSaveFileByUserIdAndGameIdWithHttpInfo(
-    num userId,
-    num gameId,
-  ) async {
+  Future<Response> getSaveFileByUserIdAndGameIdWithHttpInfo(num userId, num gameId,) async {
     // ignore: prefer_const_declarations
     final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll('{user_id}', userId.toString())
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{user_id}', userId.toString())
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -112,6 +101,7 @@ class SavefileApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -135,26 +125,17 @@ class SavefileApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<Object?> getSaveFileByUserIdAndGameId(
-    num userId,
-    num gameId,
-  ) async {
-    final response = await getSaveFileByUserIdAndGameIdWithHttpInfo(
-      userId,
-      gameId,
-    );
+  Future<Object?> getSaveFileByUserIdAndGameId(num userId, num gameId,) async {
+    final response = await getSaveFileByUserIdAndGameIdWithHttpInfo(userId, gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'Object',
-      ) as Object;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
     }
     return null;
   }
@@ -178,16 +159,11 @@ class SavefileApi {
   ///
   /// * [MultipartFile] file:
   ///   The save file to upload
-  Future<Response> postSavefileByUserIdAndGameIdWithHttpInfo(
-    num userId,
-    num gameId, {
-    String? xInstallationId,
-    MultipartFile? file,
-  }) async {
+  Future<Response> postSavefileByUserIdAndGameIdWithHttpInfo(num userId, num gameId, { String? xInstallationId, MultipartFile? file, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/savefiles/user/{user_id}/game/{game_id}'
-        .replaceAll('{user_id}', userId.toString())
-        .replaceAll('{game_id}', gameId.toString());
+      .replaceAll('{user_id}', userId.toString())
+      .replaceAll('{game_id}', gameId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -241,18 +217,8 @@ class SavefileApi {
   ///
   /// * [MultipartFile] file:
   ///   The save file to upload
-  Future<void> postSavefileByUserIdAndGameId(
-    num userId,
-    num gameId, {
-    String? xInstallationId,
-    MultipartFile? file,
-  }) async {
-    final response = await postSavefileByUserIdAndGameIdWithHttpInfo(
-      userId,
-      gameId,
-      xInstallationId: xInstallationId,
-      file: file,
-    );
+  Future<void> postSavefileByUserIdAndGameId(num userId, num gameId, { String? xInstallationId, MultipartFile? file, }) async {
+    final response = await postSavefileByUserIdAndGameIdWithHttpInfo(userId, gameId,  xInstallationId: xInstallationId, file: file, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

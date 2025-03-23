@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
+
 class DevelopersApi {
-  DevelopersApi([ApiClient? apiClient])
-      : apiClient = apiClient ?? defaultApiClient;
+  DevelopersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -38,13 +38,7 @@ class DevelopersApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<Response> getDevelopersWithHttpInfo({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
+  Future<Response> getDevelopersWithHttpInfo({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/developers';
 
@@ -72,6 +66,7 @@ class DevelopersApi {
     }
 
     const contentTypes = <String>[];
+
 
     return apiClient.invokeAPI(
       path,
@@ -104,32 +99,17 @@ class DevelopersApi {
   ///
   /// * [List<Object>] filter:
   ///   filters that should be applied. More info on: https://github.com/ppetzold/nestjs-paginate#usage
-  Future<GetDevelopers200Response?> getDevelopers({
-    num? page,
-    num? limit,
-    String? search,
-    Object? sortBy,
-    List<Object>? filter,
-  }) async {
-    final response = await getDevelopersWithHttpInfo(
-      page: page,
-      limit: limit,
-      search: search,
-      sortBy: sortBy,
-      filter: filter,
-    );
+  Future<GetDevelopers200Response?> getDevelopers({ num? page, num? limit, String? search, Object? sortBy, List<Object>? filter, }) async {
+    final response = await getDevelopersWithHttpInfo( page: page, limit: limit, search: search, sortBy: sortBy, filter: filter, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty &&
-        response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(
-        await _decodeBodyBytes(response),
-        'GetDevelopers200Response',
-      ) as GetDevelopers200Response;
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetDevelopers200Response',) as GetDevelopers200Response;
+    
     }
     return null;
   }

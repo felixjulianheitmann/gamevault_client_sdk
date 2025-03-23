@@ -11,6 +11,7 @@
 import 'package:gamevault_client_sdk/api.dart';
 import 'package:test/test.dart';
 
+
 /// tests for ConfigApi
 void main() {
   // final instance = ConfigApi();
@@ -22,5 +23,6 @@ void main() {
     test('test getNews', () async {
       // TODO
     });
+
   });
 }

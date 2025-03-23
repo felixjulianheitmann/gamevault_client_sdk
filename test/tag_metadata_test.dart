@@ -28,6 +28,18 @@ void main() {
       // TODO
     });
 
+    // date the entity was updated
+    // DateTime updatedAt
+    test('to test the property `updatedAt`', () async {
+      // TODO
+    });
+
+    // date the entity was soft-deleted (null if not deleted)
+    // DateTime deletedAt
+    test('to test the property `deletedAt`', () async {
+      // TODO
+    });
+
     // incremental version number of the entity
     // num entityVersion
     test('to test the property `entityVersion`', () async {
@@ -58,16 +70,7 @@ void main() {
       // TODO
     });
 
-    // date the entity was updated
-    // DateTime updatedAt
-    test('to test the property `updatedAt`', () async {
-      // TODO
-    });
 
-    // date the entity was soft-deleted (null if not deleted)
-    // DateTime deletedAt
-    test('to test the property `deletedAt`', () async {
-      // TODO
-    });
   });
+
 }

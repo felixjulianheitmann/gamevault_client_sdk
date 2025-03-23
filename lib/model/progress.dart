@@ -15,13 +15,13 @@ class Progress {
   Progress({
     required this.id,
     required this.createdAt,
-    required this.entityVersion,
-    required this.minutesPlayed,
-    required this.state,
     this.updatedAt,
     this.deletedAt,
+    required this.entityVersion,
     this.user,
     this.game,
+    required this.minutesPlayed,
+    required this.state,
     this.lastPlayedAt,
   });
 
@@ -30,15 +30,6 @@ class Progress {
 
   /// date the entity was created
   DateTime createdAt;
-
-  /// incremental version number of the entity
-  num entityVersion;
-
-  /// playtime in minutes
-  num minutesPlayed;
-
-  /// state of the game progress
-  ProgressStateEnum state;
 
   /// date the entity was updated
   ///
@@ -58,6 +49,9 @@ class Progress {
   ///
   DateTime? deletedAt;
 
+  /// incremental version number of the entity
+  num entityVersion;
+
   /// user the progress belongs to
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -76,6 +70,12 @@ class Progress {
   ///
   GamevaultGame? game;
 
+  /// playtime in minutes
+  num minutesPlayed;
+
+  /// state of the game progress
+  ProgressStateEnum state;
+
   /// date the progress was updated
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -86,45 +86,39 @@ class Progress {
   DateTime? lastPlayedAt;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Progress &&
-          other.id == id &&
-          other.createdAt == createdAt &&
-          other.entityVersion == entityVersion &&
-          other.minutesPlayed == minutesPlayed &&
-          other.state == state &&
-          other.updatedAt == updatedAt &&
-          other.deletedAt == deletedAt &&
-          other.user == user &&
-          other.game == game &&
-          other.lastPlayedAt == lastPlayedAt;
+  bool operator ==(Object other) => identical(this, other) || other is Progress &&
+    other.id == id &&
+    other.createdAt == createdAt &&
+    other.updatedAt == updatedAt &&
+    other.deletedAt == deletedAt &&
+    other.entityVersion == entityVersion &&
+    other.user == user &&
+    other.game == game &&
+    other.minutesPlayed == minutesPlayed &&
+    other.state == state &&
+    other.lastPlayedAt == lastPlayedAt;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (createdAt.hashCode) +
-      (entityVersion.hashCode) +
-      (minutesPlayed.hashCode) +
-      (state.hashCode) +
-      (updatedAt == null ? 0 : updatedAt!.hashCode) +
-      (deletedAt == null ? 0 : deletedAt!.hashCode) +
-      (user == null ? 0 : user!.hashCode) +
-      (game == null ? 0 : game!.hashCode) +
-      (lastPlayedAt == null ? 0 : lastPlayedAt!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (createdAt.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (deletedAt == null ? 0 : deletedAt!.hashCode) +
+    (entityVersion.hashCode) +
+    (user == null ? 0 : user!.hashCode) +
+    (game == null ? 0 : game!.hashCode) +
+    (minutesPlayed.hashCode) +
+    (state.hashCode) +
+    (lastPlayedAt == null ? 0 : lastPlayedAt!.hashCode);
 
   @override
-  String toString() =>
-      'Progress[id=$id, createdAt=$createdAt, entityVersion=$entityVersion, minutesPlayed=$minutesPlayed, state=$state, updatedAt=$updatedAt, deletedAt=$deletedAt, user=$user, game=$game, lastPlayedAt=$lastPlayedAt]';
+  String toString() => 'Progress[id=$id, createdAt=$createdAt, updatedAt=$updatedAt, deletedAt=$deletedAt, entityVersion=$entityVersion, user=$user, game=$game, minutesPlayed=$minutesPlayed, state=$state, lastPlayedAt=$lastPlayedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
-    json[r'entity_version'] = this.entityVersion;
-    json[r'minutes_played'] = this.minutesPlayed;
-    json[r'state'] = this.state;
+      json[r'id'] = this.id;
+      json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt!.toUtc().toIso8601String();
     } else {
@@ -135,6 +129,7 @@ class Progress {
     } else {
       json[r'deleted_at'] = null;
     }
+      json[r'entity_version'] = this.entityVersion;
     if (this.user != null) {
       json[r'user'] = this.user;
     } else {
@@ -145,6 +140,8 @@ class Progress {
     } else {
       json[r'game'] = null;
     }
+      json[r'minutes_played'] = this.minutesPlayed;
+      json[r'state'] = this.state;
     if (this.lastPlayedAt != null) {
       json[r'last_played_at'] = this.lastPlayedAt!.toUtc().toIso8601String();
     } else {
@@ -165,10 +162,8 @@ class Progress {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "Progress[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "Progress[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Progress[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Progress[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -176,23 +171,20 @@ class Progress {
       return Progress(
         id: num.parse('${json[r'id']}'),
         createdAt: mapDateTime(json, r'created_at', r'')!,
-        entityVersion: num.parse('${json[r'entity_version']}'),
-        minutesPlayed: num.parse('${json[r'minutes_played']}'),
-        state: ProgressStateEnum.fromJson(json[r'state'])!,
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
+        entityVersion: num.parse('${json[r'entity_version']}'),
         user: GamevaultUser.fromJson(json[r'user']),
         game: GamevaultGame.fromJson(json[r'game']),
+        minutesPlayed: num.parse('${json[r'minutes_played']}'),
+        state: ProgressStateEnum.fromJson(json[r'state'])!,
         lastPlayedAt: mapDateTime(json, r'last_played_at', r''),
       );
     }
     return null;
   }
 
-  static List<Progress> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<Progress> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Progress>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -220,19 +212,13 @@ class Progress {
   }
 
   // maps a json object with a list of Progress-objects as value to a dart map
-  static Map<String, List<Progress>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<Progress>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Progress>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Progress.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = Progress.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -278,13 +264,9 @@ class ProgressStateEnum {
     ABORTED_PERMANENT,
   ];
 
-  static ProgressStateEnum? fromJson(dynamic value) =>
-      ProgressStateEnumTypeTransformer().decode(value);
+  static ProgressStateEnum? fromJson(dynamic value) => ProgressStateEnumTypeTransformer().decode(value);
 
-  static List<ProgressStateEnum> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<ProgressStateEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ProgressStateEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -301,8 +283,7 @@ class ProgressStateEnum {
 /// Transformation class that can [encode] an instance of [ProgressStateEnum] to String,
 /// and [decode] dynamic data back to [ProgressStateEnum].
 class ProgressStateEnumTypeTransformer {
-  factory ProgressStateEnumTypeTransformer() =>
-      _instance ??= const ProgressStateEnumTypeTransformer._();
+  factory ProgressStateEnumTypeTransformer() => _instance ??= const ProgressStateEnumTypeTransformer._();
 
   const ProgressStateEnumTypeTransformer._();
 
@@ -319,18 +300,12 @@ class ProgressStateEnumTypeTransformer {
   ProgressStateEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'UNPLAYED':
-          return ProgressStateEnum.UNPLAYED;
-        case r'INFINITE':
-          return ProgressStateEnum.INFINITE;
-        case r'PLAYING':
-          return ProgressStateEnum.PLAYING;
-        case r'COMPLETED':
-          return ProgressStateEnum.COMPLETED;
-        case r'ABORTED_TEMPORARY':
-          return ProgressStateEnum.ABORTED_TEMPORARY;
-        case r'ABORTED_PERMANENT':
-          return ProgressStateEnum.ABORTED_PERMANENT;
+        case r'UNPLAYED': return ProgressStateEnum.UNPLAYED;
+        case r'INFINITE': return ProgressStateEnum.INFINITE;
+        case r'PLAYING': return ProgressStateEnum.PLAYING;
+        case r'COMPLETED': return ProgressStateEnum.COMPLETED;
+        case r'ABORTED_TEMPORARY': return ProgressStateEnum.ABORTED_TEMPORARY;
+        case r'ABORTED_PERMANENT': return ProgressStateEnum.ABORTED_PERMANENT;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -343,3 +318,5 @@ class ProgressStateEnumTypeTransformer {
   /// Singleton [ProgressStateEnumTypeTransformer] instance.
   static ProgressStateEnumTypeTransformer? _instance;
 }
+
+

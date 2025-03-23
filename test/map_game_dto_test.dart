@@ -22,16 +22,19 @@ void main() {
       // TODO
     });
 
+    // id of the target game from the provider. If not provided, the metadata for the specified provider will be unmapped.
+    // String providerDataId
+    test('to test the property `providerDataId`', () async {
+      // TODO
+    });
+
     // used to override the priority of usage for this provider. Lower priority providers are tried first, while higher priority providers fill in gaps.
     // num providerPriority
     test('to test the property `providerPriority`', () async {
       // TODO
     });
 
-    // id of the target game from the provider. If not provided, the metadata for the specified provider will be unmapped.
-    // String providerDataId
-    test('to test the property `providerDataId`', () async {
-      // TODO
-    });
+
   });
+
 }
