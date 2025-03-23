@@ -101,13 +101,13 @@ void main() {
     });
 
     // URLs of externally hosted screenshots of the game
-    // List<num> urlScreenshots (default value: const [])
+    // List<String> urlScreenshots (default value: const [])
     test('to test the property `urlScreenshots`', () async {
       // TODO
     });
 
     // URLs of externally hosted trailer videos of the game
-    // List<List<String>> urlTrailers (default value: const [])
+    // List<String> urlTrailers (default value: const [])
     test('to test the property `urlTrailers`', () async {
       // TODO
     });

@@ -167,16 +167,16 @@ class GameMetadata {
   Media? background;
 
   /// URLs of externally hosted screenshots of the game
-  List<List<String>> urlScreenshots;
+  List<String> urlScreenshots;
 
   /// URLs of externally hosted trailer videos of the game
-  List<List<String>> urlTrailers;
+  List<String> urlTrailers;
 
   /// URLs of externally hosted gameplay videos of the game
-  List<List<String>> urlGameplays;
+  List<String> urlGameplays;
 
   /// URLs of websites of the game
-  List<List<String>> urlWebsites;
+  List<String> urlWebsites;
 
   /// rating of the provider
   ///
@@ -434,26 +434,18 @@ providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provi
 averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,
         cover: Media.fromJson(json[r'cover']),
         background: Media.fromJson(json[r'background']),
-        urlScreenshots: json[r'url_screenshots'] is List
-          ? (json[r'url_screenshots'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
-            ).toList()
-          :  const [],
-        urlTrailers: json[r'url_trailers'] is List
-          ? (json[r'url_trailers'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
-            ).toList()
-          :  const [],
-        urlGameplays: json[r'url_gameplays'] is List
-          ? (json[r'url_gameplays'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
-            ).toList()
-          :  const [],
-        urlWebsites: json[r'url_websites'] is List
-          ? (json[r'url_websites'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
-            ).toList()
-          :  const [],
+        urlScreenshots: json[r'url_screenshots'] is Iterable
+            ? (json[r'url_screenshots'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        urlTrailers: json[r'url_trailers'] is Iterable
+            ? (json[r'url_trailers'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        urlGameplays: json[r'url_gameplays'] is Iterable
+            ? (json[r'url_gameplays'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        urlWebsites: json[r'url_websites'] is Iterable
+            ? (json[r'url_websites'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
 rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,
         earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
         launchParameters: mapValueOfType<String>(json, r'launch_parameters'),

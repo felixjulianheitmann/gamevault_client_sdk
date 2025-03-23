@@ -125,25 +125,25 @@ void main() {
     });
 
     // URLs of externally hosted screenshots of the game
-    // List<List<String>> urlScreenshots (default value: const [])
+    // List<String> urlScreenshots (default value: const [])
     test('to test the property `urlScreenshots`', () async {
       // TODO
     });
 
     // URLs of externally hosted trailer videos of the game
-    // List<List<String>> urlTrailers (default value: const [])
+    // List<String> urlTrailers (default value: const [])
     test('to test the property `urlTrailers`', () async {
       // TODO
     });
 
     // URLs of externally hosted gameplay videos of the game
-    // List<List<String>> urlGameplays (default value: const [])
+    // List<String> urlGameplays (default value: const [])
     test('to test the property `urlGameplays`', () async {
       // TODO
     });
 
     // URLs of websites of the game
-    // List<List<String>> urlWebsites (default value: const [])
+    // List<String> urlWebsites (default value: const [])
     test('to test the property `urlWebsites`', () async {
       // TODO
     });

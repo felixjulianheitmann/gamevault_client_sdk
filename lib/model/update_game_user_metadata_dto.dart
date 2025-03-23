@@ -152,10 +152,10 @@ class UpdateGameUserMetadataDto {
   String? installerExecutable;
 
   /// URLs of externally hosted screenshots of the game
-  List<num> urlScreenshots;
+  List<String> urlScreenshots;
 
   /// URLs of externally hosted trailer videos of the game
-  List<List<String>> urlTrailers;
+  List<String> urlTrailers;
 
   /// URLs of externally hosted gameplay videos of the game
   List<String> urlGameplays;
@@ -338,13 +338,11 @@ class UpdateGameUserMetadataDto {
         launchExecutable: mapValueOfType<String>(json, r'launch_executable'),
         installerExecutable: mapValueOfType<String>(json, r'installer_executable'),
         urlScreenshots: json[r'url_screenshots'] is Iterable
-            ? (json[r'url_screenshots'] as Iterable).cast<num>().toList(growable: false)
+            ? (json[r'url_screenshots'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        urlTrailers: json[r'url_trailers'] is List
-          ? (json[r'url_trailers'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
-            ).toList()
-          :  const [],
+        urlTrailers: json[r'url_trailers'] is Iterable
+            ? (json[r'url_trailers'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         urlGameplays: json[r'url_gameplays'] is Iterable
             ? (json[r'url_gameplays'] as Iterable).cast<String>().toList(growable: false)
             : const [],
