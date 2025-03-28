@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **userMetadata** | [**GameMetadata**](GameMetadata.md) | user-defined metadata of the game | [optional] 
 **metadata** | [**GameMetadata**](GameMetadata.md) | effective and merged metadata of the game | [optional] 
 **progresses** | [**List<Progress>**](Progress.md) | progresses associated to the game | [optional] [default to const []]
-**bookmarkedUsers** | [**List<GamevaultGame>**](GamevaultGame.md) | users that bookmarked this game | [default to const []]
+**bookmarkedUsers** | [**List<GamevaultGame>**](GamevaultGame.md) | users that bookmarked this game | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

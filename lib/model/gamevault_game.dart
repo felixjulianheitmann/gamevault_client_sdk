@@ -336,7 +336,6 @@ class GamevaultGame {
     'early_access',
     'download_count',
     'type',
-    'bookmarked_users',
   };
 }
 
