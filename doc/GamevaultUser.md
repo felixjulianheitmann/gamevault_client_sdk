@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **avatar** | [**Media**](Media.md) | the user's avatar image | [optional] 
 **background** | [**Media**](Media.md) | the user's profile background image | [optional] 
 **email** | **String** | email address of the user | [optional] 
-**firstName** | **String** | first name of the user | 
+**firstName** | **String** | first name of the user | [optional] 
 **lastName** | **String** | last name of the user | [optional] 
 **birthDate** | [**DateTime**](DateTime.md) | birthday of the user | [optional] 
 **activated** | **bool** | indicates if the user is activated | 

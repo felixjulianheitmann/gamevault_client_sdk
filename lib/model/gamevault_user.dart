@@ -24,7 +24,7 @@ class GamevaultUser {
     this.avatar,
     this.background,
     this.email,
-    required this.firstName,
+    this.firstName,
     this.lastName,
     this.birthDate,
     required this.activated,
@@ -104,7 +104,13 @@ class GamevaultUser {
   String? email;
 
   /// first name of the user
-  String firstName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? firstName;
 
   /// last name of the user
   ///
@@ -175,7 +181,7 @@ class GamevaultUser {
     (avatar == null ? 0 : avatar!.hashCode) +
     (background == null ? 0 : background!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
-    (firstName.hashCode) +
+    (firstName == null ? 0 : firstName!.hashCode) +
     (lastName == null ? 0 : lastName!.hashCode) +
     (birthDate == null ? 0 : birthDate!.hashCode) +
     (activated.hashCode) +
@@ -224,7 +230,11 @@ class GamevaultUser {
     } else {
       json[r'email'] = null;
     }
+    if (this.firstName != null) {
       json[r'first_name'] = this.firstName;
+    } else {
+      json[r'first_name'] = null;
+    }
     if (this.lastName != null) {
       json[r'last_name'] = this.lastName;
     } else {
@@ -273,7 +283,7 @@ class GamevaultUser {
         avatar: Media.fromJson(json[r'avatar']),
         background: Media.fromJson(json[r'background']),
         email: mapValueOfType<String>(json, r'email'),
-        firstName: mapValueOfType<String>(json, r'first_name')!,
+        firstName: mapValueOfType<String>(json, r'first_name'),
         lastName: mapValueOfType<String>(json, r'last_name'),
         birthDate: mapDateTime(json, r'birth_date', r''),
         activated: mapValueOfType<bool>(json, r'activated')!,
@@ -333,7 +343,6 @@ role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,
     'entity_version',
     'username',
     'socket_secret',
-    'first_name',
     'activated',
     'role',
     'bookmarked_games',
