@@ -30,7 +30,7 @@ void main() {
     //
     // Only admins or the user who is associated to the savefile can download a games save file.
     //
-    //Future<MultipartFile> getSaveFileByUserIdAndGameId(num userId, num gameId) async
+    //Future<String> getSaveFileByUserIdAndGameId(num userId, num gameId) async
     test('test getSaveFileByUserIdAndGameId', () async {
       // TODO
     });

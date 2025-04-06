@@ -125,7 +125,7 @@ class SavefileApi {
   ///
   /// * [num] gameId (required):
   ///   id of the game
-  Future<MultipartFile?> getSaveFileByUserIdAndGameId(num userId, num gameId,) async {
+  Future<String?> getSaveFileByUserIdAndGameId(num userId, num gameId,) async {
     final response = await getSaveFileByUserIdAndGameIdWithHttpInfo(userId, gameId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -134,7 +134,7 @@ class SavefileApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MultipartFile',) as MultipartFile;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
     
     }
     return null;
