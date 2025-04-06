@@ -323,16 +323,16 @@ class UpdateGameUserMetadataDto {
       }());
 
       return UpdateGameUserMetadataDto(
-        ageRating: num.parse('${json[r'age_rating']}'),
+ageRating: json[r'age_rating'] != null ? num.parse('${json[r'age_rating']}') : null,
         title: mapValueOfType<String>(json, r'title'),
         sortTitle: mapValueOfType<String>(json, r'sort_title'),
         releaseDate: mapValueOfType<String>(json, r'release_date'),
         description: mapValueOfType<String>(json, r'description'),
         notes: mapValueOfType<String>(json, r'notes'),
-        averagePlaytime: num.parse('${json[r'average_playtime']}'),
+averagePlaytime: json[r'average_playtime'] != null ? num.parse('${json[r'average_playtime']}') : null,
         cover: Media.fromJson(json[r'cover']),
         background: Media.fromJson(json[r'background']),
-        rating: num.parse('${json[r'rating']}'),
+rating: json[r'rating'] != null ? num.parse('${json[r'rating']}') : null,
         earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
         launchParameters: mapValueOfType<String>(json, r'launch_parameters'),
         launchExecutable: mapValueOfType<String>(json, r'launch_executable'),

@@ -219,8 +219,8 @@ class UpdateUserDto {
         firstName: mapValueOfType<String>(json, r'first_name'),
         lastName: mapValueOfType<String>(json, r'last_name'),
         birthDate: mapValueOfType<String>(json, r'birth_date'),
-        avatarId: num.parse('${json[r'avatar_id']}'),
-        backgroundId: num.parse('${json[r'background_id']}'),
+avatarId: json[r'avatar_id'] != null ? num.parse('${json[r'avatar_id']}') : null,
+backgroundId: json[r'background_id'] != null ? num.parse('${json[r'background_id']}') : null,
         activated: mapValueOfType<bool>(json, r'activated'),
 role: UpdateUserDtoRoleEnum.fromJson(json[r'role'])!,
       );
