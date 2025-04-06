@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **providerSlug** | **String** | slug (url-friendly name) of the provider. This is the primary identifier. Must be formatted like a valid slug. | 
 **providerDataId** | **String** | id of the developer from the provider | 
 **name** | **String** | name of the developer | 
-**games** | [**List<GameMetadata>**](GameMetadata.md) | games developed by the developer | [default to const []]
+**games** | [**List<GameMetadata>**](GameMetadata.md) | games developed by the developer | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
