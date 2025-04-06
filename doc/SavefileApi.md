@@ -62,7 +62,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSaveFileByUserIdAndGameId**
-> Object getSaveFileByUserIdAndGameId(userId, gameId)
+> MultipartFile getSaveFileByUserIdAndGameId(userId, gameId)
 
 Download a save file from the server
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**MultipartFile**](MultipartFile.md)
 
 ### Authorization
 

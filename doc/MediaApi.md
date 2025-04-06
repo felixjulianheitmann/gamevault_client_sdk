@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getMediaByMediaId**
-> Object getMediaByMediaId(id)
+> MultipartFile getMediaByMediaId(id)
 
 Retrieve media using its id
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**MultipartFile**](MultipartFile.md)
 
 ### Authorization
 

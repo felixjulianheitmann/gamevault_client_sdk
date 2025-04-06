@@ -19,7 +19,7 @@ void main() {
   group('tests for MediaApi', () {
     // Retrieve media using its id
     //
-    //Future<Object> getMediaByMediaId(String id) async
+    //Future<MultipartFile> getMediaByMediaId(String id) async
     test('test getMediaByMediaId', () async {
       // TODO
     });
