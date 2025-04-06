@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **progresses** | [**List<Progress>**](Progress.md) | progresses of the user | [optional] [default to const []]
 **role** | **num** | The role determines the set of permissions and access rights for a user in the system. | 
 **uploadedMedia** | [**List<Media>**](Media.md) | media uploaded by this user | [optional] [default to const []]
-**bookmarkedGames** | [**List<GamevaultGame>**](GamevaultGame.md) | games bookmarked by this user | [default to const []]
+**bookmarkedGames** | [**List<GamevaultGame>**](GamevaultGame.md) | games bookmarked by this user | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

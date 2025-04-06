@@ -354,7 +354,6 @@ role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,
     'username',
     'activated',
     'role',
-    'bookmarked_games',
   };
 }
 
