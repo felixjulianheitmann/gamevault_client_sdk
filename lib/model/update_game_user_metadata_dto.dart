@@ -323,7 +323,7 @@ class UpdateGameUserMetadataDto {
       }());
 
       return UpdateGameUserMetadataDto(
-ageRating: json[r'age_rating'] != null ? num.parse('${json[r'age_rating']}') : null,
+ageRating: num.parse('${json[r'age_rating'] ?? 0}'),
         title: mapValueOfType<String>(json, r'title'),
         sortTitle: mapValueOfType<String>(json, r'sort_title'),
         releaseDate: mapValueOfType<String>(json, r'release_date'),

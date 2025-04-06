@@ -426,7 +426,7 @@ class GameMetadata {
         providerDataId: mapValueOfType<String>(json, r'provider_data_id'),
         providerDataUrl: mapValueOfType<String>(json, r'provider_data_url'),
 providerPriority: json[r'provider_priority'] != null ? num.parse('${json[r'provider_priority']}') : null,
-ageRating: json[r'age_rating'] != null ? num.parse('${json[r'age_rating']}') : null,
+ageRating: num.parse('${json[r'age_rating'] ?? 0}'),
         title: mapValueOfType<String>(json, r'title')!,
         releaseDate: mapDateTime(json, r'release_date', r''),
         description: mapValueOfType<String>(json, r'description'),
