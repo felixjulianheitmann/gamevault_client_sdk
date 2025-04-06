@@ -20,7 +20,7 @@ class GamevaultUser {
     required this.entityVersion,
     required this.username,
     this.password,
-    required this.socketSecret,
+    this.socketSecret,
     this.avatar,
     this.background,
     this.email,
@@ -74,7 +74,13 @@ class GamevaultUser {
   String? password;
 
   /// the user's socket secret is used for authentication with the server over the websocket protocol.
-  String socketSecret;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? socketSecret;
 
   /// the user's avatar image
   ///
@@ -177,7 +183,7 @@ class GamevaultUser {
     (entityVersion.hashCode) +
     (username.hashCode) +
     (password == null ? 0 : password!.hashCode) +
-    (socketSecret.hashCode) +
+    (socketSecret == null ? 0 : socketSecret!.hashCode) +
     (avatar == null ? 0 : avatar!.hashCode) +
     (background == null ? 0 : background!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
@@ -214,7 +220,11 @@ class GamevaultUser {
     } else {
       json[r'password'] = null;
     }
+    if (this.socketSecret != null) {
       json[r'socket_secret'] = this.socketSecret;
+    } else {
+      json[r'socket_secret'] = null;
+    }
     if (this.avatar != null) {
       json[r'avatar'] = this.avatar;
     } else {
@@ -279,7 +289,7 @@ class GamevaultUser {
         entityVersion: num.parse('${json[r'entity_version']}'),
         username: mapValueOfType<String>(json, r'username')!,
         password: mapValueOfType<String>(json, r'password'),
-        socketSecret: mapValueOfType<String>(json, r'socket_secret')!,
+        socketSecret: mapValueOfType<String>(json, r'socket_secret'),
         avatar: Media.fromJson(json[r'avatar']),
         background: Media.fromJson(json[r'background']),
         email: mapValueOfType<String>(json, r'email'),
@@ -342,7 +352,6 @@ role: GamevaultUserRoleEnum.fromJson(json[r'role'])!,
     'created_at',
     'entity_version',
     'username',
-    'socket_secret',
     'activated',
     'role',
     'bookmarked_games',

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **entityVersion** | **num** | incremental version number of the entity | 
 **username** | **String** | username of the user | 
 **password** | **String** | encrypted password of the user | [optional] 
-**socketSecret** | **String** | the user's socket secret is used for authentication with the server over the websocket protocol. | 
+**socketSecret** | **String** | the user's socket secret is used for authentication with the server over the websocket protocol. | [optional] 
 **avatar** | [**Media**](Media.md) | the user's avatar image | [optional] 
 **background** | [**Media**](Media.md) | the user's profile background image | [optional] 
 **email** | **String** | email address of the user | [optional] 
