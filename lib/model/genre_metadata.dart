@@ -194,7 +194,6 @@ class GenreMetadata {
     'provider_slug',
     'provider_data_id',
     'name',
-    'games',
   };
 }
 
