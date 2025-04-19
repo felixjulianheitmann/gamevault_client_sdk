@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **releaseDate** | [**DateTime**](DateTime.md) | release date of the game (extracted from filename e.g. '(2013)') | [optional] 
 **earlyAccess** | **bool** | indicates if the game is an early access title (extracted from filename e.g. '(EA)') | [optional] [default to false]
 **downloadCount** | **num** | Indicates how many times the game has been downloaded on this server. | [optional] [default to 0]
-**type** | **String** | type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values | 
+**type** | **String** | type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values | [optional] 
 **providerMetadata** | [**List<GameMetadata>**](GameMetadata.md) | metadata of various providers associated to the game | [optional] [default to const []]
 **userMetadata** | [**GameMetadata**](GameMetadata.md) | user-defined metadata of the game | [optional] 
 **metadata** | [**GameMetadata**](GameMetadata.md) | effective and merged metadata of the game | [optional] 

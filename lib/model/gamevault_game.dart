@@ -26,7 +26,7 @@ class GamevaultGame {
     this.releaseDate,
     this.earlyAccess = false,
     this.downloadCount = 0,
-    required this.type,
+    this.type,
     this.providerMetadata = const [],
     this.userMetadata,
     this.metadata,
@@ -122,7 +122,7 @@ class GamevaultGame {
   num downloadCount;
 
   /// type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values
-  GamevaultGameTypeEnum type;
+  GamevaultGameTypeEnum? type;
 
   /// metadata of various providers associated to the game
   List<GameMetadata> providerMetadata;
@@ -189,7 +189,7 @@ class GamevaultGame {
     (releaseDate == null ? 0 : releaseDate!.hashCode) +
     (earlyAccess.hashCode) +
     (downloadCount.hashCode) +
-    (type.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
     (providerMetadata.hashCode) +
     (userMetadata == null ? 0 : userMetadata!.hashCode) +
     (metadata == null ? 0 : metadata!.hashCode) +
@@ -246,7 +246,11 @@ class GamevaultGame {
     }
       json[r'early_access'] = this.earlyAccess;
       json[r'download_count'] = this.downloadCount;
+    if (this.type != null) {
       json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
+    }
       json[r'provider_metadata'] = this.providerMetadata;
     if (this.userMetadata != null) {
       json[r'user_metadata'] = this.userMetadata;
@@ -295,7 +299,7 @@ class GamevaultGame {
         releaseDate: mapDateTime(json, r'release_date', r''),
         earlyAccess: mapValueOfType<bool>(json, r'early_access') ?? false,
         downloadCount: num.parse('${json[r'download_count']}'),
-        type: GamevaultGameTypeEnum.fromJson(json[r'type'])!,
+        type: GamevaultGameTypeEnum.fromJson(json[r'type']),
         providerMetadata: GameMetadata.listFromJson(json[r'provider_metadata']),
         userMetadata: GameMetadata.fromJson(json[r'user_metadata']),
         metadata: GameMetadata.fromJson(json[r'metadata']),
@@ -351,7 +355,6 @@ class GamevaultGame {
     'id',
     'created_at',
     'entity_version',
-    'type',
   };
 }
 
