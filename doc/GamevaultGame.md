@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **sortTitle** | **String** | sort title of the game, generated and used to optimize sorting. | [optional] 
 **version** | **String** | version tag (extracted from the filename e.g. '(v1.0.0)') | [optional] 
 **releaseDate** | [**DateTime**](DateTime.md) | release date of the game (extracted from filename e.g. '(2013)') | [optional] 
-**earlyAccess** | **bool** | indicates if the game is an early access title (extracted from filename e.g. '(EA)') | [default to false]
+**earlyAccess** | **bool** | indicates if the game is an early access title (extracted from filename e.g. '(EA)') | [optional] [default to false]
 **downloadCount** | **num** | Indicates how many times the game has been downloaded on this server. | [default to 0]
 **type** | **String** | type of the game, see https://gamevau.lt/docs/server-docs/game-types for all possible values | 
 **providerMetadata** | [**List<GameMetadata>**](GameMetadata.md) | metadata of various providers associated to the game | [optional] [default to const []]

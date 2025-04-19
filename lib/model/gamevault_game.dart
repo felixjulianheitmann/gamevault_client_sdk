@@ -293,7 +293,7 @@ class GamevaultGame {
         sortTitle: mapValueOfType<String>(json, r'sort_title'),
         version: mapValueOfType<String>(json, r'version'),
         releaseDate: mapDateTime(json, r'release_date', r''),
-        earlyAccess: mapValueOfType<bool>(json, r'early_access')!,
+        earlyAccess: mapValueOfType<bool>(json, r'early_access') ?? false,
         downloadCount: num.parse('${json[r'download_count']}'),
         type: GamevaultGameTypeEnum.fromJson(json[r'type'])!,
         providerMetadata: GameMetadata.listFromJson(json[r'provider_metadata']),
@@ -351,7 +351,6 @@ class GamevaultGame {
     'id',
     'created_at',
     'entity_version',
-    'early_access',
     'download_count',
     'type',
   };
