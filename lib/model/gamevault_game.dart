@@ -351,7 +351,6 @@ class GamevaultGame {
     'id',
     'created_at',
     'entity_version',
-    'download_count',
     'type',
   };
 }
