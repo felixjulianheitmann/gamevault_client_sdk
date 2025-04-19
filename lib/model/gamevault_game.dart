@@ -19,7 +19,7 @@ class GamevaultGame {
     this.deletedAt,
     required this.entityVersion,
     this.filePath,
-    required this.size,
+    this.size,
     this.title,
     this.sortTitle,
     this.version,
@@ -71,7 +71,13 @@ class GamevaultGame {
   String? filePath;
 
   /// size of the game file in bytes
-  String size;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? size;
 
   /// title of the game (extracted from the filename')
   ///
@@ -176,7 +182,7 @@ class GamevaultGame {
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
     (entityVersion.hashCode) +
     (filePath == null ? 0 : filePath!.hashCode) +
-    (size.hashCode) +
+    (size == null ? 0 : size!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (sortTitle == null ? 0 : sortTitle!.hashCode) +
     (version == null ? 0 : version!.hashCode) +
@@ -213,7 +219,11 @@ class GamevaultGame {
     } else {
       json[r'file_path'] = null;
     }
+    if (this.size != null) {
       json[r'size'] = this.size;
+    } else {
+      json[r'size'] = null;
+    }
     if (this.title != null) {
       json[r'title'] = this.title;
     } else {
@@ -278,7 +288,7 @@ class GamevaultGame {
         deletedAt: mapDateTime(json, r'deleted_at', r''),
         entityVersion: num.parse('${json[r'entity_version']}'),
         filePath: mapValueOfType<String>(json, r'file_path'),
-        size: mapValueOfType<String>(json, r'size')!,
+        size: mapValueOfType<String>(json, r'size'),
         title: mapValueOfType<String>(json, r'title'),
         sortTitle: mapValueOfType<String>(json, r'sort_title'),
         version: mapValueOfType<String>(json, r'version'),
@@ -341,7 +351,6 @@ class GamevaultGame {
     'id',
     'created_at',
     'entity_version',
-    'size',
     'early_access',
     'download_count',
     'type',

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **deletedAt** | [**DateTime**](DateTime.md) | date the entity was soft-deleted (null if not deleted) | [optional] 
 **entityVersion** | **num** | incremental version number of the entity | 
 **filePath** | **String** | file path to the game or the game manifest (relative to root) | [optional] 
-**size** | **String** | size of the game file in bytes | 
+**size** | **String** | size of the game file in bytes | [optional] 
 **title** | **String** | title of the game (extracted from the filename') | [optional] 
 **sortTitle** | **String** | sort title of the game, generated and used to optimize sorting. | [optional] 
 **version** | **String** | version tag (extracted from the filename e.g. '(v1.0.0)') | [optional] 
