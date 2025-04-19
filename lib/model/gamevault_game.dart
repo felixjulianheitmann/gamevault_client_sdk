@@ -18,7 +18,7 @@ class GamevaultGame {
     this.updatedAt,
     this.deletedAt,
     required this.entityVersion,
-    required this.filePath,
+    this.filePath,
     required this.size,
     this.title,
     this.sortTitle,
@@ -62,7 +62,13 @@ class GamevaultGame {
   num entityVersion;
 
   /// file path to the game or the game manifest (relative to root)
-  String filePath;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? filePath;
 
   /// size of the game file in bytes
   String size;
@@ -169,7 +175,7 @@ class GamevaultGame {
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (deletedAt == null ? 0 : deletedAt!.hashCode) +
     (entityVersion.hashCode) +
-    (filePath.hashCode) +
+    (filePath == null ? 0 : filePath!.hashCode) +
     (size.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (sortTitle == null ? 0 : sortTitle!.hashCode) +
@@ -202,7 +208,11 @@ class GamevaultGame {
       json[r'deleted_at'] = null;
     }
       json[r'entity_version'] = this.entityVersion;
+    if (this.filePath != null) {
       json[r'file_path'] = this.filePath;
+    } else {
+      json[r'file_path'] = null;
+    }
       json[r'size'] = this.size;
     if (this.title != null) {
       json[r'title'] = this.title;
@@ -267,7 +277,7 @@ class GamevaultGame {
         updatedAt: mapDateTime(json, r'updated_at', r''),
         deletedAt: mapDateTime(json, r'deleted_at', r''),
         entityVersion: num.parse('${json[r'entity_version']}'),
-        filePath: mapValueOfType<String>(json, r'file_path')!,
+        filePath: mapValueOfType<String>(json, r'file_path'),
         size: mapValueOfType<String>(json, r'size')!,
         title: mapValueOfType<String>(json, r'title'),
         sortTitle: mapValueOfType<String>(json, r'sort_title'),
@@ -331,7 +341,6 @@ class GamevaultGame {
     'id',
     'created_at',
     'entity_version',
-    'file_path',
     'size',
     'early_access',
     'download_count',
